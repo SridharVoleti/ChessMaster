@@ -1,0 +1,80 @@
+[
+  {
+    "pattern": "fork",
+    "game_number": 1,
+    "game_type": "practice",
+    "title": "The Pawn Wedge",
+    "opening": "Italian Game",
+    "story": "A quiet Italian — until White's center pawn marches forward and attacks the knight and bishop at the same time!",
+    "pattern_fen": "r2qr1k1/ppp1bpp1/2npbn1p/8/3PP3/1B3N2/PP3PPP/RNBQR1K1 w - - 1 11",
+    "best_move": "d4d5",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Be7 4. d3 Nf6 5. O-O O-O 6. Re1 d6 7. c3 Be6 8. Bb3 h6 9. d4 exd4 10. cxd4 Re8 *",
+    "side": "white"
+  },
+  {
+    "pattern": "fork",
+    "game_number": 2,
+    "game_type": "practice",
+    "title": "Knight Storm on e3",
+    "opening": "Four Knights Game",
+    "story": "White attacks your knight with a pawn — but instead of retreating, your knight leaps INTO the fork!",
+    "pattern_fen": "r4rk1/pppbqppp/2np4/1B2p1N1/4P1nB/2PP1P2/P1P3PP/R2Q1RK1 b - - 0 11",
+    "best_move": "g4e3",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. Bb5 Bb4 5. O-O O-O 6. d3 d6 7. Bg5 Bxc3 8. bxc3 Qe7 9. Bh4 Bd7 10. Ng5 Ng4 11. f3 *",
+    "side": "black"
+  },
+  {
+    "pattern": "fork",
+    "game_number": 3,
+    "game_type": "practice",
+    "title": "Queen's Double Strike",
+    "opening": "Caro-Kann Defence",
+    "story": "Black weakened the light squares around the king. Your queen checks the king AND attacks the stray knight!",
+    "pattern_fen": "r2qkb1r/pp1n2p1/2p1pp1p/7P/3P1Bn1/3Q1NN1/PPP2PP1/R4RK1 w kq - 0 14",
+    "best_move": "d3g6",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. Nf3 Nd7 8. h5 Bh7 9. Bd3 Bxd3 10. Qxd3 e6 11. Bd2 Ngf6 12. O-O Ng4 13. Bf4 f6 *",
+    "side": "white"
+  },
+  {
+    "pattern": "fork",
+    "game_number": 4,
+    "game_type": "practice",
+    "title": "The Knight Grabs Two",
+    "opening": "King's Indian Defence",
+    "story": "White's pieces wandered off. Your knight captures a pawn and attacks the bishop and knight at the same time!",
+    "pattern_fen": "r1bq1rk1/ppp1n1bp/3p1np1/3PppB1/1PP1P2N/2N5/P3BPPP/R2QR1K1 b - - 3 12",
+    "best_move": "f6e4",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3 O-O 6. Be2 e5 7. O-O Nc6 8. d5 Ne7 9. b4 Nh5 10. Re1 f5 11. Nh4 Nf6 12. Bg5 *",
+    "side": "black"
+  },
+  {
+    "pattern": "fork",
+    "game_number": 5,
+    "game_type": "practice",
+    "title": "Bishop Snatches the Royal Pair",
+    "opening": "Sicilian Najdorf",
+    "story": "Black left the bishop on e7 poorly guarded. Capture it — your bishop will attack the queen and the rook at once!",
+    "pattern_fen": "r2q1rk1/1p1nbppp/p2pb3/3Np1B1/4P1n1/1N6/PPP1BPPP/R2Q1RK1 w - - 10 12",
+    "best_move": "g5e7",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Be2 e5 7. Nb3 Be7 8. O-O O-O 9. Be3 Be6 10. Bg5 Nbd7 11. Nd5 Ng4 *",
+    "side": "white"
+  },
+  {
+    "pattern": "fork",
+    "game_number": 6,
+    "game_type": "main",
+    "title": "The Royal Fork",
+    "opening": "Exchange Ruy Lopez",
+    "story": "The queens are gone, but the tactics are not. When the bishop steps away from c7, your knight dives in with check — royal fork! The king must move, and the corner rook is yours.",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4 7. Nxd4 c5 8. Nb3 Qxd1 9. Rxd1 Bg4 10. f3 Be6 11. Nc3 Bd6 12. Nd5 Be7 13. Nxc7+ Kf7 14. Nxa8 *",
+    "side": "white",
+    "target_patterns": ["fork"],
+    "checkpoints": [{ "ply": 24, "pattern": "fork" }]
+  }
+]

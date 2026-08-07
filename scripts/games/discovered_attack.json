@@ -1,0 +1,80 @@
+[
+  {
+    "pattern": "discovered_attack",
+    "game_number": 1,
+    "game_type": "practice",
+    "title": "The Knight Steps Aside",
+    "opening": "Scandinavian Defence",
+    "story": "Your knight jumps away and suddenly the bishop behind it glares at the black queen — while the knight eyes c7!",
+    "pattern_fen": "r3k2r/ppp1bppp/2n1pn2/q7/3P2b1/2N2N2/PPPBBPPP/R2Q1RK1 w kq - 4 9",
+    "best_move": "c3b5",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 d5 2. exd5 Qxd5 3. Nc3 Qa5 4. d4 Nf6 5. Nf3 Bg4 6. Bd2 e6 7. Be2 Nc6 8. O-O Be7 *",
+    "side": "white"
+  },
+  {
+    "pattern": "discovered_attack",
+    "game_number": 2,
+    "game_type": "practice",
+    "title": "Unmask the Dragon",
+    "opening": "King's Indian Defence",
+    "story": "Your knight grabs a pawn AND unmasks the dragon bishop on g7 — it now stares straight at the white queen!",
+    "pattern_fen": "rnbqr1k1/ppp2pbp/3p1np1/8/2PQP3/2N2N2/PP2BPPP/R1BR2K1 b - - 2 9",
+    "best_move": "f6e4",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3 O-O 6. Be2 e5 7. O-O exd4 8. Qxd4 Re8 9. Rd1 *",
+    "side": "black"
+  },
+  {
+    "pattern": "discovered_attack",
+    "game_number": 3,
+    "game_type": "practice",
+    "title": "The Pinned Knight Strikes Back",
+    "opening": "Advance French",
+    "story": "White thinks the knight is frozen by the queen's stare. But your bishop guards the path — capture the pawn and reveal the counter-attack!",
+    "pattern_fen": "r3kb1r/pp1b1ppp/1qn1p3/3pPn2/Q2P4/2N2N2/PP2BPPP/R1B2RK1 b kq - 4 10",
+    "best_move": "c6d4",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e6 2. d4 d5 3. e5 c5 4. c3 Nc6 5. Nf3 Qb6 6. Qa4 Bd7 7. Be2 cxd4 8. cxd4 Nge7 9. O-O Nf5 10. Nc3 *",
+    "side": "black"
+  },
+  {
+    "pattern": "discovered_attack",
+    "game_number": 4,
+    "game_type": "practice",
+    "title": "Clear the Runway",
+    "opening": "Réti Opening",
+    "story": "Your knight leaps to the centre and attacks the stray knight — and behind it, your fianchetto bishop suddenly sees all the way to the rook in the corner!",
+    "pattern_fen": "rn1qkb1r/p4ppp/b3p3/1p6/6n1/1Q3NP1/1B1PPPBP/RN3RK1 w kq - 4 11",
+    "best_move": "f3e5",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. Nf3 d5 2. c4 dxc4 3. g3 Nf6 4. Bg2 b5 5. a4 c6 6. axb5 cxb5 7. b3 cxb3 8. Qxb3 e6 9. O-O Ba6 10. Bb2 Ng4 *",
+    "side": "white"
+  },
+  {
+    "pattern": "discovered_attack",
+    "game_number": 5,
+    "game_type": "practice",
+    "title": "The Little Pawn's Big Secret",
+    "opening": "Nimzo-Indian Defence",
+    "story": "Push the little pawn! It chases the white bishop — and behind it, your own bishop suddenly glares at the white queen. Two threats with one tiny move!",
+    "pattern_fen": "r2q1rk1/pppn1p1b/5npp/1B1p4/1b1P3B/2N1PN2/PPQ2PPP/R3K2R b KQ - 1 12",
+    "best_move": "g6g5",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 d5 5. cxd5 exd5 6. Bg5 h6 7. Bh4 Bf5 8. e3 O-O 9. Be2 Nbd7 10. Bd3 Bh7 11. Nf3 g6 12. Bb5 *",
+    "side": "black"
+  },
+  {
+    "pattern": "discovered_attack",
+    "game_number": 6,
+    "game_type": "main",
+    "title": "The f7 Thunderbolt",
+    "opening": "Scandinavian Defence (Qd6)",
+    "story": "Your knight snatches the f7 pawn — and behind it, the bishop on f4 glares straight at the black queen! While she scrambles away, the knight gobbles the rook in the corner.",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd6 4. d4 Nf6 5. Nf3 a6 6. g3 b5 7. Bg2 Bb7 8. O-O e6 9. Ne5 Nbd7 10. Bf4 O-O-O 11. Nxf7 Qe7 12. Nxh8 *",
+    "side": "white",
+    "target_patterns": ["fork", "pin", "back_rank_mate", "skewer", "discovered_attack"],
+    "checkpoints": [{ "ply": 20, "pattern": "discovered_attack" }]
+  }
+]

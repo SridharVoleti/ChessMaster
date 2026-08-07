@@ -1,0 +1,529 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-TACTICAL",
+  "title": "Tactical Pattern Inventory",
+  "description": "Discovery inventory of tactical patterns identified during research. This inventory records only the existence and organization of tactical concepts. Definitions, evidence, pedagogy, dependencies and learning scenarios are maintained separately within the Canonical Chess Knowledge Base.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 10,
+    "concept_count": 50,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Discover every tactical pattern that may eventually become part of the Canonical Chess Knowledge Base.",
+    "scope": "Tactical motifs, tactical combinations, mating mechanisms, tactical sacrifices, promotion tactics and defensive tactical resources.",
+    "exclusions": [
+      "Strategic Concepts",
+      "Positional Concepts",
+      "Opening Principles",
+      "Endgame Theory"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial discovery of tactical pattern families and foundational tactical concepts."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "TP-DA",
+      "family_name": "Double Attack Patterns",
+      "research_status": "identified",
+      "description": "Patterns where a single move creates two or more simultaneous threats.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-DA-001",
+          "canonical_name": "Double Attack",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-DA-002",
+          "canonical_name": "Fork",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-DA-003",
+          "canonical_name": "Double Check",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-DA-004",
+          "canonical_name": "Multiple Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-DA-005",
+          "canonical_name": "Double Threat",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "TP-LT",
+      "family_name": "Line Tactics",
+      "research_status": "identified",
+      "description": "Patterns exploiting files, ranks and diagonals.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-LT-001",
+          "canonical_name": "Pin",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-LT-002",
+          "canonical_name": "Skewer",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-LT-003",
+          "canonical_name": "X-Ray Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-LT-004",
+          "canonical_name": "Battery",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-LT-005",
+          "canonical_name": "Cross Pin",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "TP-DS",
+      "family_name": "Discovered Attack Patterns",
+      "research_status": "identified",
+      "description": "Patterns revealing hidden attacks.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-DS-001",
+          "canonical_name": "Discovered Attack",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-DS-002",
+          "canonical_name": "Discovered Check",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-DS-003",
+          "canonical_name": "Double Check",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "TP-RD",
+      "family_name": "Removal of Defender Patterns",
+      "research_status": "identified",
+      "description": "Patterns removing or neutralizing defenders.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-RD-001",
+          "canonical_name": "Remove the Defender",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-RD-002",
+          "canonical_name": "Overloading",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-RD-003",
+          "canonical_name": "Clearance",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-RD-004",
+          "canonical_name": "Vacating",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-RD-005",
+          "canonical_name": "Interference",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "TP-AD",
+      "family_name": "Attraction and Deflection",
+      "research_status": "identified",
+      "description": "Patterns luring or redirecting pieces.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-AD-001",
+          "canonical_name": "Decoy",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-AD-002",
+          "canonical_name": "Deflection",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-AD-003",
+          "canonical_name": "Attraction",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-AD-004",
+          "canonical_name": "Lure",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "TP-TR",
+      "family_name": "Trapping and Restriction",
+      "research_status": "identified",
+      "description": "Patterns restricting mobility.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-TR-001",
+          "canonical_name": "Trapped Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-TR-002",
+          "canonical_name": "Domination",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-TR-003",
+          "canonical_name": "Restriction",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-TR-004",
+          "canonical_name": "Mating Net",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "TP-SC",
+      "family_name": "Tactical Sacrifices",
+      "research_status": "identified",
+      "description": "Sacrificial tactical motifs.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-SC-001",
+          "canonical_name": "Deflection Sacrifice",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-SC-002",
+          "canonical_name": "Clearance Sacrifice",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-SC-003",
+          "canonical_name": "Decoy Sacrifice",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-SC-004",
+          "canonical_name": "Exchange Sacrifice",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-SC-005",
+          "canonical_name": "Destruction Sacrifice",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "TP-MP",
+      "family_name": "Mating Patterns",
+      "research_status": "identified",
+      "description": "Standard mating mechanisms.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-MP-001",
+          "canonical_name": "Back Rank Mate",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-MP-002",
+          "canonical_name": "Smothered Mate",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-MP-003",
+          "canonical_name": "Anastasia's Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-MP-004",
+          "canonical_name": "Arabian Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-MP-005",
+          "canonical_name": "Boden's Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 6,
+          "concept_id": "TP-MP-006",
+          "canonical_name": "Epaulette Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 7,
+          "concept_id": "TP-MP-007",
+          "canonical_name": "Greco's Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 8,
+          "concept_id": "TP-MP-008",
+          "canonical_name": "Opera Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 9,
+          "concept_id": "TP-MP-009",
+          "canonical_name": "Ladder Mate",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 10,
+          "concept_id": "TP-MP-010",
+          "canonical_name": "Corridor Mate",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "TP-PR",
+      "family_name": "Promotion Tactics",
+      "research_status": "identified",
+      "description": "Tactical ideas involving promotion.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-PR-001",
+          "canonical_name": "Promotion Combination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-PR-002",
+          "canonical_name": "Underpromotion",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-PR-003",
+          "canonical_name": "Promotion Fork",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-PR-004",
+          "canonical_name": "Promotion Check",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 10,
+      "family_id": "TP-DF",
+      "family_name": "Defensive Tactical Resources",
+      "research_status": "identified",
+      "description": "Defensive tactical resources.",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "TP-DF-001",
+          "canonical_name": "Intermediate Move",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "TP-DF-002",
+          "canonical_name": "Perpetual Check",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "TP-DF-003",
+          "canonical_name": "Stalemate Resource",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "TP-DF-004",
+          "canonical_name": "Fortress Resource",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "TP-DF-005",
+          "canonical_name": "Counterattack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

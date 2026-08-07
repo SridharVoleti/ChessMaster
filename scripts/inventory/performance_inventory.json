@@ -1,0 +1,563 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-PERFORMANCE",
+  "title": "Performance Inventory",
+  "description": "Discovery inventory of performance skills that enable players to compete effectively and improve continuously. This inventory consolidates competitive chess and learning improvement concepts into a single domain.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 12,
+    "concept_count": 52,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Discover every performance concept required for long-term chess improvement and competitive success.",
+    "scope": "Tournament skills, learning methods, psychology, preparation, review, habits and continuous improvement.",
+    "exclusions": [
+      "Tactical concepts",
+      "Strategic concepts",
+      "Positional concepts",
+      "Calculation techniques"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Merged Competitive Chess and Learning Improvement into a unified Performance inventory."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "PF-TM",
+      "family_name": "Tournament Management",
+      "research_status": "identified",
+      "description": "Preparation and participation in tournaments",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-TM-001",
+          "canonical_name": "Tournament Preparation",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-TM-002",
+          "canonical_name": "Tournament Routine",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-TM-003",
+          "canonical_name": "Tournament Etiquette",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-TM-004",
+          "canonical_name": "Scoresheet Management",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "PF-TM-005",
+          "canonical_name": "Post-game Routine",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "PF-TC",
+      "family_name": "Time & Clock",
+      "research_status": "identified",
+      "description": "Managing time effectively",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-TC-001",
+          "canonical_name": "Clock Management",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-TC-002",
+          "canonical_name": "Time Allocation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-TC-003",
+          "canonical_name": "Time Trouble",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-TC-004",
+          "canonical_name": "Increment Strategy",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "PF-PS",
+      "family_name": "Psychology",
+      "research_status": "identified",
+      "description": "Mental and emotional performance",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-PS-001",
+          "canonical_name": "Confidence",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-PS-002",
+          "canonical_name": "Resilience",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-PS-003",
+          "canonical_name": "Emotional Control",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-PS-004",
+          "canonical_name": "Focus",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "PF-PS-005",
+          "canonical_name": "Handling Pressure",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "PF-DM",
+      "family_name": "Decision Making",
+      "research_status": "identified",
+      "description": "Practical over-the-board decisions",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-DM-001",
+          "canonical_name": "Practical Decision",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-DM-002",
+          "canonical_name": "Risk Assessment",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-DM-003",
+          "canonical_name": "Play for Win",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-DM-004",
+          "canonical_name": "Play for Draw",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "PF-ST",
+      "family_name": "Study Methods",
+      "research_status": "identified",
+      "description": "Learning efficiently",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-ST-001",
+          "canonical_name": "Study Planning",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-ST-002",
+          "canonical_name": "Deliberate Practice",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-ST-003",
+          "canonical_name": "Active Learning",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-ST-004",
+          "canonical_name": "Spaced Repetition",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "PF-ST-005",
+          "canonical_name": "Pattern Review",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "PF-GA",
+      "family_name": "Game Analysis",
+      "research_status": "identified",
+      "description": "Learning from games",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-GA-001",
+          "canonical_name": "Self Analysis",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-GA-002",
+          "canonical_name": "Engine Analysis",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-GA-003",
+          "canonical_name": "Annotation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-GA-004",
+          "canonical_name": "Mistake Classification",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "PF-GA-005",
+          "canonical_name": "Lesson Extraction",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "PF-GS",
+      "family_name": "Goal Setting",
+      "research_status": "identified",
+      "description": "Continuous improvement planning",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-GS-001",
+          "canonical_name": "SMART Goals",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-GS-002",
+          "canonical_name": "Training Plan",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-GS-003",
+          "canonical_name": "Progress Tracking",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-GS-004",
+          "canonical_name": "Rating Goals",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "PF-RP",
+      "family_name": "Repertoire Management",
+      "research_status": "identified",
+      "description": "Maintaining opening knowledge",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-RP-001",
+          "canonical_name": "Build Repertoire",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-RP-002",
+          "canonical_name": "Repertoire Maintenance",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-RP-003",
+          "canonical_name": "Model Games",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-RP-004",
+          "canonical_name": "Novelty Tracking",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "PF-HB",
+      "family_name": "Habits",
+      "research_status": "identified",
+      "description": "Daily improvement habits",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-HB-001",
+          "canonical_name": "Training Routine",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-HB-002",
+          "canonical_name": "Consistency",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-HB-003",
+          "canonical_name": "Reflection",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-HB-004",
+          "canonical_name": "Chess Journal",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 10,
+      "family_id": "PF-CM",
+      "family_name": "Competition Mindset",
+      "research_status": "identified",
+      "description": "Competitive behaviour",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-CM-001",
+          "canonical_name": "Sportsmanship",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-CM-002",
+          "canonical_name": "Adaptability",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-CM-003",
+          "canonical_name": "Recovery After Loss",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-CM-004",
+          "canonical_name": "Momentum Management",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 11,
+      "family_id": "PF-RS",
+      "family_name": "Resources",
+      "research_status": "identified",
+      "description": "Using learning resources",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-RS-001",
+          "canonical_name": "Books",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-RS-002",
+          "canonical_name": "Coaches",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-RS-003",
+          "canonical_name": "Databases",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-RS-004",
+          "canonical_name": "Training Partners",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 12,
+      "family_id": "PF-EV",
+      "family_name": "Evaluation",
+      "research_status": "identified",
+      "description": "Measuring improvement",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "PF-EV-001",
+          "canonical_name": "Performance Review",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "PF-EV-002",
+          "canonical_name": "Strength Assessment",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "PF-EV-003",
+          "canonical_name": "Weakness Assessment",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "PF-EV-004",
+          "canonical_name": "Improvement Metrics",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

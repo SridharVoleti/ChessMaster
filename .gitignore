@@ -1,0 +1,40 @@
+# dependencies
+/node_modules
+
+# Next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env
+.env
+.env.local
+.env.*.local
+
+# testing
+/playwright-report/
+/test-results/
+/coverage/
+
+# local SQLite databases (authz)
+/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# misc
+.DS_Store
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+.venv/
+
+# large reference material, not source
+/scripts/inventory/books/

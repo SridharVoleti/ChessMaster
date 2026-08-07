@@ -1,0 +1,540 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-CALCULATION",
+  "title": "Calculation Inventory",
+  "description": "Discovery inventory of chess calculation concepts. This inventory captures the cognitive processes used to analyse positions, calculate variations, evaluate outcomes and make decisions during play.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 12,
+    "concept_count": 50,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Discover every calculation concept required for a complete chess education.",
+    "scope": "Candidate moves, visualization, variation calculation, evaluation, decision making and calculation discipline.",
+    "exclusions": [
+      "Tactical Pattern Definitions",
+      "Strategic Planning",
+      "Positional Evaluation Concepts",
+      "Opening Theory",
+      "Endgame Theory"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial discovery of chess calculation families and foundational calculation concepts."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "CA-CM",
+      "family_name": "Candidate Moves",
+      "research_status": "identified",
+      "description": "Generating candidate moves",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-CM-001",
+          "canonical_name": "Candidate Moves",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-CM-002",
+          "canonical_name": "Forcing Moves",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-CM-003",
+          "canonical_name": "Checks",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-CM-004",
+          "canonical_name": "Captures",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "CA-CM-005",
+          "canonical_name": "Threats",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "CA-VZ",
+      "family_name": "Visualization",
+      "research_status": "identified",
+      "description": "Seeing positions mentally",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-VZ-001",
+          "canonical_name": "Board Visualization",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-VZ-002",
+          "canonical_name": "Piece Visualization",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-VZ-003",
+          "canonical_name": "Blindfold Visualization",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-VZ-004",
+          "canonical_name": "Mental Board Rotation",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "CA-VR",
+      "family_name": "Variation Calculation",
+      "research_status": "identified",
+      "description": "Calculating move sequences",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-VR-001",
+          "canonical_name": "Calculate Variations",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-VR-002",
+          "canonical_name": "Main Line",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-VR-003",
+          "canonical_name": "Side Line",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-VR-004",
+          "canonical_name": "Calculation Tree",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "CA-DP",
+      "family_name": "Calculation Depth",
+      "research_status": "identified",
+      "description": "Depth and accuracy",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-DP-001",
+          "canonical_name": "One-ply Calculation",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-DP-002",
+          "canonical_name": "Multi-ply Calculation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-DP-003",
+          "canonical_name": "Calculation Horizon",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-DP-004",
+          "canonical_name": "Stopping Point",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "CA-EV",
+      "family_name": "Evaluation",
+      "research_status": "identified",
+      "description": "Evaluating calculated positions",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-EV-001",
+          "canonical_name": "Static Evaluation",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-EV-002",
+          "canonical_name": "Dynamic Evaluation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-EV-003",
+          "canonical_name": "Final Position Evaluation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-EV-004",
+          "canonical_name": "Comparison of Variations",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "CA-PR",
+      "family_name": "Pruning",
+      "research_status": "identified",
+      "description": "Reducing calculation workload",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-PR-001",
+          "canonical_name": "Move Elimination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-PR-002",
+          "canonical_name": "Prune Inferior Moves",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-PR-003",
+          "canonical_name": "Critical Variations",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-PR-004",
+          "canonical_name": "Calculation Discipline",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "CA-OR",
+      "family_name": "Move Ordering",
+      "research_status": "identified",
+      "description": "Choosing calculation order",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-OR-001",
+          "canonical_name": "Forcing First",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-OR-002",
+          "canonical_name": "Checks-Captures-Threats",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-OR-003",
+          "canonical_name": "Most Promising Move",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-OR-004",
+          "canonical_name": "Move Ordering",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "CA-AC",
+      "family_name": "Accuracy",
+      "research_status": "identified",
+      "description": "Improving calculation quality",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-AC-001",
+          "canonical_name": "Avoid Oversight",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-AC-002",
+          "canonical_name": "Avoid Tunnel Vision",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-AC-003",
+          "canonical_name": "Blunder Check",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-AC-004",
+          "canonical_name": "Verification",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "CA-TM",
+      "family_name": "Time Management",
+      "research_status": "identified",
+      "description": "Calculation under time constraints",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-TM-001",
+          "canonical_name": "Think Time Allocation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-TM-002",
+          "canonical_name": "Critical Moments",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-TM-003",
+          "canonical_name": "Practical Calculation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-TM-004",
+          "canonical_name": "Fast Evaluation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 10,
+      "family_id": "CA-DC",
+      "family_name": "Decision Making",
+      "research_status": "identified",
+      "description": "Selecting the best move",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-DC-001",
+          "canonical_name": "Best Move Selection",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-DC-002",
+          "canonical_name": "Risk vs Reward",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-DC-003",
+          "canonical_name": "Practical Decision",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-DC-004",
+          "canonical_name": "Commit to Decision",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 11,
+      "family_id": "CA-PT",
+      "family_name": "Pattern Assisted Calculation",
+      "research_status": "identified",
+      "description": "Using patterns to calculate",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-PT-001",
+          "canonical_name": "Pattern Recognition",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-PT-002",
+          "canonical_name": "Known Motifs",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-PT-003",
+          "canonical_name": "Calculation Anchors",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-PT-004",
+          "canonical_name": "Chunking",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 12,
+      "family_id": "CA-RV",
+      "family_name": "Review",
+      "research_status": "identified",
+      "description": "Reviewing calculations",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "CA-RV-001",
+          "canonical_name": "Post-calculation Review",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "CA-RV-002",
+          "canonical_name": "Error Detection",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "CA-RV-003",
+          "canonical_name": "Alternative Lines",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "CA-RV-004",
+          "canonical_name": "Learning from Mistakes",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd D:\\\\Sridhar\\\\Projects\\\\ChessMaster; $env:NODE_TLS_REJECT_UNAUTHORIZED = '0'; npx playwright install chromium 2>&1)",
+      "PowerShell(npm run *)",
+      "PowerShell($j = Get-Content \"D:\\\\Sridhar\\\\Projects\\\\ChessMaster\\\\scripts\\\\scripted_games_data.json\" -Raw | ConvertFrom-Json; $j.Count; $j | Group-Object pattern | ForEach-Object { \"$\\($_.Name\\): $\\($_.Count\\)\" }; $j[0] | ConvertTo-Json)",
+      "PowerShell(python -m chess_pipeline.search_runner fork white \"1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4 7. Nxd4 c5 8. Nb3 Qxd1 9. Rxd1 Bg4 10. f3 Be6 11. Nc3 Bd6\" 4 caps)",
+      "PowerShell(python -m chess_pipeline.search_runner pin black \"1. e4 e5 2. Nc3 Nf6 3. g3 d5 4. exd5 Nxd5 5. Bg2 Nxc3 6. bxc3 Bd6 7. Nf3 O-O 8. O-O Nc6 9. Re1 Re8 10. d3 h6\" 4 caps)",
+      "PowerShell(python -m chess_pipeline.search_runner skewer black \"1. d4 d5 2. Bf4 Nf6 3. e3 e6 4. Nf3 Bd6 5. Bg3 O-O 6. Bd3 c5 7. c3 Nc6 8. Nbd2 b6 9. O-O Bb7\" 5 caps)",
+      "PowerShell(python -m chess_pipeline.search_runner skewer black \"1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. cxd5 exd5 5. Bg5 c6 6. e3 Bd6 7. Bd3 O-O 8. Qc2 Re8 9. Nf3 Nbd7 10. O-O Nf8\" 5 caps)",
+      "PowerShell(python -m chess_pipeline.search_runner skewer black \"1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. Bxc6 dxc6 5. d3 Bg7 6. h3 Nf6 7. Nc3 O-O 8. Be3 b6 9. Qd2 Re8\" 5 caps)",
+      "PowerShell(python -m chess_pipeline.check_line skewer \"1. d4 d5 2. Nf3 Nf6 3. e3 g6 4. Bd3 Bg7 5. O-O O-O 6. Nbd2 c5 7. c3 Nc6 8. Re1 b6 9. Bc2 Qc7 10. Qe2 Re8 11. Qd3\" \"Bf5\")",
+      "PowerShell(python -m chess_pipeline.check_line back_rank_mate \"1. d4 d5 2. c4 c6 3. cxd5 cxd5 4. Nc3 Nf6 5. Nf3 Nc6 6. Bf4 Bf5 7. e3 e6 8. Bd3 Bxd3 9. Qxd3 Bd6 10. Bxd6 Qxd6 11. O-O O-O 12. Rfc1 Rfc8 13. h3 a6 14. Rxc8+ Rxc8 15. Ne5 Nxe5 16. dxe5 Qxe5 17. Ne2 Qxb2 18. Qd1 Qxa2 19. Rc1 Rxc1 20. Qxc1 a5\" \"Qc8#\")",
+      "PowerShell(python -m chess_pipeline.check_line discovered_attack \"1. e4 d5 2. exd5 Qxd5 3. Nc3 Qd6 4. d4 Nf6 5. Nf3 a6 6. g3 b5 7. Bg2 Bb7 8. O-O e6 9. Ne5 Nbd7 10. Bf4 O-O-O\" \"Nxf7\")",
+      "PowerShell(python -m chess_pipeline.check_line back_rank_mate \"1. d4 d5 2. c4 c6 3. cxd5 cxd5 4. Nc3 Nf6 5. Nf3 Nc6 6. Bf4 Bf5 7. e3 e6 8. Bd3 Bxd3 9. Qxd3 Bd6 10. Bxd6 Qxd6 11. O-O O-O 12. Rfc1 Rfc8 13. h3 a6 14. Ne5 Nxe5 15. dxe5 Qxe5 16. Rxc8+ Rxc8 17. Ne2 Qxb2 18. Qd1 Qxa2 19. Rc1 Rxc1 20. Qxc1 a5\" \"Qc8#\")",
+      "PowerShell(python -m chess_pipeline.check_line back_rank_mate \"1. d4 d5 2. c4 c6 3. cxd5 cxd5 4. Nc3 Nf6 5. Nf3 Nc6 6. Bf4 Bf5 7. e3 e6 8. Bd3 Bxd3 9. Qxd3 Bd6 10. Bxd6 Qxd6 11. O-O O-O 12. Rfc1 Rfc8 13. h3 a6 14. Ne5 Nxe5 15. dxe5 Qxe5 16. Ne2 Qxb2 17. Rxc8+ Rxc8 18. Qd1 Qxa2 19. Rc1 Rxc1 20. Qxc1 Ne4\" \"Qc8#\")",
+      "PowerShell(python -m chess_pipeline.verify_games)",
+      "PowerShell(npx jest __tests__/patternDetectors.test.ts __tests__/simpleCpu.test.ts __tests__/MainGameOpponent.test.ts 2>&1 | Select-Object -Last 40)",
+      "PowerShell(npx jest __tests__/validateMoveDetector.test.ts __tests__/PatternValidator.test.ts __tests__/validateMoveRoute.test.ts 2>&1 | Select-Object -Last 12)",
+      "PowerShell(foreach \\($f in 'constants.ts','DidacticOpponent.ts','PatternValidator.ts','roadmapUtils.ts','xpUtils.ts'\\) { $a = Get-Content $f -Raw; $b = Get-Content \"lib\\\\$f\" -Raw; \"$f identical-to-lib: $\\($a -eq $b\\)\" })",
+      "PowerShell(\"--- constants ---\"; git diff --no-index --stat lib\\\\constants.ts constants.ts; \"--- DidacticOpponent ---\"; git diff --no-index --stat lib\\\\DidacticOpponent.ts DidacticOpponent.ts; \"--- PatternValidator ---\"; git diff --no-index --stat lib\\\\PatternValidator.ts PatternValidator.ts)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 30)"
+    ]
+  }
+}

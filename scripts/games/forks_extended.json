@@ -1,0 +1,991 @@
+[
+  {
+"schema_version": "1.0",
+"lesson_id": "FK-PW-0001",
+
+"pattern": "fork",
+"sub_pattern": "pawn_fork",
+
+"game_number": 1,
+"game_type": "practice",
+
+"title": "The Pawn Wedge",
+"opening": "Italian Game",
+
+"story": "A quiet Italian — until White's center pawn marches forward and attacks the knight and bishop at the same time!",
+
+"secondary_lesson": "Central pawn advance",
+
+"difficulty": "beginner",
+
+"source_type": "original",
+"learning_stage": "recognition",
+
+"setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+"pattern_fen": "r2qr1k1/ppp1bpp1/2npbn1p/8/3PP3/1B3N2/PP3PPP/RNBQR1K1 w - - 1 11",
+
+"best_move": "d4d5",
+"best_move_san": "d5",
+
+"side": "white",
+
+"pgn": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Be7 4. d3 Nf6 5. O-O O-O 6. Re1 d6 7. c3 Be6 8. Bb3 h6 9. d4 exd4 10. cxd4 Re8 *",
+
+"target_patterns": ["fork"],
+
+"concepts": ["pawn_fork", "central_pawn_push", "double_attack"],
+
+"checkpoints": [
+{
+"ply": 21,
+"pattern": "fork",
+"description": "Pawn attacks knight and bishop"
+}
+],
+
+"takeaway": "Central pawns can become powerful tactical weapons when they advance with tempo.",
+
+"minimum_plies": 20,
+
+"verification_status": "draft",
+"publication_status": "active",
+
+"metadata": {
+"fork_piece": "pawn",
+"fork_family": "pawn_fork",
+"fork_targets": ["knight", "bishop"],
+"pattern_square": "d5"
+}
+},
+{
+"schema_version": "1.0",
+"lesson_id": "FK-NP-0001",
+
+"pattern": "fork",
+"sub_pattern": "knight_piece_fork",
+
+"game_number": 2,
+"game_type": "practice",
+
+"title": "Knight Storm on e3",
+"opening": "Four Knights Game",
+
+"story": "White attacks your knight with a pawn — but instead of retreating, your knight leaps into e3 and attacks two valuable pieces at once.",
+
+"secondary_lesson": "Active knight play",
+
+"difficulty": "beginner",
+
+"source_type": "original",
+"learning_stage": "recognition",
+
+"setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+"pattern_fen": "r4rk1/pppbqppp/2np4/1B2p1N1/4P1nB/2PP1P2/P1P3PP/R2Q1RK1 b - - 0 11",
+
+"best_move": "g4e3",
+"best_move_san": "Ne3",
+
+"side": "black",
+
+"pgn": "1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. Bb5 Bb4 5. O-O O-O 6. d3 d6 7. Bg5 Bxc3 8. bxc3 Qe7 9. Bh4 Bd7 10. Ng5 Ng4 11. f3 *",
+
+"target_patterns": ["fork"],
+
+"concepts": ["knight_fork", "active_knight", "piece_fork"],
+
+"checkpoints": [
+{
+"ply": 21,
+"pattern": "fork",
+"description": "Knight attacks bishop and queen"
+}
+],
+
+"takeaway": "Knights become strongest when they jump forward into protected squares.",
+
+"minimum_plies": 20,
+
+"verification_status": "draft",
+"publication_status": "active",
+
+"metadata": {
+"fork_piece": "knight",
+"fork_family": "knight_piece_fork",
+"fork_targets": ["bishop", "queen"],
+"pattern_square": "e3"
+}
+},
+{
+"schema_version": "1.0",
+"lesson_id": "FK-QD-0001",
+
+"pattern": "fork",
+"sub_pattern": "queen_double_attack",
+
+"game_number": 3,
+"game_type": "practice",
+
+"title": "Queen's Double Strike",
+"opening": "Caro-Kann Defence",
+
+"story": "Black weakens the light squares around the king. White's queen exploits the weakness with a powerful double attack.",
+
+"secondary_lesson": "Weak squares",
+
+"difficulty": "beginner",
+
+"source_type": "original",
+"learning_stage": "recognition",
+
+"setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+"pattern_fen": "r2qkb1r/pp1n2p1/2p1pp1p/7P/3P1Bn1/3Q1NN1/PPP2PP1/R4RK1 w kq - 0 14",
+
+"best_move": "d3g6",
+"best_move_san": "Qg6+",
+
+"side": "white",
+
+"pgn": "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. Nf3 Nd7 8. h5 Bh7 9. Bd3 Bxd3 10. Qxd3 e6 11. Bd2 Ngf6 12. O-O Ng4 13. Bf4 f6 *",
+
+"target_patterns": ["fork"],
+
+"concepts": ["queen_fork", "double_attack", "king_safety"],
+
+"checkpoints": [
+{
+"ply": 27,
+"pattern": "fork",
+"description": "Queen attacks king and knight"
+}
+],
+
+"takeaway": "Queens can create devastating forks when enemy squares become weak.",
+
+"minimum_plies": 26,
+
+"verification_status": "draft",
+"publication_status": "active",
+
+"metadata": {
+"fork_piece": "queen",
+"fork_family": "queen_double_attack",
+"fork_targets": ["king", "knight"],
+"pattern_square": "g6"
+}
+},
+{
+"schema_version": "1.0",
+
+"lesson_id": "FK-NP-0002",
+
+"pattern": "fork",
+"sub_pattern": "knight_piece_fork",
+
+"game_number": 4,
+"game_type": "practice",
+
+"title": "The Knight Grabs Two",
+
+"opening": "King's Indian Defence",
+
+"story": "White's pieces wandered off. Your knight captures a pawn and attacks the bishop and knight at the same time!",
+
+"secondary_lesson": "Active knight play",
+
+"difficulty": "beginner",
+
+"source_type": "original",
+
+"learning_stage": "recognition",
+
+"setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+"pattern_fen": "r1bq1rk1/ppp1n1bp/3p1np1/3PppB1/1PP1P2N/2N5/P3BPPP/R2QR1K1 b - - 3 12",
+
+"best_move": "f6e4",
+
+"best_move_san": "Ne4",
+
+"side": "black",
+
+"pgn": "1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3 O-O 6. Be2 e5 7. O-O Nc6 8. d5 Ne7 9. b4 Nh5 10. Re1 f5 11. Nh4 Nf6 12. Bg5 *",
+
+"target_patterns": [
+"fork"
+],
+
+"concepts": [
+"knight_fork",
+"active_knight",
+"piece_fork",
+"centralization"
+],
+
+"checkpoints": [
+{
+"ply": 23,
+"pattern": "fork",
+"description": "Knight attacks bishop and knight simultaneously"
+}
+],
+
+"takeaway": "Knights become powerful tactical pieces when they occupy central squares and attack multiple targets.",
+
+"minimum_plies": 22,
+
+"verification_status": "draft",
+
+"publication_status": "active",
+
+"metadata": {
+"fork_piece": "knight",
+"fork_family": "knight_piece_fork",
+"fork_targets": [
+"bishop",
+"knight"
+],
+"pattern_square": "e4"
+}
+},
+{
+"schema_version": "1.0",
+
+"lesson_id": "FK-KR-N-0001",
+
+"pattern": "fork",
+"sub_pattern": "king_rook_knight_fork",
+
+"game_number": 5,
+"game_type": "main",
+
+"title": "The Royal Fork",
+
+"opening": "Exchange Ruy Lopez",
+
+"story": "The queens are gone, but the tactics are not. When the bishop steps away from c7, your knight dives in with check — royal fork! The king must move, and the corner rook is yours.",
+
+"secondary_lesson": "Knight activity",
+
+"difficulty": "beginner",
+
+"source_type": "original",
+
+"learning_stage": "recognition",
+
+"setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+"pattern_fen": "rn3bnr/pp3kpp/N4p2/2p5/8/5P2/PPP3PP/RNBR2K1 w - - 1 14",
+
+"best_move": "d5c7",
+
+"best_move_san": "Nxc7+",
+
+"side": "white",
+
+"pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4 7. Nxd4 c5 8. Nb3 Qxd1 9. Rxd1 Bg4 10. f3 Be6 11. Nc3 Bd6 12. Nd5 Be7 *",
+
+"target_patterns": [
+"fork"
+],
+
+"concepts": [
+"knight_fork",
+"royal_fork",
+"king_rook_fork",
+"active_knight"
+],
+
+"checkpoints": [
+{
+"ply": 24,
+"pattern": "fork",
+"description": "Knight jumps to c7 with check, attacking the king and rook simultaneously."
+}
+],
+
+"takeaway": "A knight fork becomes especially powerful when it attacks the king, forcing a response while winning material elsewhere.",
+
+"minimum_plies": 24,
+
+"verification_status": "draft",
+
+"publication_status": "active",
+
+"metadata": {
+"fork_piece": "knight",
+"fork_family": "c7_royal_fork",
+"fork_targets": [
+"king",
+"rook"
+],
+"pattern_square": "c7"
+}
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0001",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 6,
+  "game_type": "main",
+
+  "title": "The Weakest Square",
+
+  "opening": "Italian Game",
+
+  "story": "Black develops naturally but leaves the f7 square vulnerable. White spots the opportunity and leaps in with a knight, attacking both the king and queen in one move.",
+
+  "secondary_lesson": "Weak f7 square",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": "r1bqkb1r/pppp1Npp/2n2n2/4p3/2B1P3/8/PPPP1PPP/RNBQ1RK1 b kq - 0 6",
+
+  "best_move": "g5f7",
+
+  "best_move_san": "Nf7+",
+
+  "side": "white",
+
+  "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. O-O Be7 5. Ng5 O-O 6. Nf7+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "weak_f7",
+    "opening_tactics"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 11,
+      "pattern": "fork",
+      "description": "Knight jumps to f7, attacking the king and queen."
+    }
+  ],
+
+  "takeaway": "The f7 square is often vulnerable in the opening because it is protected only by the king.",
+
+  "minimum_plies": 11,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "f7_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "f7"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0002",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 7,
+  "game_type": "main",
+
+  "title": "The Greedy Queen",
+
+  "opening": "Scotch Game",
+
+  "story": "Black's queen ventures too far into White's territory searching for pawns. White ignores the material loss and focuses on development. The exposed queen and king eventually become victims of a classic knight fork.",
+
+  "secondary_lesson": "Punish early queen development",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "d5c7",
+
+  "best_move_san": "Nc7+",
+
+  "side": "white",
+
+  "pgn": "1. e4 e5 2. Nf3 Nc6 3. d4 exd4 4. Nxd4 Qh4 5. Nc3 Bb4 6. Be2 Qxe4 7. O-O Bxc3 8. bxc3 Nge7 9. Re1 O-O 10. Bd3 Qh4 11. Ba3 Re8 12. Nb5 Rb8 13. Nxc7+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "early_queen_development",
+    "development_advantage"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 25,
+      "pattern": "fork",
+      "description": "Knight jumps to c7, forking the king and queen."
+    }
+  ],
+
+  "takeaway": "Developing pieces is often stronger than chasing material. An exposed queen can become a tactical liability.",
+
+  "minimum_plies": 25,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "c7_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "c7"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0003",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 8,
+  "game_type": "main",
+
+  "title": "The Open c-File",
+
+  "opening": "Queen's Gambit Accepted",
+
+  "story": "After simplifying in the center, White develops every piece harmoniously while Black spends time defending isolated weaknesses. The knight finds the perfect outpost on c7, creating a royal fork.",
+
+  "secondary_lesson": "Development before attack",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "b5c7",
+
+  "best_move_san": "Nc7+",
+
+  "side": "white",
+
+  "pgn": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O Nc6 7. Nc3 a6 8. Qe2 cxd4 9. Rd1 Be7 10. exd4 O-O 11. Bg5 Nb4 12. Ne5 Nbd5 13. Bb3 Bd7 14. Rac1 Rc8 15. Nxd5 Nxd5 16. Bxe7 Nxe7 17. Rxc8 Qxc8 18. Nxd7 Qxd7 19. Rc1 Nc6 20. d5 exd5 21. Rd1 Re8 22. Qf3 Ne5 23. Qxd5 Qxd5 24. Rxd5 Nc6 25. Rc5 Re1+ 26. Kh2 Kf8 27. Bd5 Nd8 28. Rc8 Ke7 29. Bf3 Kd7 30. Rc2 Nc6 31. Bg4+ Kd6 32. Rd2+ Kc5 33. Rd7 Ne5 34. Rc7+ Kb6 35. Re7 Nxg4+ 36. hxg4 Rxe7 37. Kg3 Re2 38. Kf3 Rxb2 39. Ke3 Rxa2 40. Nc7+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "development",
+    "open_file_control"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 79,
+      "pattern": "fork",
+      "description": "Knight lands on c7, simultaneously attacking the king and queen."
+    }
+  ],
+
+  "takeaway": "Patient development and control of open files often create opportunities for decisive tactical forks later in the game.",
+
+  "minimum_plies": 79,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "c7_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "c7"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0004",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 9,
+  "game_type": "main",
+
+  "title": "The Uncastled King",
+
+  "opening": "Philidor Defence",
+
+  "story": "Black delays castling while trying to challenge the center. White patiently improves every piece before a knight jumps into the heart of the position, exposing the danger of leaving the king in the middle.",
+
+  "secondary_lesson": "King safety",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "e5d7",
+
+  "best_move_san": "Nd7+",
+
+  "side": "white",
+
+  "pgn": "1. e4 e5 2. Nf3 d6 3. d4 Nd7 4. Nc3 Ngf6 5. Bc4 Be7 6. O-O O-O 7. Re1 c6 8. a4 Qc7 9. Ba2 b6 10. h3 Bb7 11. Be3 Rfe8 12. Qd2 Bf8 13. Rad1 Rad8 14. Ng5 Re7 15. d5 c5 16. Nb5 Qb8 17. Nxd6 Qxd6 18. Nxf7 Kxf7 19. Bxc5 Nxc5 20. Qb4 Rc7 21. a5 bxa5 22. Qxa5 Qb6 23. d6+ Ne6 24. dxc7 Qxa5 25. cxd8=N+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "king_safety",
+    "development"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 49,
+      "pattern": "fork",
+      "description": "Knight forks the king and queen after exploiting the uncastled king."
+    }
+  ],
+
+  "takeaway": "Keeping the king in the center for too long often creates tactical opportunities for your opponent.",
+
+  "minimum_plies": 49,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "uncastled_king_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "d7"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0005",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 10,
+  "game_type": "main",
+
+  "title": "The Outpost Knight",
+
+  "opening": "Sicilian Defence",
+
+  "story": "White patiently builds pressure on the queenside while Black focuses on defending the center. A well-supported knight outpost becomes the launchpad for a decisive royal fork.",
+
+  "secondary_lesson": "Knight outposts",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "d6c8",
+
+  "best_move_san": "Nc8+",
+
+  "side": "white",
+
+  "pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 Nc6 6. Be2 e6 7. O-O Be7 8. Be3 O-O 9. f4 Qc7 10. Kh1 a6 11. a4 Re8 12. Bf3 Bd7 13. Nb3 Rac8 14. Qe1 Nb4 15. Rc1 Bc6 16. Qf2 Nd7 17. a5 Qb8 18. Nd4 Bf6 19. Rfd1 Nc5 20. Nxc6 Nxc6 21. e5 dxe5 22. Bxc5 exf4 23. Bd6 Qa8 24. Qb6 e5 25. Nd5 Bd8 26. Nc7 Bxc7 27. Bxc7 Re7 28. Bxc6 bxc6 29. Rd8+ Re8 30. Rxe8+ Rxe8 31. Re1 Qc8 32. Qxc6 Re6 33. Qd7 Qxd7 34. Nf6+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "knight_outpost",
+    "piece_coordination"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 67,
+      "pattern": "fork",
+      "description": "The knight jumps with check, simultaneously attacking the king and queen."
+    }
+  ],
+
+  "takeaway": "A well-supported knight outpost often becomes the ideal launching square for tactical combinations.",
+
+  "minimum_plies": 67,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "outpost_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "f6"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0006",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 11,
+  "game_type": "main",
+
+  "title": "The Open e-File",
+
+  "opening": "Scotch Game",
+
+  "story": "After the center opens, White patiently improves every piece. Black places the queen too close to the king, allowing a knight to exploit the open e-file with a decisive royal fork.",
+
+  "secondary_lesson": "Open files create tactical opportunities",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "d5f6",
+
+  "best_move_san": "Nf6+",
+
+  "side": "white",
+
+  "pgn": "1. e4 e5 2. Nf3 Nc6 3. d4 exd4 4. Nxd4 Nf6 5. Nc3 Bb4 6. Nxc6 bxc6 7. Bd3 O-O 8. O-O Re8 9. Re1 d6 10. h3 h6 11. Bf4 Be6 12. Qf3 Nd7 13. Rad1 Ne5 14. Bxe5 dxe5 15. Ba6 Qe7 16. Bb7 Rab8 17. Bxc6 Red8 18. Bd5 Bxc3 19. Qxc3 Bxd5 20. exd5 f6 21. b3 Qd6 22. Qc6 Rb6 23. Qxd6 Rbxd6 24. c4 c6 25. Ne7+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "open_file",
+    "piece_activity"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 49,
+      "pattern": "fork",
+      "description": "Knight jumps to e7 with check, attacking both the king and queen."
+    }
+  ],
+
+  "takeaway": "Open files often force heavy pieces onto predictable squares, making them vulnerable to knight forks.",
+
+  "minimum_plies": 49,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "open_file_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "e7"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0007",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 12,
+  "game_type": "main",
+
+  "title": "The Decoy Queen",
+
+  "opening": "French Defence",
+
+  "story": "Black's queen steps into the center to defend a pawn chain. White patiently completes development and then uses a centralized knight to create a devastating royal fork.",
+
+  "secondary_lesson": "Centralized pieces create tactical opportunities",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "e5d7",
+
+  "best_move_san": "Nd7+",
+
+  "side": "white",
+
+  "pgn": "1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5. Nf3 Be7 6. Bd3 c5 7. dxc5 Nc6 8. O-O Nxc5 9. Re1 O-O 10. Bf4 Nxd3 11. Qxd3 Bd7 12. Rad1 Rc8 13. Ne2 Nb4 14. Qb3 Nxc2 15. Rf1 Nb4 16. Ned4 Qb6 17. a3 Nc6 18. Qxb6 axb6 19. Nb5 Ra8 20. Rc1 Ra5 21. Nd6 Bxd6 22. exd6 Rfa8 23. Rfd1 Rc5 24. Be3 Rxc1 25. Rxc1 e5 26. Bxb6 f6 27. Nd2 Kf7 28. Nb3 Ke6 29. Bc5 Rc8 30. Kf1 Nd8 31. Ke2 Nf7 32. Bb4 Nxd6 33. Nc5+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "centralization",
+    "piece_coordination"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 65,
+      "pattern": "fork",
+      "description": "The knight jumps with check, attacking both the king and queen."
+    }
+  ],
+
+  "takeaway": "A centralized knight often becomes the strongest attacking piece once both sides complete development.",
+
+  "minimum_plies": 65,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "development_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "c5"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0008",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 13,
+  "game_type": "main",
+
+  "title": "The Loose Queen",
+
+  "opening": "Queen's Gambit Declined",
+
+  "story": "Black completes development but places the queen on an exposed square. White improves every piece, controls the center, and finally exploits the loose queen with a classic knight royal fork.",
+
+  "secondary_lesson": "Loose pieces lose games",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "e5d7",
+
+  "best_move_san": "Nd7+",
+
+  "side": "white",
+
+  "pgn": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 Be7 5. Bg5 O-O 6. e3 h6 7. Bh4 b6 8. cxd5 exd5 9. Bd3 Bb7 10. O-O Nbd7 11. Rc1 c5 12. dxc5 bxc5 13. Bf5 Re8 14. Qa4 Nb6 15. Qb5 a6 16. Qa5 Nc4 17. Qxd8 Raxd8 18. b3 Nd6 19. Bb1 Nfe4 20. Bxe7 Rxe7 21. Rfd1 Nxc3 22. Rxc3 Nb5 23. Rxc5 d4 24. Nxd4 Red7 25. Rc4 Na3 26. Rb4 Nxb1 27. Rxb1 Be4 28. Rc1 a5 29. Ra4 Rd5 30. Rac4 Kh7 31. Rc5 Rxc5 32. Rxc5 a4 33. bxa4 Rb8 34. Rc1 Rb2 35. Ra1 Bd5 36. a5 Kg6 37. a6 Kf6 38. a7 Ke5 39. Rc1 Rxa2 40. Nc6+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "loose_pieces",
+    "piece_activity"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 79,
+      "pattern": "fork",
+      "description": "The knight jumps with check, attacking both the king and queen."
+    }
+  ],
+
+  "takeaway": "A queen placed without adequate protection can quickly become the target of a decisive knight fork.",
+
+  "minimum_plies": 79,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "weak_square_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "c6"
+  }
+},
+{
+  "schema_version": "1.0",
+
+  "lesson_id": "FK-KQ-N-0009",
+
+  "pattern": "fork",
+  "sub_pattern": "king_queen_knight_fork",
+
+  "game_number": 14,
+  "game_type": "main",
+
+  "title": "The Overworked Queen",
+
+  "opening": "English Opening",
+
+  "story": "Black's queen is forced to defend multiple weaknesses while the king remains exposed. White patiently improves every piece before a knight leaps into the enemy camp with a decisive royal fork.",
+
+  "secondary_lesson": "Overworked pieces",
+
+  "difficulty": "beginner",
+
+  "source_type": "original",
+
+  "learning_stage": "recognition",
+
+  "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+
+  "pattern_fen": null,
+
+  "best_move": "d6f7",
+
+  "best_move_san": "Nf7+",
+
+  "side": "white",
+
+  "pgn": "1. c4 e5 2. Nc3 Nf6 3. g3 d5 4. cxd5 Nxd5 5. Bg2 Nb6 6. Nf3 Nc6 7. O-O Be7 8. d3 O-O 9. Be3 Be6 10. Rc1 f5 11. Na4 Nxa4 12. Qxa4 Bd5 13. Bc5 Bxc5 14. Rxc5 Qd6 15. Rfc1 Rae8 16. b4 a6 17. b5 axb5 18. Qxb5 Ne7 19. Rxc7 Bc6 20. Qb3+ Kh8 21. Qb6 Nd5 22. R7xc6 bxc6 23. Qxc6 Qa3 24. Rc2 Nb4 25. Qc5 Rc8 26. Qxc8 Nxc2 27. Qxc2 e4 28. dxe4 fxe4 29. Ng5 e3 30. Qxh7# 31. Ne6 Qc1+ 32. Bf1 exf2+ 33. Kg2 Qc6+ 34. e4 Qxe6 35. Qh5+ Kg8 36. Qd5 Re8 37. Bc4 Qxd5 38. Bxd5+ Kf8 39. Kxf2 Re5 40. Ke3 Nf7+ *",
+
+  "target_patterns": [
+    "fork"
+  ],
+
+  "concepts": [
+    "knight_fork",
+    "royal_fork",
+    "overworked_piece",
+    "piece_coordination"
+  ],
+
+  "checkpoints": [
+    {
+      "ply": 79,
+      "pattern": "fork",
+      "description": "The knight lands on f7, simultaneously attacking the king and queen."
+    }
+  ],
+
+  "takeaway": "An overworked queen can become vulnerable to tactical motifs once your pieces are fully coordinated.",
+
+  "minimum_plies": 79,
+
+  "verification_status": "draft",
+
+  "publication_status": "active",
+
+  "metadata": {
+    "fork_piece": "knight",
+    "fork_family": "overworked_piece_royal_fork",
+    "fork_targets": [
+      "king",
+      "queen"
+    ],
+    "pattern_square": "f7"
+  }
+}
+
+]

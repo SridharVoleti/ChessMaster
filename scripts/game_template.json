@@ -1,0 +1,106 @@
+{
+  "_about": "ChessQuest game template. Copy a block from 'templates', fill in the values, then append the object to scripted_games_data.json. Run the seed script afterward.",
+
+  "_field_guide": {
+    "pattern":         "One of the 12 keys from PATTERN_SEQUENCE: fork | pin | back_rank_mate | skewer | discovered_attack | double_check | deflection | decoy | smothered_mate | overloading | x_ray_attack | zwischenzug",
+    "game_number":     "1-5 for practice games. 6 for the main game of that pattern.",
+    "game_type":       "practice or main",
+    "title":           "Short punchy title shown on the game card. Max ~5 words.",
+    "opening":         "Opening name shown to the student (e.g. 'Italian Game', 'Sicilian Najdorf'). Purely informational.",
+    "story":           "1-2 sentence hook shown before the board. Describe what just happened and hint at the tactic without giving it away.",
+    "pgn":             "The scripted intro moves in standard PGN SAN notation ending with ' *'. Both sides play. Must be ≥15 half-moves (plies). The board pauses here for the student to find the pattern move.",
+    "setup_fen":       "Starting FEN. Always use the standard start position unless you have a specific reason. Copy the value from an existing game.",
+    "side":            "white or black — which side the STUDENT plays.",
+    "pattern_fen":     "[practice only] FEN of the board after all scripted moves. Copy it from a chess engine after replaying the PGN. This is what the validator uses.",
+    "best_move":       "[practice only] The canonical pattern move in UCI notation (e.g. 'd4d5', 'g4e3'). From-square then to-square, no spaces. Add a promotion piece for pawn promotions: 'e7e8q'.",
+
+    "_main_game_extra": "Main games (game_number=6) replace pattern_fen+best_move with these two fields:",
+    "target_patterns": "[main only] Array of pattern keys the student can score during free play. Cumulative: level 3 includes fork, pin, back_rank_mate.",
+    "checkpoints":     "[main only] Array of {ply, pattern} objects. ply = half-move number (1=White's first move). Marks where the scripted tactic occurs for the verifier.",
+
+    "_rules": [
+      "Each game must use a DIFFERENT opening from the other 5 games for the same pattern.",
+      "The student side must alternate W/B across the 5 practice games (aim for 3 white, 2 black or vice versa).",
+      "The pattern must genuinely occur — verify with python -m chess_pipeline.check_designs or check_line.py.",
+      "For practice games: after all scripted moves, the ONLY strong move should be the target pattern. Avoid positions where the student can win material a different way first.",
+      "story should mention WHAT happened (e.g. 'Black's queen wandered') not WHAT TO DO (don't say 'play Nxe4')."
+    ]
+  },
+
+  "templates": {
+
+    "practice_game": {
+      "_copy_this_object_to_scripted_games_data_json": true,
+      "pattern":      "PATTERN_KEY",
+      "game_number":  1,
+      "game_type":    "practice",
+      "title":        "Short Title Here",
+      "opening":      "Opening Name",
+      "story":        "One or two sentences that set the scene and hint at the tactic. Do not reveal the answer.",
+      "pgn":          "1. e4 e5 2. Nf3 Nc6 ... [≥15 half-moves] *",
+      "setup_fen":    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "side":         "white",
+      "pattern_fen":  "PASTE_FEN_AFTER_SCRIPTED_MOVES_END_HERE",
+      "best_move":    "e2e4"
+    },
+
+    "main_game": {
+      "_copy_this_object_to_scripted_games_data_json": true,
+      "pattern":          "PATTERN_KEY",
+      "game_number":      6,
+      "game_type":        "main",
+      "title":            "Short Title Here",
+      "opening":          "Opening Name",
+      "story":            "One or two sentences. The student plays the whole game; hint at the pattern they should watch for.",
+      "pgn":              "1. e4 e5 2. Nf3 Nc6 ... [full mainline including expected student moves] *",
+      "setup_fen":        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "side":             "white",
+      "target_patterns":  ["fork", "pin", "PATTERN_KEY"],
+      "checkpoints":      [{ "ply": 20, "pattern": "PATTERN_KEY" }]
+    }
+  },
+
+  "worked_examples": {
+
+    "fork_practice_1": {
+      "_note": "Real game from scripted_games_data.json — use as a reference",
+      "pattern":      "fork",
+      "game_number":  1,
+      "game_type":    "practice",
+      "title":        "The Pawn Wedge",
+      "opening":      "Italian Game",
+      "story":        "A quiet Italian — until White's center pawn marches forward and attacks the knight and bishop at the same time!",
+      "pgn":          "1. e4 e5 2. Nf3 Nc6 3. Bc4 Be7 4. d3 Nf6 5. O-O O-O 6. Re1 d6 7. c3 Be6 8. Bb3 h6 9. d4 exd4 10. cxd4 Re8 *",
+      "setup_fen":    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "side":         "white",
+      "pattern_fen":  "r2qr1k1/ppp1bpp1/2npbn1p/8/3PP3/1B3N2/PP3PPP/RNBQR1K1 w - - 1 11",
+      "best_move":    "d4d5"
+    },
+
+    "fork_main_6": {
+      "_note": "Real main game — shows target_patterns and checkpoints",
+      "pattern":          "fork",
+      "game_number":      6,
+      "game_type":        "main",
+      "title":            "The Royal Fork",
+      "opening":          "Exchange Ruy Lopez",
+      "story":            "The queens are gone, but the tactics are not. When the bishop steps away from c7, your knight dives in with check — royal fork!",
+      "pgn":              "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4 7. Nxd4 c5 8. Nb3 Qxd1 9. Rxd1 Bg4 10. f3 Be6 11. Nc3 Bd6 12. Nd5 Be7 13. Nxc7+ Kf7 14. Nxa8 *",
+      "setup_fen":        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "side":             "white",
+      "target_patterns":  ["fork"],
+      "checkpoints":      [{ "ply": 24, "pattern": "fork" }]
+    }
+  },
+
+  "_patterns_remaining": {
+    "_note": "Patterns that still need games authored",
+    "double_check":    { "needs": "5 practice + 1 main", "status": "not started" },
+    "deflection":      { "needs": "5 practice + 1 main", "status": "not started" },
+    "decoy":           { "needs": "5 practice + 1 main", "status": "not started" },
+    "smothered_mate":  { "needs": "5 practice + 1 main", "status": "not started" },
+    "overloading":     { "needs": "5 practice + 1 main", "status": "not started" },
+    "x_ray_attack":    { "needs": "5 practice + 1 main", "status": "not started" },
+    "zwischenzug":     { "needs": "5 practice + 1 main", "status": "not started" }
+  }
+}

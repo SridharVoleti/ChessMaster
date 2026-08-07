@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-TRAINING-CONTEXT",
+  "title": "Training Context Inventory",
+  "description": "Discovery inventory of training contexts used to organize learning scenarios. Contexts describe where knowledge is applied rather than defining chess concepts.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "context_count": 3,
+    "theme_count": 18,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Define the major game-phase contexts used by the curriculum and learning scenario engine.",
+    "scope": "Opening, Middlegame and Endgame contexts, their themes and educational focus.",
+    "exclusions": [
+      "Tactical concepts",
+      "Strategic concepts",
+      "Positional concepts",
+      "Calculation techniques"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial definition of the three primary game-phase training contexts."
+    }
+  ],
+  "contexts": [
+    {
+      "context_order": 1,
+      "context_id": "CTX-OP",
+      "context_name": "Opening",
+      "research_status": "identified",
+      "description": "The phase where development, centre control and king safety establish the foundation for the game.",
+      "themes": [
+        {
+          "theme_order": 1,
+          "theme_id": "CTX-OP-001",
+          "theme_name": "Opening Principles",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 2,
+          "theme_id": "CTX-OP-002",
+          "theme_name": "Rapid Development",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 3,
+          "theme_id": "CTX-OP-003",
+          "theme_name": "Centre Control",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 4,
+          "theme_id": "CTX-OP-004",
+          "theme_name": "King Safety",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 5,
+          "theme_id": "CTX-OP-005",
+          "theme_name": "Opening Structures",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 6,
+          "theme_id": "CTX-OP-006",
+          "theme_name": "Transition to Middlegame",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "context_order": 2,
+      "context_id": "CTX-MG",
+      "context_name": "Middlegame",
+      "research_status": "identified",
+      "description": "The phase where plans are executed using tactical, strategic and positional understanding.",
+      "themes": [
+        {
+          "theme_order": 1,
+          "theme_id": "CTX-MG-001",
+          "theme_name": "Planning",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 2,
+          "theme_id": "CTX-MG-002",
+          "theme_name": "Attack",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 3,
+          "theme_id": "CTX-MG-003",
+          "theme_name": "Defence",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 4,
+          "theme_id": "CTX-MG-004",
+          "theme_name": "Initiative",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 5,
+          "theme_id": "CTX-MG-005",
+          "theme_name": "Conversion of Advantages",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 6,
+          "theme_id": "CTX-MG-006",
+          "theme_name": "Transition to Endgame",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "context_order": 3,
+      "context_id": "CTX-EG",
+      "context_name": "Endgame",
+      "research_status": "identified",
+      "description": "The phase where simplified positions demand precision and technique.",
+      "themes": [
+        {
+          "theme_order": 1,
+          "theme_id": "CTX-EG-001",
+          "theme_name": "King Activity",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 2,
+          "theme_id": "CTX-EG-002",
+          "theme_name": "Pawn Endgames",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 3,
+          "theme_id": "CTX-EG-003",
+          "theme_name": "Piece Endgames",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 4,
+          "theme_id": "CTX-EG-004",
+          "theme_name": "Rook Endgames",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 5,
+          "theme_id": "CTX-EG-005",
+          "theme_name": "Promotion",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "theme_order": 6,
+          "theme_id": "CTX-EG-006",
+          "theme_name": "Endgame Technique",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

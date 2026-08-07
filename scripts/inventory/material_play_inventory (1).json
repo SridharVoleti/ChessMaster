@@ -1,0 +1,572 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-MATERIAL-PLAY",
+  "title": "Material Play Inventory",
+  "description": "Discovery inventory of concepts governing the effective use of chess material. This inventory combines piece play and pawn play into a single knowledge domain focused on understanding the strengths, weaknesses and coordination of every chess unit.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 12,
+    "concept_count": 54,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Discover every concept related to the effective use of chess material.",
+    "scope": "Individual piece play, pawn play, coordination, mobility, exchanges and piece-specific techniques.",
+    "exclusions": [
+      "Tactical patterns",
+      "Strategic planning",
+      "Positional evaluation",
+      "Opening systems",
+      "Endgame theory"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Merged Piece Play and Pawn Play into a unified Material Play inventory."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "MP-PN",
+      "family_name": "Pawn Play",
+      "research_status": "identified",
+      "description": "Understanding pawns as strategic material",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-PN-001",
+          "canonical_name": "Pawn Value",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-PN-002",
+          "canonical_name": "Pawn Chain",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-PN-003",
+          "canonical_name": "Pawn Break",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-PN-004",
+          "canonical_name": "Pawn Majority",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "MP-PN-005",
+          "canonical_name": "Pawn Minority",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 6,
+          "concept_id": "MP-PN-006",
+          "canonical_name": "Passed Pawn",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "MP-KN",
+      "family_name": "Knight Play",
+      "research_status": "identified",
+      "description": "Effective use of knights",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-KN-001",
+          "canonical_name": "Knight Outpost",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-KN-002",
+          "canonical_name": "Knight Fork Potential",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-KN-003",
+          "canonical_name": "Centralized Knight",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-KN-004",
+          "canonical_name": "Knight Manoeuvre",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "MP-BI",
+      "family_name": "Bishop Play",
+      "research_status": "identified",
+      "description": "Effective use of bishops",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-BI-001",
+          "canonical_name": "Bishop Pair",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-BI-002",
+          "canonical_name": "Good Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-BI-003",
+          "canonical_name": "Bad Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-BI-004",
+          "canonical_name": "Long Diagonal",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "MP-BI-005",
+          "canonical_name": "Fianchetto Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "MP-RK",
+      "family_name": "Rook Play",
+      "research_status": "identified",
+      "description": "Effective use of rooks",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-RK-001",
+          "canonical_name": "Open File Rook",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-RK-002",
+          "canonical_name": "Seventh Rank Rook",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-RK-003",
+          "canonical_name": "Connected Rooks",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-RK-004",
+          "canonical_name": "Rook Lift",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "MP-RK-005",
+          "canonical_name": "Active Rook",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "MP-QU",
+      "family_name": "Queen Play",
+      "research_status": "identified",
+      "description": "Effective use of the queen",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-QU-001",
+          "canonical_name": "Queen Activity",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-QU-002",
+          "canonical_name": "Queen Centralization",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-QU-003",
+          "canonical_name": "Queen Safety",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-QU-004",
+          "canonical_name": "Queen Coordination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "MP-KG",
+      "family_name": "King Play",
+      "research_status": "identified",
+      "description": "Using the king as a chess piece",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-KG-001",
+          "canonical_name": "King Safety",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-KG-002",
+          "canonical_name": "King Activity",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-KG-003",
+          "canonical_name": "Centralized King",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-KG-004",
+          "canonical_name": "Opposition Awareness",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "MP-CO",
+      "family_name": "Coordination",
+      "research_status": "identified",
+      "description": "Cooperation between pieces",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-CO-001",
+          "canonical_name": "Piece Coordination",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-CO-002",
+          "canonical_name": "Piece Harmony",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-CO-003",
+          "canonical_name": "Supporting Pieces",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-CO-004",
+          "canonical_name": "Attack Coordination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "MP-CO-005",
+          "canonical_name": "Defensive Coordination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "MP-MB",
+      "family_name": "Mobility",
+      "research_status": "identified",
+      "description": "Freedom of movement",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-MB-001",
+          "canonical_name": "Piece Mobility",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-MB-002",
+          "canonical_name": "Restricted Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-MB-003",
+          "canonical_name": "Dominant Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-MB-004",
+          "canonical_name": "Inactive Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "MP-EX",
+      "family_name": "Exchanges",
+      "research_status": "identified",
+      "description": "Material exchange concepts",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-EX-001",
+          "canonical_name": "Exchange Up",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-EX-002",
+          "canonical_name": "Exchange Down",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-EX-003",
+          "canonical_name": "Equal Exchange",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-EX-004",
+          "canonical_name": "Exchange Sacrifice",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 10,
+      "family_id": "MP-AC",
+      "family_name": "Activation",
+      "research_status": "identified",
+      "description": "Improving piece effectiveness",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-AC-001",
+          "canonical_name": "Activate Piece",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-AC-002",
+          "canonical_name": "Improve Worst Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-AC-003",
+          "canonical_name": "Reposition Piece",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-AC-004",
+          "canonical_name": "Centralize Forces",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 11,
+      "family_id": "MP-SP",
+      "family_name": "Specialized Piece Themes",
+      "research_status": "identified",
+      "description": "Unique characteristics of pieces",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-SP-001",
+          "canonical_name": "Knight vs Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-SP-002",
+          "canonical_name": "Opposite-coloured Bishops",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-SP-003",
+          "canonical_name": "Same-coloured Bishops",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-SP-004",
+          "canonical_name": "Rook Behind Passed Pawn",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 12,
+      "family_id": "MP-IN",
+      "family_name": "Integration",
+      "research_status": "identified",
+      "description": "Working with all material",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "MP-IN-001",
+          "canonical_name": "Material Balance",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "MP-IN-002",
+          "canonical_name": "Material Advantage",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "MP-IN-003",
+          "canonical_name": "Material Coordination",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "MP-IN-004",
+          "canonical_name": "Material Conversion",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

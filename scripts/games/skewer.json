@@ -1,0 +1,80 @@
+[
+  {
+    "pattern": "skewer",
+    "game_number": 1,
+    "game_type": "practice",
+    "title": "Rook X-Ray on the d-File",
+    "opening": "Queen's Gambit Accepted",
+    "story": "Black lined up the queen IN FRONT of the rook on the open file. Attack the queen — when she runs, the rook falls!",
+    "pattern_fen": "rn1r2k1/1b1q1pp1/p3pn1p/1pb5/4P3/PBN2N1P/1P2QPP1/R1B2RK1 w - - 0 14",
+    "best_move": "f1d1",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. dxc5 Bxc5 8. Qe2 b5 9. Bb3 Bb7 10. a3 O-O 11. Nc3 Qd7 12. h3 Rfd8 13. e4 h6 *",
+    "side": "white"
+  },
+  {
+    "pattern": "skewer",
+    "game_number": 2,
+    "game_type": "practice",
+    "title": "Skewer the Battery",
+    "opening": "Scotch Game",
+    "story": "White stacked the queen in front of the rook on the e-file. Your rook attacks both at once — the queen cannot stay!",
+    "pattern_fen": "r1bq1rk1/p1p2ppp/3b1n2/3p4/8/3B4/PPPNQPPP/R1B1R1K1 b - - 7 11",
+    "best_move": "f8e8",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e5 2. Nf3 Nc6 3. d4 exd4 4. Nxd4 Nf6 5. Nxc6 bxc6 6. Bd3 d5 7. exd5 cxd5 8. O-O Be7 9. Qe2 O-O 10. Re1 Bd6 11. Nd2 *",
+    "side": "black"
+  },
+  {
+    "pattern": "skewer",
+    "game_number": 3,
+    "game_type": "practice",
+    "title": "The Long Diagonal Sting",
+    "opening": "Scandinavian Defence",
+    "story": "Black's queen and bishop share the same long diagonal. Slide your bishop onto it — the queen must flee and the bishop is yours!",
+    "pattern_fen": "r3k2r/pbpn1ppp/1p1bpn2/3q4/3P4/1P5N/PBP1BPPP/RN1Q1RK1 w kq - 3 9",
+    "best_move": "e2f3",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 d5 2. exd5 Qxd5 3. Be2 Nf6 4. Nh3 b6 5. O-O e6 6. d4 Bd6 7. b3 Nbd7 8. Bb2 Bb7 *",
+    "side": "white"
+  },
+  {
+    "pattern": "skewer",
+    "game_number": 4,
+    "game_type": "practice",
+    "title": "Raid from h6",
+    "opening": "Centre Game",
+    "story": "White's early queen stands on the same diagonal as the sleeping bishop on c1. Skewer them both!",
+    "pattern_fen": "r2qkb1r/pppb1p2/2np1np1/P6p/2B1P3/4QN1P/1PP2PP1/RNB1K2R b KQkq - 0 9",
+    "best_move": "f8h6",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 e5 2. d4 exd4 3. Qxd4 Nc6 4. Qe3 g6 5. Bc4 Nf6 6. h3 d6 7. Nf3 Bd7 8. a4 h5 9. a5 *",
+    "side": "black"
+  },
+  {
+    "pattern": "skewer",
+    "game_number": 5,
+    "game_type": "practice",
+    "title": "Bishop Spears the Queen",
+    "opening": "Open Sicilian",
+    "story": "The black queen stepped in front of her own rook on the light diagonal. Spear her — the rook is the prize!",
+    "pattern_fen": "r1b1r1k1/pp1qppbp/3p1np1/8/3BP3/2N4P/PPPQBPP1/R4RK1 w - - 3 12",
+    "best_move": "e2b5",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. e4 c5 2. Nf3 Nc6 3. d4 cxd4 4. Nxd4 g6 5. Nc3 Bg7 6. Be3 Nf6 7. Be2 O-O 8. O-O d6 9. h3 Nxd4 10. Bxd4 Qd7 11. Qd2 Rfe8 *",
+    "side": "white"
+  },
+  {
+    "pattern": "skewer",
+    "game_number": 6,
+    "game_type": "main",
+    "title": "Battery Backfire",
+    "opening": "Colle System (vs fianchetto)",
+    "story": "White lined up queen and bishop, aiming at your king. But the queen stands in FRONT — slide your bishop out, guarded by its pawn, and skewer her! When she runs, the bishop behind her is yours.",
+    "setup_fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "pgn": "1. d4 d5 2. Nf3 Nf6 3. e3 g6 4. Bd3 Bg7 5. O-O O-O 6. Nbd2 c5 7. c3 Nc6 8. Re1 b6 9. Bc2 Qc7 10. Qe2 Re8 11. Qd3 Bf5 12. Qb5 Bxc2 *",
+    "side": "black",
+    "target_patterns": ["fork", "pin", "back_rank_mate", "skewer"],
+    "checkpoints": [{ "ply": 21, "pattern": "skewer" }]
+  }
+]

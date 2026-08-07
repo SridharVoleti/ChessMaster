@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+
+  "entity_type": "inventory",
+  "entity_id": "INV-STRATEGIC",
+
+  "title": "Strategic Concepts Inventory",
+
+  "description": "Discovery inventory of strategic concepts identified during research. This inventory captures the existence and organization of long-term strategic ideas. Definitions, evidence, pedagogy, dependencies and learning scenarios are maintained separately.",
+
+  "research_status": "in_progress",
+
+  "created_by": "ChessQuest",
+
+  "created_on": "2026-06-30",
+
+  "updated_on": "2026-06-30",
+
+  "statistics": {
+    "family_count": 12,
+    "concept_count": 50,
+    "research_wave": 1
+  },
+
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial discovery of strategic concept families and foundational concepts."
+    }
+  ],
+
+  "families": [
+
+    {
+      "family_id": "ST-IN",
+      "family_name": "Initiative and Tempo",
+      "research_status": "identified",
+      "description": "Concepts related to controlling the pace and direction of the game.",
+      "concepts": [
+        { "concept_id": "ST-IN-001", "canonical_name": "Initiative", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IN-002", "canonical_name": "Tempo", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IN-003", "canonical_name": "Gain of Tempo", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IN-004", "canonical_name": "Loss of Tempo", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-SP",
+      "family_name": "Space",
+      "research_status": "identified",
+      "description": "Concepts related to spatial advantage.",
+      "concepts": [
+        { "concept_id": "ST-SP-001", "canonical_name": "Space Advantage", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-SP-002", "canonical_name": "Spatial Restriction", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-SP-003", "canonical_name": "Cramped Position", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-KS",
+      "family_name": "King Safety",
+      "research_status": "identified",
+      "description": "Long-term king safety concepts.",
+      "concepts": [
+        { "concept_id": "ST-KS-001", "canonical_name": "King Safety", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-KS-002", "canonical_name": "Exposed King", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-KS-003", "canonical_name": "Pawn Shield", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-KS-004", "canonical_name": "Castling Decision", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-PL",
+      "family_name": "Planning",
+      "research_status": "identified",
+      "description": "Planning and execution of long-term ideas.",
+      "concepts": [
+        { "concept_id": "ST-PL-001", "canonical_name": "Strategic Planning", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PL-002", "canonical_name": "Long-term Plan", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PL-003", "canonical_name": "Candidate Plans", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PL-004", "canonical_name": "Improving Position", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-PC",
+      "family_name": "Piece Coordination",
+      "research_status": "identified",
+      "description": "Cooperation and harmony among pieces.",
+      "concepts": [
+        { "concept_id": "ST-PC-001", "canonical_name": "Piece Coordination", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PC-002", "canonical_name": "Piece Harmony", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PC-003", "canonical_name": "Piece Placement", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PC-004", "canonical_name": "Piece Improvement", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-WK",
+      "family_name": "Weaknesses",
+      "research_status": "identified",
+      "description": "Creating and exploiting weaknesses.",
+      "concepts": [
+        { "concept_id": "ST-WK-001", "canonical_name": "Weak Square", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-WK-002", "canonical_name": "Weak Pawn", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-WK-003", "canonical_name": "Backward Pawn", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-WK-004", "canonical_name": "Structural Weakness", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-SS",
+      "family_name": "Strong Squares",
+      "research_status": "identified",
+      "description": "Occupation and exploitation of key squares.",
+      "concepts": [
+        { "concept_id": "ST-SS-001", "canonical_name": "Strong Square", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-SS-002", "canonical_name": "Outpost", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-SS-003", "canonical_name": "Anchor Square", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-PM",
+      "family_name": "Pawn Majority",
+      "research_status": "identified",
+      "description": "Strategic pawn majorities and minorities.",
+      "concepts": [
+        { "concept_id": "ST-PM-001", "canonical_name": "Pawn Majority", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PM-002", "canonical_name": "Minority Attack", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PM-003", "canonical_name": "Passed Pawn Creation", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-EX",
+      "family_name": "Exchanges",
+      "research_status": "identified",
+      "description": "Strategic exchanges and simplification.",
+      "concepts": [
+        { "concept_id": "ST-EX-001", "canonical_name": "Favorable Exchange", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-EX-002", "canonical_name": "Unfavorable Exchange", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-EX-003", "canonical_name": "Simplification", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-EX-004", "canonical_name": "Exchange Strategy", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-PR",
+      "family_name": "Prophylaxis",
+      "research_status": "identified",
+      "description": "Preventing the opponent's plans.",
+      "concepts": [
+        { "concept_id": "ST-PR-001", "canonical_name": "Prophylaxis", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PR-002", "canonical_name": "Prevention", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-PR-003", "canonical_name": "Restrict Counterplay", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-IM",
+      "family_name": "Imbalances",
+      "research_status": "identified",
+      "description": "Evaluating and exploiting imbalances.",
+      "concepts": [
+        { "concept_id": "ST-IM-001", "canonical_name": "Material Imbalance", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IM-002", "canonical_name": "Bishop Pair", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IM-003", "canonical_name": "Knight vs Bishop", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IM-004", "canonical_name": "Static Imbalance", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-IM-005", "canonical_name": "Dynamic Imbalance", "research_status": "identified", "notes": "" }
+      ]
+    },
+
+    {
+      "family_id": "ST-TR",
+      "family_name": "Transitions",
+      "research_status": "identified",
+      "description": "Transitioning between phases of the game.",
+      "concepts": [
+        { "concept_id": "ST-TR-001", "canonical_name": "Transition to Middlegame", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-TR-002", "canonical_name": "Transition to Endgame", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-TR-003", "canonical_name": "Transition to Attack", "research_status": "identified", "notes": "" },
+        { "concept_id": "ST-TR-004", "canonical_name": "Transition to Defense", "research_status": "identified", "notes": "" }
+      ]
+    }
+
+  ]
+}

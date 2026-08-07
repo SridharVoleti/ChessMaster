@@ -1,0 +1,463 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.2",
+  "entity_type": "inventory",
+  "entity_id": "INV-STRATEGIC",
+  "title": "Strategic Concepts Inventory",
+  "description": "Discovery inventory of long-term strategic planning concepts. This inventory focuses on decision-making and plans rather than positional characteristics or tactical execution.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 9,
+    "concept_count": 37,
+    "research_wave": 1,
+    "inventory_completeness": "taxonomy_refined"
+  },
+  "summary": {
+    "objective": "Discover every strategic planning concept required for a complete chess education.",
+    "scope": "Long-term planning, plan selection, conversion of advantages, attack, defence, pawn strategy, piece strategy and transitions.",
+    "exclusions": [
+      "Tactical Patterns",
+      "Positional Features",
+      "Opening Systems",
+      "Endgame Theory",
+      "Calculation Techniques"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial discovery of strategic concepts."
+    },
+    {
+      "inventory_version": "0.2",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Refined taxonomy by moving positional concepts to the Positional Inventory and redefining Strategy as planning and decision-making."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "ST-IN",
+      "family_name": "Initiative",
+      "research_status": "identified",
+      "description": "Control the direction and pace of the game",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-IN-001",
+          "canonical_name": "Initiative",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-IN-002",
+          "canonical_name": "Seize Initiative",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-IN-003",
+          "canonical_name": "Maintain Initiative",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-IN-004",
+          "canonical_name": "Relinquish Initiative",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "ST-PL",
+      "family_name": "Planning",
+      "research_status": "identified",
+      "description": "Selecting and executing long-term plans",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PL-001",
+          "canonical_name": "Strategic Planning",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PL-002",
+          "canonical_name": "Candidate Plans",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PL-003",
+          "canonical_name": "Long-term Plan",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PL-004",
+          "canonical_name": "Plan Selection",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-PL-005",
+          "canonical_name": "Improve Position",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "ST-PR",
+      "family_name": "Prophylaxis",
+      "research_status": "identified",
+      "description": "Preventing the opponent's plans",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PR-001",
+          "canonical_name": "Prophylaxis",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PR-002",
+          "canonical_name": "Restrict Counterplay",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PR-003",
+          "canonical_name": "Neutralization",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PR-004",
+          "canonical_name": "Waiting Strategy",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "ST-AT",
+      "family_name": "Attack Strategy",
+      "research_status": "identified",
+      "description": "Preparing and conducting attacks",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-AT-001",
+          "canonical_name": "Attack Preparation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-AT-002",
+          "canonical_name": "Kingside Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-AT-003",
+          "canonical_name": "Queenside Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-AT-004",
+          "canonical_name": "Opposite-side Castling Attack",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-AT-005",
+          "canonical_name": "Build-up Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "ST-DF",
+      "family_name": "Defence Strategy",
+      "research_status": "identified",
+      "description": "Long-term defensive planning",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-DF-001",
+          "canonical_name": "Active Defence",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-DF-002",
+          "canonical_name": "Passive Defence",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-DF-003",
+          "canonical_name": "Counterattack Strategy",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-DF-004",
+          "canonical_name": "Fortress Strategy",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-DF-005",
+          "canonical_name": "Simplification Strategy",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "ST-CV",
+      "family_name": "Conversion Strategy",
+      "research_status": "identified",
+      "description": "Converting advantages into wins",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-CV-001",
+          "canonical_name": "Convert Material Advantage",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-CV-002",
+          "canonical_name": "Convert Positional Advantage",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-CV-003",
+          "canonical_name": "Convert Space Advantage",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-CV-004",
+          "canonical_name": "Convert Passed Pawn",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-CV-005",
+          "canonical_name": "Convert Initiative",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "ST-PS",
+      "family_name": "Pawn Strategy",
+      "research_status": "identified",
+      "description": "Planning with pawns",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PS-001",
+          "canonical_name": "Minority Attack",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PS-002",
+          "canonical_name": "Pawn Storm",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PS-003",
+          "canonical_name": "Central Break",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PS-004",
+          "canonical_name": "Wing Expansion",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-PS-005",
+          "canonical_name": "Create Passed Pawn",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "ST-PC",
+      "family_name": "Piece Strategy",
+      "research_status": "identified",
+      "description": "Improving and repositioning pieces",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PC-001",
+          "canonical_name": "Improve Worst Piece",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PC-002",
+          "canonical_name": "Piece Repositioning",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PC-003",
+          "canonical_name": "Exchange Bad Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PC-004",
+          "canonical_name": "Activate King",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-PC-005",
+          "canonical_name": "Occupy Open File",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "ST-TR",
+      "family_name": "Transition Strategy",
+      "research_status": "identified",
+      "description": "Changing the nature of the game",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-TR-001",
+          "canonical_name": "Transition to Middlegame",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-TR-002",
+          "canonical_name": "Transition to Endgame",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-TR-003",
+          "canonical_name": "Liquidation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-TR-004",
+          "canonical_name": "Favourable Simplification",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

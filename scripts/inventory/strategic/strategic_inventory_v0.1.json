@@ -1,0 +1,507 @@
+{
+  "schema_version": "1.0",
+  "inventory_version": "0.1",
+  "entity_type": "inventory",
+  "entity_id": "INV-STRATEGIC",
+  "title": "Strategic Concepts Inventory",
+  "description": "Discovery inventory of strategic concepts identified during research. This inventory records only the existence and organization of strategic concepts. Definitions, evidence, pedagogy, dependencies and learning scenarios are maintained separately within the Canonical Chess Knowledge Base.",
+  "research_status": "in_progress",
+  "created_by": "ChessQuest",
+  "created_on": "2026-06-30",
+  "updated_on": "2026-06-30",
+  "statistics": {
+    "family_count": 12,
+    "concept_count": 45,
+    "research_wave": 1,
+    "inventory_completeness": "initial_discovery"
+  },
+  "summary": {
+    "objective": "Discover every strategic concept that may eventually become part of the Canonical Chess Knowledge Base.",
+    "scope": "Long-term planning, initiative, positional advantages, exchanges, king safety, imbalances and strategic transitions.",
+    "exclusions": [
+      "Tactical Patterns",
+      "Opening Systems",
+      "Endgame Theory",
+      "Calculation Techniques"
+    ],
+    "next_review_wave": 2
+  },
+  "revision_history": [
+    {
+      "inventory_version": "0.1",
+      "wave": 1,
+      "date": "2026-06-30",
+      "summary": "Initial discovery of strategic concept families and foundational strategic concepts."
+    }
+  ],
+  "families": [
+    {
+      "family_order": 1,
+      "family_id": "ST-IN",
+      "family_name": "Initiative and Tempo",
+      "research_status": "identified",
+      "description": "Control of the pace and direction of the game",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-IN-001",
+          "canonical_name": "Initiative",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-IN-002",
+          "canonical_name": "Tempo",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-IN-003",
+          "canonical_name": "Gain of Tempo",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-IN-004",
+          "canonical_name": "Loss of Tempo",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 2,
+      "family_id": "ST-SP",
+      "family_name": "Space",
+      "research_status": "identified",
+      "description": "Acquiring and exploiting spatial advantage",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-SP-001",
+          "canonical_name": "Space Advantage",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-SP-002",
+          "canonical_name": "Spatial Restriction",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-SP-003",
+          "canonical_name": "Cramped Position",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 3,
+      "family_id": "ST-KS",
+      "family_name": "King Safety",
+      "research_status": "identified",
+      "description": "Long-term king security",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-KS-001",
+          "canonical_name": "King Safety",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-KS-002",
+          "canonical_name": "Exposed King",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-KS-003",
+          "canonical_name": "Pawn Shield",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-KS-004",
+          "canonical_name": "Castling Decision",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 4,
+      "family_id": "ST-PL",
+      "family_name": "Planning",
+      "research_status": "identified",
+      "description": "Strategic planning and execution",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PL-001",
+          "canonical_name": "Strategic Planning",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PL-002",
+          "canonical_name": "Long-term Plan",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PL-003",
+          "canonical_name": "Candidate Plans",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PL-004",
+          "canonical_name": "Improving Position",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 5,
+      "family_id": "ST-PC",
+      "family_name": "Piece Coordination",
+      "research_status": "identified",
+      "description": "Harmony between pieces",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PC-001",
+          "canonical_name": "Piece Coordination",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PC-002",
+          "canonical_name": "Piece Harmony",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PC-003",
+          "canonical_name": "Piece Placement",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-PC-004",
+          "canonical_name": "Piece Improvement",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 6,
+      "family_id": "ST-WK",
+      "family_name": "Weaknesses",
+      "research_status": "identified",
+      "description": "Creating and exploiting weaknesses",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-WK-001",
+          "canonical_name": "Weak Square",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-WK-002",
+          "canonical_name": "Weak Pawn",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-WK-003",
+          "canonical_name": "Backward Pawn",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-WK-004",
+          "canonical_name": "Structural Weakness",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 7,
+      "family_id": "ST-SS",
+      "family_name": "Strong Squares",
+      "research_status": "identified",
+      "description": "Occupation of key squares",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-SS-001",
+          "canonical_name": "Strong Square",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-SS-002",
+          "canonical_name": "Outpost",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-SS-003",
+          "canonical_name": "Anchor Square",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 8,
+      "family_id": "ST-PM",
+      "family_name": "Pawn Majority",
+      "research_status": "identified",
+      "description": "Strategic pawn structures",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PM-001",
+          "canonical_name": "Pawn Majority",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PM-002",
+          "canonical_name": "Minority Attack",
+          "discovery_level": "L3",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PM-003",
+          "canonical_name": "Passed Pawn Creation",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 9,
+      "family_id": "ST-EX",
+      "family_name": "Exchanges",
+      "research_status": "identified",
+      "description": "Exchange decisions",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-EX-001",
+          "canonical_name": "Favorable Exchange",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-EX-002",
+          "canonical_name": "Unfavorable Exchange",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-EX-003",
+          "canonical_name": "Simplification",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-EX-004",
+          "canonical_name": "Exchange Strategy",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 10,
+      "family_id": "ST-PR",
+      "family_name": "Prophylaxis",
+      "research_status": "identified",
+      "description": "Preventing opponent plans",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-PR-001",
+          "canonical_name": "Prophylaxis",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-PR-002",
+          "canonical_name": "Prevention",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-PR-003",
+          "canonical_name": "Restrict Counterplay",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 11,
+      "family_id": "ST-IM",
+      "family_name": "Imbalances",
+      "research_status": "identified",
+      "description": "Evaluating imbalances",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-IM-001",
+          "canonical_name": "Material Imbalance",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-IM-002",
+          "canonical_name": "Bishop Pair",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-IM-003",
+          "canonical_name": "Knight vs Bishop",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-IM-004",
+          "canonical_name": "Static Imbalance",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 5,
+          "concept_id": "ST-IM-005",
+          "canonical_name": "Dynamic Imbalance",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "family_order": 12,
+      "family_id": "ST-TR",
+      "family_name": "Transitions",
+      "research_status": "identified",
+      "description": "Transitions between game phases",
+      "concepts": [
+        {
+          "concept_order": 1,
+          "concept_id": "ST-TR-001",
+          "canonical_name": "Transition to Middlegame",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 2,
+          "concept_id": "ST-TR-002",
+          "canonical_name": "Transition to Endgame",
+          "discovery_level": "L1",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 3,
+          "concept_id": "ST-TR-003",
+          "canonical_name": "Transition to Attack",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        },
+        {
+          "concept_order": 4,
+          "concept_id": "ST-TR-004",
+          "canonical_name": "Transition to Defense",
+          "discovery_level": "L2",
+          "research_status": "identified",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}
