@@ -12,20 +12,26 @@ interface RouteConfig {
   pattern: string
 }
 
+// JSON module imports infer widened field types (e.g. side: string, not the
+// 'white' | 'black' union ScriptedGame declares), so each loader's result is
+// cast through unknown to the declared shape.
+type JsonGames = Promise<{ default: unknown[] }>
+const asGames = (p: JsonGames) => p as Promise<{ default: ScriptedGame[] }>
+
 const ROUTES: Record<string, RouteConfig> = {
-  fork:              { load: () => import('@/scripts/games/fork.json'),              pattern: 'fork'              },
-  forks_extended:    { load: () => import('@/scripts/games/forks_extended.json'),    pattern: 'fork'              },
-  pin:               { load: () => import('@/scripts/games/pin.json'),               pattern: 'pin'               },
-  back_rank_mate:    { load: () => import('@/scripts/games/back_rank_mate.json'),    pattern: 'back_rank_mate'    },
-  skewer:            { load: () => import('@/scripts/games/skewer.json'),            pattern: 'skewer'            },
-  discovered_attack: { load: () => import('@/scripts/games/discovered_attack.json'), pattern: 'discovered_attack' },
-  double_check:      { load: () => import('@/scripts/games/double_check.json'),      pattern: 'double_check'      },
-  deflection:        { load: () => import('@/scripts/games/deflection.json'),        pattern: 'deflection'        },
-  decoy:             { load: () => import('@/scripts/games/decoy.json'),             pattern: 'decoy'             },
-  smothered_mate:    { load: () => import('@/scripts/games/smothered_mate.json'),    pattern: 'smothered_mate'    },
-  overloading:       { load: () => import('@/scripts/games/overloading.json'),       pattern: 'overloading'       },
-  x_ray_attack:      { load: () => import('@/scripts/games/x_ray_attack.json'),      pattern: 'x_ray_attack'      },
-  zwischenzug:       { load: () => import('@/scripts/games/zwischenzug.json'),       pattern: 'zwischenzug'       },
+  fork:              { load: () => asGames(import('@/scripts/games/fork.json')),              pattern: 'fork'              },
+  forks_extended:    { load: () => asGames(import('@/scripts/games/forks_extended.json')),    pattern: 'fork'              },
+  pin:               { load: () => asGames(import('@/scripts/games/pin.json')),               pattern: 'pin'               },
+  back_rank_mate:    { load: () => asGames(import('@/scripts/games/back_rank_mate.json')),    pattern: 'back_rank_mate'    },
+  skewer:            { load: () => asGames(import('@/scripts/games/skewer.json')),            pattern: 'skewer'            },
+  discovered_attack: { load: () => asGames(import('@/scripts/games/discovered_attack.json')), pattern: 'discovered_attack' },
+  double_check:      { load: () => asGames(import('@/scripts/games/double_check.json')),      pattern: 'double_check'      },
+  deflection:        { load: () => asGames(import('@/scripts/games/deflection.json')),        pattern: 'deflection'        },
+  decoy:             { load: () => asGames(import('@/scripts/games/decoy.json')),             pattern: 'decoy'             },
+  smothered_mate:    { load: () => asGames(import('@/scripts/games/smothered_mate.json')),    pattern: 'smothered_mate'    },
+  overloading:       { load: () => asGames(import('@/scripts/games/overloading.json')),       pattern: 'overloading'       },
+  x_ray_attack:      { load: () => asGames(import('@/scripts/games/x_ray_attack.json')),      pattern: 'x_ray_attack'      },
+  zwischenzug:       { load: () => asGames(import('@/scripts/games/zwischenzug.json')),       pattern: 'zwischenzug'       },
 }
 
 interface Props {

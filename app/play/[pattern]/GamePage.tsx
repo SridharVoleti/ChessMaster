@@ -146,6 +146,9 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
     if (gameNumberRef.current === MAIN_GAME_NUMBER) return // MainGame manages itself
 
     const g = getGame(games, pattern, gameNumberRef.current)
+    if (!g.pattern_fen || !g.best_move) {
+      throw new Error(`Practice game ${pattern} #${g.game_number} is missing pattern_fen/best_move`)
+    }
 
     const game     = new Chess(g.setup_fen)
     const opponent = new DidacticOpponent({
@@ -204,7 +207,12 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
   const handleMove = useCallback((from: string, to: string, promotion?: string): boolean => {
     if (status !== 'pattern_moment' && status !== 'wrong') return false
 
-    const g      = getGame(games, pattern, gameNumberRef.current)
+    const g = getGame(games, pattern, gameNumberRef.current)
+    if (!g.pattern_fen || !g.best_move) {
+      throw new Error(`Practice game ${pattern} #${g.game_number} is missing pattern_fen/best_move`)
+    }
+    const patternFen = g.pattern_fen
+    const bestMove    = g.best_move
     const lesson = getLessonFeedback(pattern)
     const uci    = `${from}${to}${promotion ?? ''}`
 
@@ -213,12 +221,12 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({
         playerMove:    uci,
-        bestMove:      g.best_move,
+        bestMove,
         attemptNumber: attemptRef.current,
         lesson,
         patternKey:    pattern,
         gameNumber:    gameNumberRef.current,
-        patternFen:    g.pattern_fen, // any detector-valid move is accepted
+        patternFen, // any detector-valid move is accepted
       }),
     })
       .then(r => r.json() as Promise<ValidationResult>)
@@ -230,8 +238,8 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
           setFeedback(result.feedback)
           setHint(null)
         } else if (result.showAnswer) {
-          const bf = g.best_move.slice(0, 2)
-          const bt = g.best_move.slice(2, 4)
+          const bf = bestMove.slice(0, 2)
+          const bt = bestMove.slice(2, 4)
           try { gameRef.current.move({ from: bf, to: bt }) } catch {}
           setFen(gameRef.current.fen())
           setStatus('revealed')
