@@ -59,6 +59,11 @@ BabySteps at onboarding — never commit real values. `/health` needs none of th
   bootstrap verification (bad secret / iss / aud / expiry / app_id all rejected), exchange
   failure modes, the orchestrator, and an integration test against the real `AuthzService`
   (in-memory SQLite) proving the `/play` gate accepts the provisioned session.
+- `__tests__/launchRoutes.test.ts` (13 cases): the HTTP boundary of all four route
+  handlers — `/health` returns a direct 2xx (never a redirect), `/identity` a structured
+  501, `/return` ends the session and clears the cookie even when `endSession` throws, and
+  every `/launch` failure (misconfig, bad request, exchange, bootstrap, provision) renders a
+  safe HTML page with no cookie and no leaked internal message.
 - `node --env-file=.env.development.local scripts/simulate-app-launch.mjs` — runs the whole
   flow against a running dev server with a fake exchange endpoint.
 
@@ -69,7 +74,13 @@ BabySteps at onboarding — never commit real values. `/health` needs none of th
   it.
 - **Exchange endpoint is production-only** — no staging URL yet. Tests inject a fake `fetch`;
   local runs use the simulator.
+- **Real credentials not provisioned** — BabySteps issues the Ed25519 keypair, `client_id`,
+  `APP_LAUNCH_BOOTSTRAP_SECRET`, and `app_id`/`environment`/`deployment_id` once ChessMaster is
+  registered to receive launches. Until then `/launch` fails closed with a 500 "not configured"
+  page (covered by `launchRoutes.test.ts`); `/health` is unaffected.
 - **`/return` and `/identity`** are intentionally minimal — no live BabySteps caller yet.
+  Per `CHESSMASTER_LAUNCH_INTEGRATION.md` the current shapes (session-ending redirect / `501`)
+  are the specified builds; revisit only when BabySteps confirms a real contract.
 - The same integration also exists in `BabyStepsIndia-ContainerApp` (Postgres-backed authz);
   this is the standalone-app copy that BabySteps' deployment pipeline tests against
   `chess-master-lilac.vercel.app`.
