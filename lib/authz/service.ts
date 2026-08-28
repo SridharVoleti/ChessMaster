@@ -139,18 +139,29 @@ export class AuthzService {
     if (!row || !verifyPassword(input.password, row.password_hash)) {
       throw new AuthzError('INVALID_CREDENTIALS', 'Email or password is incorrect.')
     }
+    return { student: toStudent(row), auth: this.issueToken(row.id) }
+  }
+
+  /**
+   * Mint a bearer token for a student and persist only its hash. Shared by login() and the
+   * BabySteps app-launch handoff (lib/app-launch). `expiresAt` defaults to
+   * now + authTokenTtlHours; a caller may pass a sooner ISO timestamp to bound the token to
+   * an externally-owned session window.
+   */
+  issueToken(studentId: string, expiresAt?: string): AuthToken {
     const now = this.clock.now()
-    const token = generateToken()
-    const expiresAt = new Date(
+    const ttlExpiry = new Date(
       now.getTime() + this.config.authTokenTtlHours * 3_600_000,
     ).toISOString()
+    const effectiveExpiry = expiresAt && expiresAt < ttlExpiry ? expiresAt : ttlExpiry
+    const token = generateToken()
     this.db
       .prepare(
         `INSERT INTO auth_tokens (token_hash, student_id, issued_at, expires_at)
          VALUES (?, ?, ?, ?)`,
       )
-      .run(hashToken(token), row.id, now.toISOString(), expiresAt)
-    return { student: toStudent(row), auth: { token, expiresAt } }
+      .run(hashToken(token), studentId, now.toISOString(), effectiveExpiry)
+    return { token, expiresAt: effectiveExpiry }
   }
 
   logout(token: string): void {
@@ -318,6 +329,110 @@ export class AuthzService {
     const endedAt = this.clock.now().toISOString()
     this.db.prepare('UPDATE usage_sessions SET ended_at = ? WHERE id = ?').run(endedAt, active.id)
     return { ...active, endedAt }
+  }
+
+  // ── BabySteps app-launch handoff ──────────────────────────
+  // These support lib/app-launch: a learner arriving from BabySteps (who already owns
+  // entitlement) is provisioned into this same authority — a real students row, a booking for
+  // today, and a usage_sessions row — so the /play session gate (getActiveSession) is
+  // satisfied with no change to the gate itself.
+
+  /**
+   * Insert (or refresh the display name of) a student whose identity is asserted by
+   * BabySteps. `id` is BabySteps' stable learner_id; there is no usable password.
+   */
+  upsertLaunchStudent(input: { id: string; displayName: string }): Student {
+    const displayName = input.displayName.trim() || 'Learner'
+    const existing = this.db
+      .prepare('SELECT * FROM students WHERE id = ?')
+      .get(input.id) as StudentRow | undefined
+
+    if (existing) {
+      if (existing.display_name !== displayName) {
+        this.db
+          .prepare('UPDATE students SET display_name = ? WHERE id = ?')
+          .run(displayName, input.id)
+      }
+      return toStudent({ ...existing, display_name: displayName })
+    }
+
+    const row: StudentRow = {
+      id: input.id,
+      email: `launch+${input.id}@apps.babysteps.in`,
+      display_name: displayName,
+      password_hash: hashPassword(generateToken()), // unusable — launch learners never log in
+      created_at: this.clock.now().toISOString(),
+    }
+    this.db
+      .prepare(
+        `INSERT INTO students (id, email, display_name, password_hash, created_at)
+         VALUES (@id, @email, @display_name, @password_hash, @created_at)`,
+      )
+      .run(row)
+    return toStudent(row)
+  }
+
+  /**
+   * Idempotently ensure a booking exists for today for this student. Unlike bookSlot() this
+   * bypasses the advance-date rules — the slot is *today*, dispatched by BabySteps.
+   */
+  ensureBookingForToday(studentId: string): Booking {
+    const today = this.today()
+    const existing = this.db
+      .prepare('SELECT * FROM bookings WHERE student_id = ? AND slot_date = ?')
+      .get(studentId, today) as BookingRow | undefined
+    if (existing) return toBooking(existing)
+
+    const row: BookingRow = {
+      id: newId(),
+      student_id: studentId,
+      slot_date: today,
+      created_at: this.clock.now().toISOString(),
+    }
+    this.db
+      .prepare(
+        `INSERT INTO bookings (id, student_id, slot_date, created_at)
+         VALUES (@id, @student_id, @slot_date, @created_at)`,
+      )
+      .run(row)
+    return toBooking(row)
+  }
+
+  /**
+   * Start (or resume) a usage session for a BabySteps-launched learner. Like startSession()
+   * but: creates today's booking if missing, and does NOT enforce the per-day quota —
+   * BabySteps owns entitlement, so a launch is never refused here. `sessionExpiresAt` (from
+   * the exchange's centralSessionExpiresAt) bounds the window when it is sooner than the
+   * configured sessionMinutes.
+   */
+  startLaunchSession(
+    studentId: string,
+    opts: { sessionExpiresAt?: string } = {},
+  ): { session: UsageSession; resumed: boolean } {
+    const active = this.getActiveSession(studentId)
+    if (active) return { session: active, resumed: true }
+
+    const booking = this.ensureBookingForToday(studentId)
+    const now = this.clock.now()
+    const localExpiry = new Date(now.getTime() + this.config.sessionMinutes * 60_000).toISOString()
+    const expiresAt =
+      opts.sessionExpiresAt && opts.sessionExpiresAt < localExpiry ? opts.sessionExpiresAt : localExpiry
+
+    const row: SessionRow = {
+      id: newId(),
+      student_id: studentId,
+      booking_id: booking.id,
+      started_at: now.toISOString(),
+      expires_at: expiresAt,
+      ended_at: null,
+    }
+    this.db
+      .prepare(
+        `INSERT INTO usage_sessions (id, student_id, booking_id, started_at, expires_at, ended_at)
+         VALUES (@id, @student_id, @booking_id, @started_at, @expires_at, @ended_at)`,
+      )
+      .run(row)
+    return { session: toSession(row), resumed: false }
   }
 
   /** Everything the account screen needs in one call. */
