@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-DEFLECTION",
+  "pattern": "deflection",
+  "title": "The Deflection",
+  "content_status": "draft",
+  "concept": "A deflection forces an enemy piece to leave the square or line it was guarding. Once it is gone, the thing it protected falls.",
+  "tip": "Find the piece doing an important defending job, then make a threat it must answer somewhere else.",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Yes! You pulled the defender away — that is a deflection. Now the square it guarded is yours.",
+    "hint": "Which enemy piece is guarding something important? Give it a job it cannot refuse.",
+    "reveal": "Force the defender to move. Once it can no longer guard, the piece or square behind it collapses."
+  }
+}

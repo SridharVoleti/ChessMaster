@@ -68,7 +68,8 @@ function getMainGame(games: ScriptedGame[]): ScriptedGame | undefined {
   return games.find(g => g.game_type === 'main')
 }
 
-// Placeholder feedback — Step 4 replaces with full lesson content
+// Fallback feedback — used only when the server did not supply a
+// lessonFeedback prop (content/lessons/<pattern>.json missing or unresolved).
 const LESSON_FEEDBACK: Record<string, LessonFeedback> = {
   fork: {
     feedback_correct: 'Perfect! Your knight attacks two enemy pieces at the same time — that is a fork!',
@@ -102,19 +103,20 @@ const LESSON_FEEDBACK: Record<string, LessonFeedback> = {
   },
 }
 
-function getLessonFeedback(pattern: string): LessonFeedback {
-  return LESSON_FEEDBACK[pattern] ?? LESSON_FEEDBACK.fork
+function getLessonFeedback(pattern: string, supplied?: LessonFeedback | null): LessonFeedback {
+  return supplied ?? LESSON_FEEDBACK[pattern] ?? LESSON_FEEDBACK.fork
 }
 
 // ── Component ─────────────────────────────────────────────────────
 interface Props {
   pattern:            string
   games:              ScriptedGame[]
+  lessonFeedback?:    LessonFeedback | null
   initialGameNumber?: number
   moveDelayMs?:       number
 }
 
-export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 600 }: Props) {
+export function GamePage({ pattern, games, lessonFeedback = null, initialGameNumber = 1, moveDelayMs = 600 }: Props) {
   const patDef       = PATTERN_SEQUENCE.find(p => p.key === pattern)
   const mainGame     = getMainGame(games)
   const gamesPerPattern = getPracticeGames(games).length || 5
@@ -213,7 +215,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
     }
     const patternFen = g.pattern_fen
     const bestMove    = g.best_move
-    const lesson = getLessonFeedback(pattern)
+    const lesson = getLessonFeedback(pattern, lessonFeedback)
     const uci    = `${from}${to}${promotion ?? ''}`
 
     fetch('/api/validate-move', {
@@ -255,7 +257,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
       .catch(() => setStatus('pattern_moment'))
 
     return false
-  }, [status, pattern])
+  }, [status, pattern, lessonFeedback])
 
   // ── Main-game mode delegates to its own component ─────────────
   if (isMainMode && mainGame) {

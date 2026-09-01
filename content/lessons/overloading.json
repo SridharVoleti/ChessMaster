@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-OVERLOADING",
+  "pattern": "overloading",
+  "title": "Overloading",
+  "content_status": "draft",
+  "concept": "An overloaded piece is one asked to defend two things at once. Take one job away — by capture or threat — and it cannot cover the other.",
+  "tip": "Spot an enemy piece guarding two squares or pieces. Attack one of them and watch the other fall.",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Well spotted! That piece had two jobs and could not do both — you overloaded it.",
+    "hint": "Which enemy piece is defending more than one thing? Challenge one of its duties.",
+    "reveal": "Force the overloaded piece to choose. Whichever job it drops, you take what it stops guarding."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-PIN",
+  "pattern": "pin",
+  "title": "The Pin",
+  "content_status": "published",
+  "concept": "A pin freezes an enemy piece in place. It cannot move because something more valuable is right behind it on the same line.",
+  "tip": "Line up your rook, bishop or queen so an enemy piece is stuck in front of its king or queen.",
+  "animation_pgn": null,
+  "confirmation_fen": "r1bqk2r/ppp2pb1/2np1np1/7p/3PP3/5N1P/PP1N1PP1/R1BQKB1R w KQkq - 0 9",
+  "confirmation_best_move": "f1b5",
+  "feedback": {
+    "correct": "Correct! The piece is pinned — it cannot move without exposing something more valuable behind it!",
+    "hint": "Line up your piece so an enemy piece is stuck in front of something more valuable.",
+    "reveal": "The pin places your piece on the line between an enemy piece and something valuable behind it."
+  }
+}

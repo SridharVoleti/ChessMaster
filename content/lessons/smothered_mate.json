@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-SMOTHERED_MATE",
+  "pattern": "smothered_mate",
+  "title": "Smothered Mate",
+  "content_status": "draft",
+  "concept": "A smothered mate is checkmate by a lone knight when the enemy king is completely boxed in by its own pieces and has nowhere to go.",
+  "tip": "Look for an enemy king surrounded by its own pieces. A knight check on the right square can be mate.",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Checkmate! The king was smothered by its own army and the knight finished it.",
+    "hint": "The king cannot move — its own pieces block every square. Where can your knight check it?",
+    "reveal": "Trap the king with its own pieces, then deliver the knight check it cannot escape or block."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-ZWISCHENZUG",
+  "pattern": "zwischenzug",
+  "title": "The Zwischenzug",
+  "content_status": "draft",
+  "concept": "A zwischenzug is an in-between move. Instead of making the move your opponent expects — like recapturing — you first play a more forcing move that they must answer.",
+  "tip": "Before you recapture, ask: do I have a check or a bigger threat I can play first?",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Clever! You slipped in a forcing move first — a zwischenzug — and gained before finishing the trade.",
+    "hint": "You do not have to recapture right away. Is there a check or threat that comes first?",
+    "reveal": "Play the forcing in-between move, make your opponent respond, then come back and complete the exchange with extra profit."
+  }
+}

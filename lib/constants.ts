@@ -1,25 +1,16 @@
-// ── Pattern sequence — fixed order, do not reorder ────────────────
-export const PATTERN_SEQUENCE = [
-  { key: 'fork',             displayName: 'Fork',           tier: 'Beginner',     icon: '♞', isFree: true  },
-  { key: 'pin',              displayName: 'Pin',            tier: 'Beginner',     icon: '📌', isFree: true  },
-  { key: 'back_rank_mate',   displayName: 'Back rank mate', tier: 'Beginner',     icon: '♜', isFree: false },
-  { key: 'skewer',           displayName: 'Skewer',         tier: 'Intermediate', icon: '→',  isFree: false },
-  { key: 'discovered_attack',displayName: 'Discovered attack', tier: 'Intermediate', icon: '👁', isFree: false },
-  { key: 'double_check',     displayName: 'Double check',   tier: 'Intermediate', icon: '✓',  isFree: false },
-  { key: 'deflection',       displayName: 'Deflection',     tier: 'Advanced',     icon: '↗',  isFree: false },
-  { key: 'decoy',            displayName: 'Decoy',          tier: 'Advanced',     icon: '🎣', isFree: false },
-  { key: 'smothered_mate',   displayName: 'Smothered mate', tier: 'Advanced',     icon: '♞', isFree: false },
-  { key: 'overloading',      displayName: 'Overloading',    tier: 'Expert',       icon: '⚖',  isFree: false },
-  { key: 'x_ray_attack',     displayName: 'X-Ray attack',   tier: 'Expert',       icon: '🔍', isFree: false },
-  { key: 'zwischenzug',      displayName: 'Zwischenzug',    tier: 'Expert',       icon: '⚡', isFree: false },
-] as const
+// ── Pattern sequence — derived from the curriculum index ─────────
+// content/curriculum/index.json is the single source of truth for the
+// pattern order, tiers and roadmap metadata. These re-exports keep the
+// historical `@/lib/constants` import path working.
+export {
+  PATTERN_SEQUENCE,
+  TIER_ORDER,
+  FREE_PATTERNS,
+} from './curriculum'
+export type { PatternKey, Tier, PatternDef } from './curriculum'
 
-export type PatternKey = typeof PATTERN_SEQUENCE[number]['key']
-export type Tier = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert'
-
-export const FREE_PATTERNS: PatternKey[] = ['fork', 'pin']
-
-export const TIER_ORDER: Tier[] = ['Beginner', 'Intermediate', 'Advanced', 'Expert']
+import { PATTERN_SEQUENCE } from './curriculum'
+import type { PatternKey } from './curriculum'
 
 // ── XP system ─────────────────────────────────────────────────────
 export const XP_LEVELS = [

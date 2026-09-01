@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-DOUBLE_CHECK",
+  "pattern": "double_check",
+  "title": "The Double Check",
+  "content_status": "draft",
+  "concept": "A double check is when two of your pieces give check at the same time, usually by a discovered attack. The king cannot block or capture both, so it must move.",
+  "tip": "Look for a move that gives check and uncovers a second check from the piece behind it.",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Brilliant! Two pieces give check at once — a double check! The king must move.",
+    "hint": "Can you move a piece so it gives check AND uncovers a check from another piece?",
+    "reveal": "When two pieces check the king at the same time, the king cannot block either attack — it has to run."
+  }
+}
