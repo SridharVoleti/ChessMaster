@@ -9,12 +9,12 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const service = getAuthzService()
-    service.registerStudent({
+    await service.registerStudent({
       email: String(body.email ?? ''),
       displayName: String(body.displayName ?? ''),
       password: String(body.password ?? ''),
     })
-    const { student, auth } = service.login({
+    const { student, auth } = await service.login({
       email: String(body.email ?? ''),
       password: String(body.password ?? ''),
     })

@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { student, auth } = getAuthzService().login({
+    const { student, auth } = await getAuthzService().login({
       email: String(body.email ?? ''),
       password: String(body.password ?? ''),
     })

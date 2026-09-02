@@ -12,9 +12,9 @@ export const dynamic = 'force-dynamic'
 /** GET → full account status: student, bookings, today's quota, active session. */
 export async function GET(req: NextRequest) {
   try {
-    const student = studentFromCookies(req.cookies)
+    const student = await studentFromCookies(req.cookies)
     if (!student) return unauthenticatedResponse()
-    return NextResponse.json(getAuthzService().getStatus(student))
+    return NextResponse.json(await getAuthzService().getStatus(student))
   } catch (e) {
     return errorResponse(e)
   }

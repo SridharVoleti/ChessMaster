@@ -43,9 +43,9 @@ export default async function PlayPage({ params, searchParams }: Props) {
   // Session gate (AUTHZ_ENFORCE=1): playing requires a logged-in student
   // with an active booked-day usage session — see lib/authz.
   if (authzEnforced()) {
-    const student = studentFromCookies(cookies())
+    const student = await studentFromCookies(cookies())
     if (!student) redirect('/account')
-    if (!getAuthzService().getActiveSession(student.id)) redirect('/account')
+    if (!(await getAuthzService().getActiveSession(student.id))) redirect('/account')
   }
 
   const route = ROUTES[params.pattern]

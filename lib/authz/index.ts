@@ -2,5 +2,5 @@
 export * from './types'
 export * from './config'
 export * from './dates'
-export { openAuthzDb, AUTHZ_SCHEMA_SQL, type AuthzDb } from './db'
+export { AUTHZ_SCHEMA_SQL, createPgSql, type Sql } from './store'
 export { AuthzService, type StudentStatus } from './service'

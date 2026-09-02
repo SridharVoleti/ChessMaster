@@ -1,13 +1,11 @@
 // ============================================================
 // authz — Next.js adapter (the ONLY authz file that knows Next).
-// Singleton service over a file-backed SQLite DB + cookie helpers
-// + AuthzError → HTTP status mapping for route handlers.
+// Singleton service over a pooled Postgres connection + cookie
+// helpers + AuthzError → HTTP status mapping for route handlers.
 // ============================================================
 
-import fs from 'fs'
-import path from 'path'
 import { NextResponse } from 'next/server'
-import { openAuthzDb } from './db'
+import { createPgSql } from './store'
 import { authzConfigFromEnv } from './config'
 import { AuthzService } from './service'
 import { AuthzError, AuthzErrorCode, Student } from './types'
@@ -18,11 +16,7 @@ let singleton: AuthzService | null = null
 
 export function getAuthzService(): AuthzService {
   if (!singleton) {
-    const dbPath = process.env.AUTHZ_DB_PATH ?? path.join(process.cwd(), 'data', 'authz.sqlite')
-    if (dbPath !== ':memory:') {
-      fs.mkdirSync(path.dirname(dbPath), { recursive: true })
-    }
-    singleton = new AuthzService(openAuthzDb(dbPath), authzConfigFromEnv())
+    singleton = new AuthzService(createPgSql(), authzConfigFromEnv())
   }
   return singleton
 }
@@ -32,7 +26,7 @@ interface CookieReader {
   get(name: string): { value: string } | undefined
 }
 
-export function studentFromCookies(cookies: CookieReader): Student | null {
+export async function studentFromCookies(cookies: CookieReader): Promise<Student | null> {
   const token = cookies.get(AUTH_COOKIE)?.value
   if (!token) return null
   return getAuthzService().getStudentByToken(token)
