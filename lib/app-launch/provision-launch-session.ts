@@ -10,13 +10,13 @@ import type { AuthToken, Booking, Student, UsageSession } from '@/lib/authz/type
 
 /** The AuthzService surface this module needs — kept structural so tests can fake it. */
 export interface LaunchAuthz {
-  upsertLaunchStudent(input: { id: string; displayName: string }): Student
-  ensureBookingForToday(studentId: string): Booking
+  upsertLaunchStudent(input: { id: string; displayName: string }): Promise<Student>
+  ensureBookingForToday(studentId: string): Promise<Booking>
   startLaunchSession(
     studentId: string,
     opts?: { sessionExpiresAt?: string },
-  ): { session: UsageSession; resumed: boolean }
-  issueToken(studentId: string, expiresAt?: string): AuthToken
+  ): Promise<{ session: UsageSession; resumed: boolean }>
+  issueToken(studentId: string, expiresAt?: string): Promise<AuthToken>
 }
 
 export interface ProvisionResult {
@@ -35,11 +35,11 @@ export async function provisionLaunchSession(params: {
 }): Promise<ProvisionResult> {
   const { authz, learner, centralSessionExpiresAt } = params
   try {
-    const student = authz.upsertLaunchStudent({ id: learner.learnerId, displayName: learner.displayName })
-    const { session, resumed } = authz.startLaunchSession(student.id, {
+    const student = await authz.upsertLaunchStudent({ id: learner.learnerId, displayName: learner.displayName })
+    const { session, resumed } = await authz.startLaunchSession(student.id, {
       sessionExpiresAt: centralSessionExpiresAt,
     })
-    const auth = authz.issueToken(student.id, centralSessionExpiresAt)
+    const auth = await authz.issueToken(student.id, centralSessionExpiresAt)
     return {
       token: auth.token,
       tokenExpiresAt: auth.expiresAt,

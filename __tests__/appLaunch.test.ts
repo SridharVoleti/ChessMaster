@@ -16,10 +16,10 @@ import { verifyBootstrapAssertion } from '@/lib/app-launch/bootstrap-assertion'
 import { handleAppLaunch } from '@/lib/app-launch/handle-app-launch'
 import type { LaunchAuthz } from '@/lib/app-launch/provision-launch-session'
 
-import { openAuthzDb } from '@/lib/authz/db'
 import { AuthzService } from '@/lib/authz/service'
 import { DEFAULT_AUTHZ_CONFIG } from '@/lib/authz/config'
 import type { Clock } from '@/lib/authz/types'
+import { makeSqliteSql } from './helpers/sqliteStore'
 
 // ── fixtures ────────────────────────────────────────────────
 const CLIENT_ID = 'chessmaster-client'
@@ -267,20 +267,20 @@ describe('handleAppLaunch', () => {
     type FakeSession = { id: string; studentId: string; bookingId: string; startedAt: string; expiresAt: string; endedAt: null }
     const state = { students: new Map<string, unknown>(), sessions: [] as FakeSession[], tokens: [] as unknown[] }
     const authz: LaunchAuthz = {
-      upsertLaunchStudent: ({ id, displayName }) => {
+      upsertLaunchStudent: async ({ id, displayName }) => {
         const s = { id, email: `launch+${id}@apps.babysteps.in`, displayName, createdAt: 'now' }
         state.students.set(id, s)
         return s
       },
-      ensureBookingForToday: (studentId) => ({ id: `b-${studentId}`, studentId, slotDate: 'today', createdAt: 'now' }),
-      startLaunchSession: (studentId, opts) => {
+      ensureBookingForToday: async (studentId) => ({ id: `b-${studentId}`, studentId, slotDate: 'today', createdAt: 'now' }),
+      startLaunchSession: async (studentId, opts) => {
         const existing = state.sessions.find((x) => x.studentId === studentId && !x.endedAt)
         if (existing) return { session: existing, resumed: true }
         const session: FakeSession = { id: `s-${state.sessions.length + 1}`, studentId, bookingId: `b-${studentId}`, startedAt: 'now', expiresAt: opts?.sessionExpiresAt ?? 'later', endedAt: null }
         state.sessions.push(session)
         return { session, resumed: false }
       },
-      issueToken: (studentId, expiresAt) => {
+      issueToken: async (studentId, expiresAt) => {
         const token = `tok-${studentId}-${state.tokens.length + 1}`
         state.tokens.push({ token, studentId })
         return { token, expiresAt: expiresAt ?? 'ttl' }
@@ -344,7 +344,7 @@ describe('handleAppLaunch', () => {
 describe('handleAppLaunch + real AuthzService', () => {
   test('provisions a student, booking and active usage session the /play gate accepts', async () => {
     const clock = new FakeClock(new Date('2026-08-27T09:00:00Z'))
-    const authz = new AuthzService(openAuthzDb(':memory:'), DEFAULT_AUTHZ_CONFIG, clock)
+    const authz = new AuthzService(makeSqliteSql(), DEFAULT_AUTHZ_CONFIG, clock)
     // central expiry (09:20) is sooner than the 45-min local cap (09:45), so it should win
     const fetchImpl = stubFetch(
       jsonResponse({
@@ -362,8 +362,8 @@ describe('handleAppLaunch + real AuthzService', () => {
     if (!result.ok) return
 
     // the token resolves and the learner has an active session (this IS the /play gate check)
-    expect(authz.getStudentByToken(result.token)?.id).toBe('learner-1')
-    const active = authz.getActiveSession('learner-1')
+    expect((await authz.getStudentByToken(result.token))?.id).toBe('learner-1')
+    const active = await authz.getActiveSession('learner-1')
     expect(active?.id).toBe(result.sessionId)
     // session window bounded to BabySteps' centralSessionExpiresAt (sooner than 45min default)
     expect(active?.expiresAt).toBe('2026-08-27T09:20:00Z')
@@ -379,13 +379,13 @@ describe('handleAppLaunch + real AuthzService', () => {
 
   test('a launched session skips the per-day quota (BabySteps owns entitlement)', async () => {
     const clock = new FakeClock(new Date('2026-08-27T09:00:00Z'))
-    const authz = new AuthzService(openAuthzDb(':memory:'), { ...DEFAULT_AUTHZ_CONFIG, sessionsPerDay: 1 }, clock)
+    const authz = new AuthzService(makeSqliteSql(), { ...DEFAULT_AUTHZ_CONFIG, sessionsPerDay: 1 }, clock)
 
-    authz.upsertLaunchStudent({ id: 'learner-1', displayName: 'Ada' })
-    authz.startLaunchSession('learner-1')
-    authz.endSession('learner-1')
+    await authz.upsertLaunchStudent({ id: 'learner-1', displayName: 'Ada' })
+    await authz.startLaunchSession('learner-1')
+    await authz.endSession('learner-1')
     // quota of 1 is used — a normal startSession would now throw QUOTA_EXHAUSTED
-    expect(() => authz.startLaunchSession('learner-1')).not.toThrow()
-    expect(authz.getActiveSession('learner-1')).not.toBeNull()
+    await expect(authz.startLaunchSession('learner-1')).resolves.toBeDefined()
+    expect(await authz.getActiveSession('learner-1')).not.toBeNull()
   })
 })

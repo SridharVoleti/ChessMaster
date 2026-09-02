@@ -12,9 +12,9 @@ export const dynamic = 'force-dynamic'
 /** GET → the student's bookings with per-day usage counts. */
 export async function GET(req: NextRequest) {
   try {
-    const student = studentFromCookies(req.cookies)
+    const student = await studentFromCookies(req.cookies)
     if (!student) return unauthenticatedResponse()
-    return NextResponse.json({ bookings: getAuthzService().listBookings(student.id) })
+    return NextResponse.json({ bookings: await getAuthzService().listBookings(student.id) })
   } catch (e) {
     return errorResponse(e)
   }
@@ -23,10 +23,10 @@ export async function GET(req: NextRequest) {
 /** POST { slotDate: "YYYY-MM-DD" } → reserve that day. */
 export async function POST(req: NextRequest) {
   try {
-    const student = studentFromCookies(req.cookies)
+    const student = await studentFromCookies(req.cookies)
     if (!student) return unauthenticatedResponse()
     const body = await req.json()
-    const booking = getAuthzService().bookSlot(student.id, String(body.slotDate ?? ''))
+    const booking = await getAuthzService().bookSlot(student.id, String(body.slotDate ?? ''))
     return NextResponse.json({ booking }, { status: 201 })
   } catch (e) {
     return errorResponse(e)

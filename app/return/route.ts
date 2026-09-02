@@ -11,10 +11,10 @@ const DEFAULT_RETURN_URL = 'https://www.babystepsindia.com'
 // the learner back to BabySteps. Revisit once BabySteps confirms the real contract.
 export async function GET(req: NextRequest): Promise<Response> {
   try {
-    const student = studentFromCookies(req.cookies)
+    const student = await studentFromCookies(req.cookies)
     if (student) {
       try {
-        getAuthzService().endSession(student.id)
+        await getAuthzService().endSession(student.id)
       } catch {
         // no active session is fine — we're leaving anyway
       }
