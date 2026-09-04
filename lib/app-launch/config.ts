@@ -19,6 +19,13 @@ export interface AppLaunchConfig {
   bootstrapSecret: string
   /** our app_id from onboarding */
   appId: string
+  /**
+   * our app_registry key from onboarding (e.g. "chess-masters"). Distinct from
+   * clientId (the service-principal id). Optional — when set, the bootstrap
+   * assertion's `app_key` claim is checked against it; when unset, only `app_id`
+   * is enforced.
+   */
+  appKey?: string
   /** our environment from onboarding */
   environment: string
   /** our deployment_id from onboarding */
@@ -68,6 +75,7 @@ export function appLaunchConfig(env: Record<string, string | undefined> = proces
     signingJwk,
     bootstrapSecret,
     appId: required('APP_LAUNCH_APP_ID'),
+    appKey: env.APP_LAUNCH_APP_KEY?.trim() || undefined,
     environment: required('APP_LAUNCH_ENVIRONMENT'),
     deploymentId: required('APP_LAUNCH_DEPLOYMENT_ID'),
     exchangeUrl: env.APP_LAUNCH_EXCHANGE_URL?.trim() || DEFAULT_EXCHANGE_URL,
