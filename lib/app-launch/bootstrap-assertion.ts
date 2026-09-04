@@ -49,12 +49,14 @@ export async function verifyBootstrapAssertion(params: {
     throw new AppLaunchError('BOOTSTRAP_INVALID', `Bootstrap assertion did not verify: ${e instanceof Error ? e.message : 'unknown error'}`)
   }
 
-  // app_id / app_key must match what we were given at onboarding — reject if not.
+  // app_id must match what we were given at onboarding — this is the hard binding.
   if (str(payload.app_id) !== cfg.appId) {
     throw new AppLaunchError('BOOTSTRAP_INVALID', 'Bootstrap assertion app_id does not match this deployment.')
   }
-  if (payload.app_key !== undefined && str(payload.app_key) !== cfg.clientId) {
-    throw new AppLaunchError('BOOTSTRAP_INVALID', 'Bootstrap assertion app_key does not match this client.')
+  // app_key is the human-readable app_registry key (e.g. "chess-masters"), NOT
+  // the service-principal client_id. Only enforced when APP_LAUNCH_APP_KEY is set.
+  if (cfg.appKey && payload.app_key !== undefined && str(payload.app_key) !== cfg.appKey) {
+    throw new AppLaunchError('BOOTSTRAP_INVALID', 'Bootstrap assertion app_key does not match this app.')
   }
 
   const learnerId = str(payload.learner_id)

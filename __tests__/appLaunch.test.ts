@@ -24,6 +24,7 @@ import { makeSqliteSql } from './helpers/sqliteStore'
 // ── fixtures ────────────────────────────────────────────────
 const CLIENT_ID = 'chessmaster-client'
 const APP_ID = 'chessmaster'
+const APP_KEY = 'chess-masters'
 const BOOTSTRAP_SECRET = 'test-bootstrap-secret-abcdefghijklmnop'
 const BOOTSTRAP_ISSUER = 'https://babysteps.in'
 const EXCHANGE_URL = 'https://exchange.test/v1/internal/app-launch/exchange'
@@ -35,6 +36,7 @@ function makeEnv(overrides: Record<string, string | undefined> = {}) {
     APP_LAUNCH_SIGNING_PRIVATE_KEY: JSON.stringify(privateKey.export({ format: 'jwk' })),
     APP_LAUNCH_BOOTSTRAP_SECRET: BOOTSTRAP_SECRET,
     APP_LAUNCH_APP_ID: APP_ID,
+    APP_LAUNCH_APP_KEY: APP_KEY,
     APP_LAUNCH_ENVIRONMENT: 'test',
     APP_LAUNCH_DEPLOYMENT_ID: 'deploy-1',
     APP_LAUNCH_EXCHANGE_URL: EXCHANGE_URL,
@@ -55,7 +57,7 @@ const LEARNER_CLAIMS = {
   age_years: 7,
   locale: 'en-IN',
   app_id: APP_ID,
-  app_key: CLIENT_ID,
+  app_key: APP_KEY,
   deployment_id: 'deploy-1',
   release_id: 'chessmaster-dev-release-1',
 }
@@ -206,6 +208,30 @@ describe('verifyBootstrapAssertion', () => {
   test('a garbage token is rejected without a raw throw', async () => {
     await expect(verifyBootstrapAssertion({ cfg: cfgFor(), token: 'not.a.jwt' })).rejects.toBeInstanceOf(AppLaunchError)
     await expect(verifyBootstrapAssertion({ cfg: cfgFor(), token: '' })).rejects.toBeInstanceOf(AppLaunchError)
+  })
+
+  test('app_key is not checked when APP_LAUNCH_APP_KEY is unset (app_id is the binding)', async () => {
+    const cfg = cfgFor({ APP_LAUNCH_APP_KEY: undefined })
+    const learner = await verifyBootstrapAssertion({
+      cfg,
+      token: await signBootstrap({ ...LEARNER_CLAIMS, app_key: 'anything-at-all' }),
+    })
+    expect(learner.learnerId).toBe('learner-1')
+  })
+
+  test('app_key IS checked (against the registry key, not client_id) when set', async () => {
+    const cfg = cfgFor({ APP_LAUNCH_APP_KEY: APP_KEY })
+    await expect(
+      verifyBootstrapAssertion({
+        cfg,
+        token: await signBootstrap({ ...LEARNER_CLAIMS, app_key: CLIENT_ID }),
+      }),
+    ).rejects.toMatchObject({ code: 'BOOTSTRAP_INVALID' })
+    const ok = await verifyBootstrapAssertion({
+      cfg,
+      token: await signBootstrap({ ...LEARNER_CLAIMS, app_key: APP_KEY }),
+    })
+    expect(ok.learnerId).toBe('learner-1')
   })
 })
 
