@@ -89,8 +89,14 @@ export function GuidedNarrator({
     const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
     const wait = (ms: number) => new Promise<void>(r => window.setTimeout(r, ms))
 
-    // Read a line aloud if we can; always resolve after a sensible time
-    // so a silent or flaky engine never stalls the walkthrough.
+    // Read a line aloud if we can, but never wait longer than it should
+    // take to say it: Edge's Online (Natural) voices frequently never
+    // fire `onend`, which would otherwise stall each step for seconds.
+    // We resolve on `onend` OR after a spoken-length estimate, whichever
+    // comes first, and flush any lingering utterance before the next one.
+    const speechBudget = (text: string) =>
+      Math.min(8000, Math.max(1600, Math.round((text.length / 13) * 1000)))
+
     const narrate = (text: string) =>
       new Promise<void>(resolve => {
         let settled = false
@@ -98,6 +104,7 @@ export function GuidedNarrator({
 
         if (synth && voiceRef.current) {
           try {
+            synth.cancel() // drop anything still queued from the previous line
             const u = new SpeechSynthesisUtterance(text)
             try { u.voice = voiceRef.current } catch { /* default voice */ }
             u.lang = voiceRef.current.lang || 'en-US'
@@ -105,11 +112,8 @@ export function GuidedNarrator({
             u.onend = done
             u.onerror = done
             synth.speak(u)
-            // hard cap in case the engine drops the utterance (Edge online voices)
-            window.setTimeout(done, Math.max(dwellMs(text) + 1500, text.length * 95))
-          } catch {
-            window.setTimeout(done, dwellMs(text))
-          }
+          } catch { /* fall through to the timer */ }
+          window.setTimeout(done, speechBudget(text))
         } else {
           window.setTimeout(done, dwellMs(text))
         }
