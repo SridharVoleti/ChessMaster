@@ -19,12 +19,17 @@ import type { GuidedStep } from '@/lib/narration'
 
 const MOVE_BEAT_MS = 340 // let a move land visually before its line shows
 
-// How long to hold on a commentary line. Paced to *reading* speed, not
-// speaking speed — the line is on screen, highlighted; the audio is a
-// bonus layer that may run a little past this. Keeps a 20-move
-// walkthrough to ~90s instead of ~3min.
+// No-voice pace: how long to hold on a line so it can be read on screen.
 function dwellMs(text: string): number {
   return Math.min(4800, Math.max(1500, text.length * 38))
+}
+
+// Voice pace: a generous ceiling for how long this line could take to
+// *speak* — only used if neither `onend` nor the `speaking` poll ever
+// reports the utterance finished. ~90ms/char ≈ well past a natural TTS
+// rate, so real completion always wins and this just stops a hang.
+function speechCeilingMs(text: string): number {
+  return Math.min(22000, 3000 + text.length * 90)
 }
 
 type Phase = 'idle' | 'playing' | 'paused' | 'done'
@@ -92,29 +97,51 @@ export function GuidedNarrator({
     const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
     const wait = (ms: number) => new Promise<void>(r => window.setTimeout(r, ms))
 
-    // Read a line aloud if we can, but the timeline is driven by reading
-    // speed (dwellMs), NOT by waiting for the utterance. Edge's Online
-    // (Natural) voices frequently never fire `onend`, which used to stall
-    // every step for seconds — now `onend` only advances *early*, and the
-    // dwell timer guarantees a steady pace whatever the engine does.
+    // Speak a line to the end, then move on. Completion is detected three
+    // ways because Edge's Online (Natural) voices frequently never fire
+    // `onend`: (1) the `onend`/`onerror` events, (2) polling
+    // `synth.speaking` — once it has gone true and then back to false the
+    // utterance is done even without an event, (3) a generous ceiling so
+    // a fully-dropped utterance still can't hang the walkthrough.
+    // No voice → just hold long enough to read the line on screen.
     const narrate = (text: string) =>
       new Promise<void>(resolve => {
         let settled = false
-        const done = () => { if (!settled) { settled = true; resolve() } }
-
-        if (synth && voiceRef.current) {
-          try {
-            synth.cancel() // drop anything still queued from the previous line
-            const u = new SpeechSynthesisUtterance(text)
-            try { u.voice = voiceRef.current } catch { /* default voice */ }
-            u.lang = voiceRef.current.lang || 'en-US'
-            u.rate = 1.05
-            u.onend = done
-            u.onerror = done
-            synth.speak(u)
-          } catch { /* fall through to the timer */ }
+        let poll = 0
+        let ceiling = 0
+        const finish = () => {
+          if (settled) return
+          settled = true
+          if (poll) window.clearInterval(poll)
+          if (ceiling) window.clearTimeout(ceiling)
+          resolve()
         }
-        window.setTimeout(done, dwellMs(text))
+
+        if (!synth || !voiceRef.current) {
+          window.setTimeout(finish, dwellMs(text))
+          return
+        }
+
+        try {
+          synth.cancel() // flush any straggler from the previous line
+          const u = new SpeechSynthesisUtterance(text)
+          try { u.voice = voiceRef.current } catch { /* default voice */ }
+          u.lang = voiceRef.current.lang || 'en-US'
+          u.rate = 1.05
+          u.onend = finish
+          u.onerror = finish
+          synth.speak(u)
+        } catch {
+          window.setTimeout(finish, dwellMs(text))
+          return
+        }
+
+        let hasSpoken = false
+        poll = window.setInterval(() => {
+          if (synth.speaking) hasSpoken = true
+          else if (hasSpoken) finish()          // spoke, then stopped — done
+        }, 250)
+        ceiling = window.setTimeout(finish, speechCeilingMs(text))
       })
 
     void (async () => {
