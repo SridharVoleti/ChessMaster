@@ -6,23 +6,25 @@ import type { GuidedStep } from '@/lib/narration'
 
 // ── Guided replay control ────────────────────────────────────────
 // Walks a lesson's steps (story, then one per commentary line) and
-// keeps the board and the spoken commentary in lock-step:
+// keeps the board and the commentary in lock-step:
 //
-//   play the move  →  speak its commentary  →  play the next move …
+//   play the move  →  show + read its commentary  →  play the next move …
 //
-// The move for a step is applied by the parent (onApplyThroughPly)
-// *before* its line is spoken, and the parent's apply is idempotent so
-// Resume can safely re-run the current step. When every step is done,
-// onFinished() hands control back to the board for the student's turn.
-//
-// Speech uses the same Edge-tuned setup as NarrationPlayer: prefer
-// Microsoft "Online (Natural)" en voices, wait for `voiceschanged`,
-// one utterance per line, Pause = cancel + Resume re-speaks the line.
+// The visual walkthrough (move + highlighted commentary line) always
+// runs — it is driven by a timer, NOT by speech. If a speech voice is
+// available it also reads each line aloud and the step waits for it;
+// if not (voice still loading, offline, unsupported) the step just
+// pauses long enough to read the line. So "commentary loading" never
+// depends on the audio engine.
 
-const MOVE_BEAT_MS = 420 // let a move land visually before its line is read
-const BETWEEN_MS   = 140 // small breath between a line and the next move
+const MOVE_BEAT_MS = 420 // let a move land visually before its line shows
 
-type Phase = 'loading-voice' | 'unsupported' | 'idle' | 'playing' | 'paused' | 'done'
+// how long to dwell on a line when there is no voice (reading time)
+function dwellMs(text: string): number {
+  return Math.min(5200, Math.max(1400, text.length * 42))
+}
+
+type Phase = 'idle' | 'playing' | 'paused' | 'done'
 
 interface Props {
   steps:              GuidedStep[]
@@ -42,30 +44,29 @@ export function GuidedNarrator({
   onActiveStepChange,
   resetKey,
 }: Props) {
-  const [phase, setPhase] = useState<Phase>('loading-voice')
+  const [phase, setPhase] = useState<Phase>('idle')
+  const [hasVoice, setHasVoice] = useState(false)
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null)
   const stepRef  = useRef(0)
   // bumped on every stop/pause/reset/unmount so a stale async loop bails
   const tokenRef = useRef(0)
 
-  // ── Voice loading (Edge populates the list asynchronously) ──────
+  // ── Voice loading (best-effort; Edge populates the list async) ──
   useEffect(() => {
     const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
-    if (!synth) { setPhase('unsupported'); return }
+    if (!synth) return
 
     const refresh = () => {
       voiceRef.current = pickNarrationVoice(synth.getVoices())
-      setPhase(prev => (prev === 'loading-voice' && voiceRef.current ? 'idle' : prev))
+      setHasVoice(Boolean(voiceRef.current))
     }
     refresh()
     synth.addEventListener('voiceschanged', refresh)
-    const t1 = window.setTimeout(refresh, 250)
-    const t2 = window.setTimeout(refresh, 1500)
+    const timers = [250, 1500, 4000].map(ms => window.setTimeout(refresh, ms))
 
     return () => {
       synth.removeEventListener('voiceschanged', refresh)
-      window.clearTimeout(t1)
-      window.clearTimeout(t2)
+      timers.forEach(window.clearTimeout)
       tokenRef.current += 1
       synth.cancel()
     }
@@ -77,40 +78,47 @@ export function GuidedNarrator({
     if (typeof window !== 'undefined') window.speechSynthesis?.cancel()
     stepRef.current = 0
     onActiveStepChange(null)
-    setPhase(prev => (prev === 'unsupported' || prev === 'loading-voice' ? prev : 'idle'))
+    setPhase('idle')
   }, [resetKey, onActiveStepChange])
 
   const runFrom = useCallback((startIndex: number) => {
-    const synth = window.speechSynthesis
-    if (!synth || !voiceRef.current) return
+    if (steps.length === 0) return
     const token = ++tokenRef.current
     setPhase('playing')
 
-    const speak = (text: string) =>
+    const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
+    const wait = (ms: number) => new Promise<void>(r => window.setTimeout(r, ms))
+
+    // Read a line aloud if we can; always resolve after a sensible time
+    // so a silent or flaky engine never stalls the walkthrough.
+    const narrate = (text: string) =>
       new Promise<void>(resolve => {
         let settled = false
         const done = () => { if (!settled) { settled = true; resolve() } }
-        try {
-          const u = new SpeechSynthesisUtterance(text)
-          try { u.voice = voiceRef.current } catch { /* keep default voice */ }
-          u.lang = voiceRef.current?.lang || 'en-US'
-          u.rate = 1.05
-          u.onend = done
-          u.onerror = done
-          synth.speak(u)
-          // safety net: never hang a step if the engine drops the utterance
-          window.setTimeout(done, Math.max(4000, text.length * 90))
-        } catch {
-          done()
+
+        if (synth && voiceRef.current) {
+          try {
+            const u = new SpeechSynthesisUtterance(text)
+            try { u.voice = voiceRef.current } catch { /* default voice */ }
+            u.lang = voiceRef.current.lang || 'en-US'
+            u.rate = 1.05
+            u.onend = done
+            u.onerror = done
+            synth.speak(u)
+            // hard cap in case the engine drops the utterance (Edge online voices)
+            window.setTimeout(done, Math.max(dwellMs(text) + 1500, text.length * 95))
+          } catch {
+            window.setTimeout(done, dwellMs(text))
+          }
+        } else {
+          window.setTimeout(done, dwellMs(text))
         }
       })
 
-    const wait = (ms: number) => new Promise<void>(r => window.setTimeout(r, ms))
-
     void (async () => {
       try {
-        synth.cancel()
-        await wait(60) // let the cancel settle before queueing (Edge quirk)
+        synth?.cancel()
+        await wait(60)
 
         for (let i = startIndex; i < steps.length; i++) {
           if (token !== tokenRef.current) return
@@ -119,15 +127,13 @@ export function GuidedNarrator({
           const step = steps[i]
 
           if (step.kind === 'move') {
-            onApplyThroughPly(step.ply)     // idempotent in the parent
+            onApplyThroughPly(step.ply)   // idempotent in the parent
             await wait(MOVE_BEAT_MS)
             if (token !== tokenRef.current) return
           }
 
           if (step.text) {
-            await speak(step.text)
-            if (token !== tokenRef.current) return
-            await wait(BETWEEN_MS)
+            await narrate(step.text)
             if (token !== tokenRef.current) return
           }
         }
@@ -139,8 +145,6 @@ export function GuidedNarrator({
         onFinished()
       } catch {
         if (token !== tokenRef.current) return
-        // Unexpected failure mid-replay: don't strand the UI on "playing".
-        // Jump straight to the student's turn — the board catches up.
         onActiveStepChange(null)
         setPhase('done')
         onFinished()
@@ -178,29 +182,26 @@ export function GuidedNarrator({
     moveSteps,
   )
 
-  const status =
-    phase === 'unsupported'
-      ? 'Guided read-aloud needs speech support — open this in Microsoft Edge.'
-      : phase === 'loading-voice'
-        ? 'Preparing the narration voice…'
-        : nothingToRead
-          ? 'No guided commentary for this lesson.'
-          : phase === 'playing'
-            ? `Playing move ${Math.max(1, movesDone)} of ${moveSteps} with commentary…`
-            : phase === 'paused'
-              ? 'Paused. Resume replays the current move’s commentary.'
-              : phase === 'done'
-                ? 'Replay finished — your turn to find the move on the board.'
-                : 'Press Play to watch the game unfold move-by-move with commentary.'
+  const status = nothingToRead
+    ? 'No guided commentary for this lesson.'
+    : phase === 'playing'
+      ? `Move ${Math.max(1, movesDone)} of ${moveSteps}${hasVoice ? ' — reading commentary aloud' : ' — commentary'}…`
+      : phase === 'paused'
+        ? 'Paused. Resume picks up at the current move.'
+        : phase === 'done'
+          ? 'Replay finished — your turn to find the move on the board.'
+          : hasVoice
+            ? 'Press Play to watch the game unfold move-by-move, with narration.'
+            : 'Press Play to watch the game unfold move-by-move with commentary.'
 
   return (
     <div className="rounded-xl bg-gray-800 p-3 text-sm">
       <div className="flex flex-wrap gap-2">
-        {(phase === 'idle' || phase === 'done' || phase === 'unsupported' || phase === 'loading-voice') && (
+        {(phase === 'idle' || phase === 'done') && (
           <button
             type="button"
             onClick={handlePlay}
-            disabled={phase === 'unsupported' || phase === 'loading-voice' || nothingToRead}
+            disabled={nothingToRead}
             className="rounded-lg bg-emerald-600 px-3 py-1.5 font-semibold text-white enabled:hover:bg-emerald-500 disabled:opacity-40"
           >
             {phase === 'done' ? '↻ Replay' : '▶ Play'}

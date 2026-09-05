@@ -1,42 +1,7 @@
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { authzEnforced, studentFromCookies } from '@/lib/authz/nextAdapter'
-import { createServiceClient } from '@/lib/supabase/server'
-import { getProgressSnapshot } from '@/lib/supabase/gameAttempts'
-import { ModuleRoadmap } from '@/components/ModuleRoadmap'
-import type { RoadmapProgress } from '@/lib/moduleRoadmap'
 
-export const dynamic = 'force-dynamic'
-
-export default async function RoadmapPage() {
-  let progress: RoadmapProgress = { patterns_mastered: [] }
-
-  if (authzEnforced()) {
-    const student = await studentFromCookies(cookies())
-    if (!student) redirect('/account')
-
-    // NOTE: assumes the authz Student.id doubles as
-    // student_progress.user_id in Supabase — the same assumption
-    // /api/validate-move already makes when a client passes userId.
-    // Confirm that identity mapping before relying on this in production.
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
-      try {
-        const supabase = createServiceClient()
-        const snapshot = await getProgressSnapshot(supabase, student.id)
-        progress = { patterns_mastered: snapshot.patterns_mastered }
-      } catch {
-        // best-effort — fall back to the "not started" default above
-      }
-    }
-  }
-
-  return (
-    <main className="min-h-screen bg-slate-50">
-      <header className="mx-auto max-w-md px-4 pt-8 text-center">
-        <h1 className="font-display text-3xl font-extrabold text-slate-900">Your roadmap</h1>
-        <p className="mt-2 text-slate-600">Fork to Zwischenzug — one module at a time.</p>
-      </header>
-      <ModuleRoadmap progress={progress} />
-    </main>
-  )
+// The roadmap is the home screen now (app/page.tsx). Keep this path
+// working for existing links / bookmarks.
+export default function RoadmapRedirect() {
+  redirect('/')
 }
