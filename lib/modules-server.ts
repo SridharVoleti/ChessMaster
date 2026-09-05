@@ -59,7 +59,7 @@ interface ModuleLessonFile {
  *  broken puzzle out of a dozen shouldn't take the other eleven offline. */
 export async function loadModuleGames(moduleId: string): Promise<ScriptedGame[] | null> {
   const mod = getModule(moduleId)
-  if (!mod) return null
+  if (!mod || !mod.lessons_ref) return null // unknown, or a planned module with no lessons yet
 
   const file = await loadJson<ModuleLessonFile>(mod.lessons_ref)
 
@@ -113,7 +113,7 @@ export async function resolveRouteGames(
 ): Promise<ScriptedGame[]> {
   if (moduleId) {
     const mod = getModule(moduleId)
-    if (mod && mod.pattern === route.pattern) {
+    if (mod && mod.pattern === route.pattern && mod.lessons_ref) {
       const games = await loadModuleGames(moduleId)
       if (games && games.length > 0) return games
     }

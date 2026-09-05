@@ -28,7 +28,7 @@ export interface ProgressSnapshot {
 // Reads a student's current progress row. Returns the "not started" default
 // (first pattern, 0 XP) when no row exists yet — e.g. a student who has
 // never submitted a move. Used by the roadmap ("candy trail") page to
-// derive lock/done/active node state; see lib/roadmapUtils.deriveNodeStates.
+// derive lock/done/active node state; see lib/moduleRoadmap.buildModuleRoadmap.
 export async function getProgressSnapshot(
   client: SupabaseClient,
   userId: string,

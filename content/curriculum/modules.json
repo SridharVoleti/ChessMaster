@@ -1,12 +1,145 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
+  "title": "ChessQuest Roadmap",
+  "worlds": [
+    { "id": "beginner",     "title": "Beginner",     "order": 1 },
+    { "id": "intermediate", "title": "Intermediate", "order": 2 },
+    { "id": "advanced",     "title": "Advanced",     "order": 3 },
+    { "id": "expert",       "title": "Expert",       "order": 4 }
+  ],
   "modules": [
     {
       "id": "FK-B-01",
-      "pattern": "fork",
       "order": 1,
-      "title": "Fork Basics — Module 1",
+      "world": "beginner",
+      "pattern": "fork",
+      "title": "Fork Basics",
+      "subtitle": "One piece attacks two",
+      "icon": "♞",
+      "is_free": true,
+      "status": "published",
       "lessons_ref": "content/modules/fork/FK-B-01.json"
+    },
+    {
+      "id": "PN-B-01",
+      "order": 2,
+      "world": "beginner",
+      "pattern": "pin",
+      "title": "The Pin",
+      "subtitle": "A piece frozen in place",
+      "icon": "📌",
+      "is_free": true,
+      "status": "planned"
+    },
+    {
+      "id": "BR-B-01",
+      "order": 3,
+      "world": "beginner",
+      "pattern": "back_rank_mate",
+      "title": "Back Rank Mate",
+      "subtitle": "Trapped behind its own pawns",
+      "icon": "♜",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "SK-I-01",
+      "order": 4,
+      "world": "intermediate",
+      "pattern": "skewer",
+      "title": "The Skewer",
+      "subtitle": "Big piece moves, win what's behind",
+      "icon": "→",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "DA-I-01",
+      "order": 5,
+      "world": "intermediate",
+      "pattern": "discovered_attack",
+      "title": "Discovered Attack",
+      "subtitle": "Move one piece, unleash another",
+      "icon": "👁",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "DC-I-01",
+      "order": 6,
+      "world": "intermediate",
+      "pattern": "double_check",
+      "title": "Double Check",
+      "subtitle": "Two checkers at once — king must run",
+      "icon": "✓",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "DF-A-01",
+      "order": 7,
+      "world": "advanced",
+      "pattern": "deflection",
+      "title": "Deflection",
+      "subtitle": "Drag a defender off its post",
+      "icon": "↗",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "DY-A-01",
+      "order": 8,
+      "world": "advanced",
+      "pattern": "decoy",
+      "title": "Decoy",
+      "subtitle": "Lure a piece to a bad square",
+      "icon": "🎣",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "SM-A-01",
+      "order": 9,
+      "world": "advanced",
+      "pattern": "smothered_mate",
+      "title": "Smothered Mate",
+      "subtitle": "The knight mates a boxed-in king",
+      "icon": "♞",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "OV-E-01",
+      "order": 10,
+      "world": "expert",
+      "pattern": "overloading",
+      "title": "Overloading",
+      "subtitle": "One defender, too many jobs",
+      "icon": "⚖",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "XR-E-01",
+      "order": 11,
+      "world": "expert",
+      "pattern": "x_ray_attack",
+      "title": "X-Ray Attack",
+      "subtitle": "See straight through a piece",
+      "icon": "🔍",
+      "is_free": false,
+      "status": "planned"
+    },
+    {
+      "id": "ZW-E-01",
+      "order": 12,
+      "world": "expert",
+      "pattern": "zwischenzug",
+      "title": "Zwischenzug",
+      "subtitle": "Squeeze a move in first",
+      "icon": "⚡",
+      "is_free": false,
+      "status": "planned"
     }
   ]
 }
