@@ -1,0 +1,13 @@
+{
+  "id": "BR-B-01",
+  "order": 3,
+  "world": "beginner",
+  "pattern": "back_rank_mate",
+  "title": "Back Rank Mate",
+  "subtitle": "Trapped behind its own pawns",
+  "icon": "♜",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

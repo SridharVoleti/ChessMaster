@@ -1,0 +1,13 @@
+{
+  "id": "XR-E-01",
+  "order": 11,
+  "world": "expert",
+  "pattern": "x_ray_attack",
+  "title": "X-Ray Attack",
+  "subtitle": "See straight through a piece",
+  "icon": "🔍",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

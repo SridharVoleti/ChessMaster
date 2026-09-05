@@ -1,0 +1,13 @@
+{
+  "id": "SK-I-01",
+  "order": 4,
+  "world": "intermediate",
+  "pattern": "skewer",
+  "title": "The Skewer",
+  "subtitle": "Big piece moves, win what's behind",
+  "icon": "→",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

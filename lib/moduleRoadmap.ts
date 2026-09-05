@@ -41,7 +41,7 @@ export interface RoadmapWorld {
 }
 
 function isPlayable(m: ModuleDef): boolean {
-  return m.status === 'published' && Boolean(m.lessons_ref)
+  return m.status === 'published' && m.lesson_count > 0
 }
 
 /** Build the full roadmap for a student. Modules are walked in global

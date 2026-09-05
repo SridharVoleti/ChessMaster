@@ -1,0 +1,13 @@
+{
+  "id": "DY-A-01",
+  "order": 8,
+  "world": "advanced",
+  "pattern": "decoy",
+  "title": "Decoy",
+  "subtitle": "Lure a piece to a bad square",
+  "icon": "🎣",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

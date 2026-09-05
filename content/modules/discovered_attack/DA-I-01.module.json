@@ -1,0 +1,13 @@
+{
+  "id": "DA-I-01",
+  "order": 5,
+  "world": "intermediate",
+  "pattern": "discovered_attack",
+  "title": "Discovered Attack",
+  "subtitle": "Move one piece, unleash another",
+  "icon": "👁",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

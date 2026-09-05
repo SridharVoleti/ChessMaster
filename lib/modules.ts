@@ -1,11 +1,15 @@
 // ── Modules manifest ──────────────────────────────────────────────
-// content/curriculum/modules.json is the single source of truth for the
-// roadmap: an ordered list of modules grouped into "worlds", each module
-// holding several game-based lessons (see lib/modules-server.ts for
-// loading the lesson/game payload off disk).
+// content/curriculum/modules.json is the single file the roadmap (the
+// candy-trail) loads. It is GENERATED from the drop folder
+// content/modules/<pattern>/<id>.module.json by
+// scripts/gen-modules-manifest.mjs (run automatically on predev /
+// prebuild / pretest) — add a .module.json there and it appears on the
+// roadmap on the next dev/build. Do not hand-edit modules.json.
 //
-// Pure metadata only — no filesystem access — so this is safe to import
-// from client components (the roadmap) the same way lib/curriculum.ts is.
+// This module is metadata only — no lesson content, no fs — so it is
+// safe to import from client components. The lesson payloads
+// (stories + per-ply commentary) are read server-side only, by
+// lib/modules-server.
 
 import modulesJson from '@/content/curriculum/modules.json'
 
@@ -18,30 +22,33 @@ export interface ModuleWorld {
 }
 
 export interface ModuleDef {
-  id:           string
+  id:            string
   /** global position on the roadmap trail (1..N) */
-  order:        number
-  world:        string
-  pattern:      string
-  title:        string
-  subtitle?:    string
-  icon:         string
-  is_free:      boolean
-  status:       ModuleStatus
-  /** repo-relative path to the lesson file — absent for planned modules */
-  lessons_ref?: string
+  order:         number
+  world:         string
+  pattern:       string
+  title:         string
+  subtitle?:     string
+  icon:          string
+  is_free:       boolean
+  status:        ModuleStatus
+  /** repo-relative path to the source .module.json */
+  lessons_ref:   string
+  /** how many lessons the source file holds (0 for a planned placeholder) */
+  lesson_count:  number
 }
 
 export interface ModulesManifest {
   schema_version: string
   title:          string
+  generated_by?:  string
   worlds:         ModuleWorld[]
   modules:        ModuleDef[]
 }
 
 export const MODULES_MANIFEST = modulesJson as unknown as ModulesManifest
 
-/** Worlds in declared order. */
+/** Worlds in declared order (only worlds that hold a module). */
 export const MODULE_WORLDS: ModuleWorld[] =
   [...MODULES_MANIFEST.worlds].sort((a, b) => a.order - b.order)
 

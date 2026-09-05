@@ -1,6 +1,14 @@
 {
-  "schema_version": "2.0",
-  "module_id": "FK-B-01",
+  "id": "FK-B-01",
+  "order": 1,
+  "world": "beginner",
+  "pattern": "fork",
+  "title": "Fork Basics",
+  "subtitle": "One piece attacks two",
+  "icon": "♞",
+  "is_free": true,
+  "status": "published",
+  "schema_version": "3.0",
   "lessons": [
     {
       "schema_version": "2.0",

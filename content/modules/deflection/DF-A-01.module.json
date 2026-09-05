@@ -1,0 +1,13 @@
+{
+  "id": "DF-A-01",
+  "order": 7,
+  "world": "advanced",
+  "pattern": "deflection",
+  "title": "Deflection",
+  "subtitle": "Drag a defender off its post",
+  "icon": "↗",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

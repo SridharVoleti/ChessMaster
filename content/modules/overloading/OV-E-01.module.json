@@ -1,0 +1,13 @@
+{
+  "id": "OV-E-01",
+  "order": 10,
+  "world": "expert",
+  "pattern": "overloading",
+  "title": "Overloading",
+  "subtitle": "One defender, too many jobs",
+  "icon": "⚖",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

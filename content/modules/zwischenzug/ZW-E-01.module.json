@@ -1,0 +1,13 @@
+{
+  "id": "ZW-E-01",
+  "order": 12,
+  "world": "expert",
+  "pattern": "zwischenzug",
+  "title": "Zwischenzug",
+  "subtitle": "Squeeze a move in first",
+  "icon": "⚡",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

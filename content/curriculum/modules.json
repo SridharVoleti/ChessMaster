@@ -1,11 +1,28 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "3.0",
   "title": "ChessQuest Roadmap",
+  "generated_by": "scripts/gen-modules-manifest.mjs",
   "worlds": [
-    { "id": "beginner",     "title": "Beginner",     "order": 1 },
-    { "id": "intermediate", "title": "Intermediate", "order": 2 },
-    { "id": "advanced",     "title": "Advanced",     "order": 3 },
-    { "id": "expert",       "title": "Expert",       "order": 4 }
+    {
+      "id": "beginner",
+      "title": "Beginner",
+      "order": 1
+    },
+    {
+      "id": "intermediate",
+      "title": "Intermediate",
+      "order": 2
+    },
+    {
+      "id": "advanced",
+      "title": "Advanced",
+      "order": 3
+    },
+    {
+      "id": "expert",
+      "title": "Expert",
+      "order": 4
+    }
   ],
   "modules": [
     {
@@ -18,7 +35,8 @@
       "icon": "♞",
       "is_free": true,
       "status": "published",
-      "lessons_ref": "content/modules/fork/FK-B-01.json"
+      "lessons_ref": "content/modules/fork/FK-B-01.module.json",
+      "lesson_count": 6
     },
     {
       "id": "PN-B-01",
@@ -29,7 +47,9 @@
       "subtitle": "A piece frozen in place",
       "icon": "📌",
       "is_free": true,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/pin/PN-B-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "BR-B-01",
@@ -40,7 +60,9 @@
       "subtitle": "Trapped behind its own pawns",
       "icon": "♜",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/back_rank_mate/BR-B-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "SK-I-01",
@@ -51,7 +73,9 @@
       "subtitle": "Big piece moves, win what's behind",
       "icon": "→",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/skewer/SK-I-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "DA-I-01",
@@ -62,7 +86,9 @@
       "subtitle": "Move one piece, unleash another",
       "icon": "👁",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/discovered_attack/DA-I-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "DC-I-01",
@@ -73,7 +99,9 @@
       "subtitle": "Two checkers at once — king must run",
       "icon": "✓",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/double_check/DC-I-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "DF-A-01",
@@ -84,7 +112,9 @@
       "subtitle": "Drag a defender off its post",
       "icon": "↗",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/deflection/DF-A-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "DY-A-01",
@@ -95,7 +125,9 @@
       "subtitle": "Lure a piece to a bad square",
       "icon": "🎣",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/decoy/DY-A-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "SM-A-01",
@@ -106,7 +138,9 @@
       "subtitle": "The knight mates a boxed-in king",
       "icon": "♞",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/smothered_mate/SM-A-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "OV-E-01",
@@ -117,7 +151,9 @@
       "subtitle": "One defender, too many jobs",
       "icon": "⚖",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/overloading/OV-E-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "XR-E-01",
@@ -128,7 +164,9 @@
       "subtitle": "See straight through a piece",
       "icon": "🔍",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/x_ray_attack/XR-E-01.module.json",
+      "lesson_count": 0
     },
     {
       "id": "ZW-E-01",
@@ -139,7 +177,9 @@
       "subtitle": "Squeeze a move in first",
       "icon": "⚡",
       "is_free": false,
-      "status": "planned"
+      "status": "planned",
+      "lessons_ref": "content/modules/zwischenzug/ZW-E-01.module.json",
+      "lesson_count": 0
     }
   ]
 }

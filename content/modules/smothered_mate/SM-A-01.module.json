@@ -1,0 +1,13 @@
+{
+  "id": "SM-A-01",
+  "order": 9,
+  "world": "advanced",
+  "pattern": "smothered_mate",
+  "title": "Smothered Mate",
+  "subtitle": "The knight mates a boxed-in king",
+  "icon": "♞",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

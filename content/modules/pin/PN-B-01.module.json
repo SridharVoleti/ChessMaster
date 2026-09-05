@@ -1,0 +1,13 @@
+{
+  "id": "PN-B-01",
+  "order": 2,
+  "world": "beginner",
+  "pattern": "pin",
+  "title": "The Pin",
+  "subtitle": "A piece frozen in place",
+  "icon": "📌",
+  "is_free": true,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}

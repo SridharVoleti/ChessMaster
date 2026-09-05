@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "modules:manifest": "node scripts/gen-modules-manifest.mjs",
+    "predev": "node scripts/gen-modules-manifest.mjs",
     "dev": "next dev -p 3002",
+    "prebuild": "node scripts/gen-modules-manifest.mjs",
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "next lint",
+    "pretest": "node scripts/gen-modules-manifest.mjs",
     "test": "jest --no-coverage",
     "test:e2e": "playwright test",
     "test:python": "pytest tests/ -v"

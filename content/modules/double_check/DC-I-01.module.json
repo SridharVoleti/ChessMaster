@@ -1,0 +1,13 @@
+{
+  "id": "DC-I-01",
+  "order": 6,
+  "world": "intermediate",
+  "pattern": "double_check",
+  "title": "Double Check",
+  "subtitle": "Two checkers at once — king must run",
+  "icon": "✓",
+  "is_free": false,
+  "status": "planned",
+  "schema_version": "3.0",
+  "lessons": []
+}
