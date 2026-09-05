@@ -9,8 +9,8 @@ import {
   FREE_PATTERNS,
   getUnit,
   getUnitByRoute,
-  loadLessonContent,
 } from '../lib/curriculum'
+import { loadLessonContent } from '../lib/curriculum-server'
 
 const REPO_ROOT = join(__dirname, '..')
 const readJson = (rel: string) => JSON.parse(readFileSync(join(REPO_ROOT, rel), 'utf8'))

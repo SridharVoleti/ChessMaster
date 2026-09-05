@@ -3,12 +3,9 @@ import { cookies } from 'next/headers'
 import { authzEnforced, getAuthzService, studentFromCookies } from '@/lib/authz/nextAdapter'
 import { GamePage }  from './GamePage'
 import type { ScriptedGame } from './GamePage'
-import {
-  PLAY_ROUTES,
-  loadLessonContent,
-  toLessonFeedback,
-  type LessonFeedback,
-} from '@/lib/curriculum'
+import { loadJson } from '@/lib/content-fs'
+import { PLAY_ROUTES, type LessonFeedback } from '@/lib/curriculum'
+import { loadLessonContent, toLessonFeedback } from '@/lib/curriculum-server'
 
 // The route table is generated from content/curriculum/index.json — the
 // single source of truth. The URL segment (route_key) and the chess
@@ -32,10 +29,10 @@ export default async function PlayPage({ params, searchParams }: Props) {
   const route = PLAY_ROUTES[params.pattern]
   if (!route) notFound()
 
-  // JSON module imports widen field types (side: string, not the
-  // 'white' | 'black' union), so the result is cast through unknown.
-  const mod = await import(`@/scripts/games/${route.gamesFile}`)
-  const games = ((mod as { default?: unknown[] }).default ?? []) as ScriptedGame[]
+  // Read from disk at request time (lib/content-fs) rather than a webpack
+  // import() — keeps the server bundle flat no matter how many thousand
+  // game files the curriculum grows to. Cached in-process after first read.
+  const games = await loadJson<ScriptedGame[]>(route.gamesRef)
 
   // Lesson feedback strings come from content/lessons/<pattern>.json.
   const lesson = await loadLessonContent(route.pattern)

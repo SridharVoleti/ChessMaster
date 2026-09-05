@@ -8,6 +8,10 @@
 // PATTERN_SEQUENCE, TIER_ORDER and FREE_PATTERNS are derived here and
 // re-exported from lib/constants.ts so existing call sites keep working.
 
+// This module is imported by both server and client code (e.g. the
+// roadmap's client-side RoadmapTrail needs TIER_ORDER), so it must stay
+// free of node:fs-backed helpers. Anything that reads content off disk
+// lives in lib/curriculum-server.ts instead — see loadLessonContent there.
 import curriculumJson from '@/content/curriculum/index.json'
 
 // ── Literal types (compile-time safety; kept in sync with the index
@@ -113,20 +117,29 @@ export function getCurriculum(): Curriculum {
   return CURRICULUM
 }
 
+// O(1) lookup maps, built once at module load. A `.find()` over
+// CURRICULUM_UNITS is cheap even at a few thousand units, but every
+// render of the roadmap looks up many units by key — a Map avoids
+// re-scanning the array on each call as the curriculum grows.
+const unitsByPattern  = new Map<string, CurriculumUnit>(CURRICULUM_UNITS.map(u => [u.pattern, u]))
+const unitsByRouteKey = new Map<string, CurriculumUnit>(CURRICULUM_UNITS.map(u => [u.route_key, u]))
+
 /** Look up a unit by its chess pattern key. */
 export function getUnit(pattern: string): CurriculumUnit | undefined {
-  return CURRICULUM_UNITS.find(u => u.pattern === pattern)
+  return unitsByPattern.get(pattern)
 }
 
 /** Look up a unit by its roadmap/URL route key. */
 export function getUnitByRoute(routeKey: string): CurriculumUnit | undefined {
-  return CURRICULUM_UNITS.find(u => u.route_key === routeKey)
+  return unitsByRouteKey.get(routeKey)
 }
 
 /** All route keys the /play/[pattern] route should accept, mapped to a
- *  { gamesFile, pattern } pair. Includes aux (non-roadmap) routes. */
+ *  { gamesRef, pattern } pair. Includes aux (non-roadmap) routes.
+ *  gamesRef is the repo-relative path passed straight to loadJson —
+ *  no webpack import() involved, so adding units never touches this file. */
 export interface RouteBinding {
-  gamesFile: string   // basename within scripts/games/, e.g. "fork.json"
+  gamesRef:  string   // repo-relative path, e.g. "scripts/games/fork.json"
   pattern:   string
   onRoadmap: boolean
 }
@@ -134,40 +147,16 @@ export interface RouteBinding {
 export const PLAY_ROUTES: Record<string, RouteBinding> = (() => {
   const out: Record<string, RouteBinding> = {}
   for (const u of CURRICULUM_UNITS) {
-    out[u.route_key] = { gamesFile: basename(u.games_ref), pattern: u.pattern, onRoadmap: true }
+    out[u.route_key] = { gamesRef: u.games_ref, pattern: u.pattern, onRoadmap: true }
   }
   for (const a of CURRICULUM.aux_routes) {
-    out[a.route_key] = { gamesFile: basename(a.games_ref), pattern: a.pattern, onRoadmap: false }
+    out[a.route_key] = { gamesRef: a.games_ref, pattern: a.pattern, onRoadmap: false }
   }
   return out
 })()
 
-function basename(path: string): string {
-  return path.slice(path.lastIndexOf('/') + 1)
-}
-
-// ── Lesson loading ───────────────────────────────────────────────
-/** Dynamically load a pattern's lesson content. Returns null if the
- *  pattern is unknown or its lesson file cannot be resolved. */
-export async function loadLessonContent(pattern: string): Promise<LessonContent | null> {
-  const unit = getUnit(pattern)
-  if (!unit) return null
-  try {
-    const mod = await import(`@/content/lessons/${unit.pattern}.json`)
-    return ((mod as { default?: unknown }).default ?? mod) as LessonContent
-  } catch {
-    return null
-  }
-}
-
-/** Adapt a LessonContent into the LessonFeedback shape the validator uses. */
-export function toLessonFeedback(lesson: LessonContent): LessonFeedback {
-  return {
-    feedback_correct: lesson.feedback.correct,
-    feedback_hint:    lesson.feedback.hint,
-    feedback_reveal:  lesson.feedback.reveal,
-  }
-}
+// Lesson *loading* (reads content/lessons/<pattern>.json off disk) lives in
+// lib/curriculum-server.ts — see loadLessonContent/toLessonFeedback there.
 
 // ── Derived legacy exports (re-exported by lib/constants.ts) ──────
 export interface PatternDef {
