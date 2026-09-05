@@ -19,3 +19,29 @@ export function buildNarrationSegments(game: Pick<ScriptedGame, 'story' | 'comme
 
   return segments
 }
+
+// ── Guided replay steps ──────────────────────────────────────────
+// The ordered sequence GuidedNarrator walks: the story first (if any),
+// then one step per commentary line. A move step carries the `ply` it
+// narrates so the board can be advanced to exactly that half-move
+// before the line is spoken — this is what keeps the move and its
+// commentary in lock-step. Blank commentary lines are kept as move
+// steps (the move must still be played) but with empty text, so the
+// narrator advances the board and moves on without speaking.
+
+export type GuidedStep =
+  | { kind: 'story'; text: string }
+  | { kind: 'move'; ply: number; text: string }
+
+export function buildGuidedSteps(game: Pick<ScriptedGame, 'story' | 'commentary'>): GuidedStep[] {
+  const steps: GuidedStep[] = []
+
+  if (game.story && game.story.trim()) steps.push({ kind: 'story', text: game.story.trim() })
+
+  const commentary = [...(game.commentary ?? [])].sort((a, b) => a.ply - b.ply)
+  for (const line of commentary) {
+    steps.push({ kind: 'move', ply: line.ply, text: (line.text ?? '').trim() })
+  }
+
+  return steps
+}

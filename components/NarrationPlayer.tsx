@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { pickNarrationVoice } from '@/lib/speech'
 
 // ── Read-aloud control ───────────────────────────────────────────
 // Web Speech API (speechSynthesis) narration for a lesson's story +
@@ -13,26 +14,12 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 //   • Pause = cancel + remember index; Resume re-speaks from there,
 //     because native pause()/resume() is unreliable with Edge's
 //     online voices
+//
+// This is the plain monologue player used for story-only lessons.
+// Module lessons with per-ply commentary use GuidedNarrator instead,
+// which keeps the board move and its commentary in lock-step.
 
 type PlayerState = 'idle' | 'playing' | 'paused' | 'unsupported' | 'loading-voice'
-
-function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null {
-  const ranked = voices.slice().sort((a, b) => score(b) - score(a))
-  return ranked.find(v => String(v.lang || '').toLowerCase().startsWith('en')) ?? null
-
-  function score(voice: SpeechSynthesisVoice): number {
-    const name = String(voice.name || '').toLowerCase()
-    const lang = String(voice.lang || '').toLowerCase()
-    let value = 0
-    if (lang.startsWith('en-in')) value += 100
-    else if (lang.startsWith('en-gb')) value += 60
-    else if (lang.startsWith('en-us')) value += 50
-    else if (lang.startsWith('en')) value += 30
-    if (name.includes('natural')) value += 20
-    if (name.includes('online')) value += 10
-    return value
-  }
-}
 
 export function NarrationPlayer({ segments }: { segments: string[] }) {
   const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
@@ -47,7 +34,7 @@ export function NarrationPlayer({ segments }: { segments: string[] }) {
     if (!synth) return
 
     const refresh = () => {
-      voiceRef.current = pickVoice(synth.getVoices())
+      voiceRef.current = pickNarrationVoice(synth.getVoices())
       setPlayer(prev =>
         prev === 'loading-voice' ? (voiceRef.current ? 'idle' : 'loading-voice') : prev,
       )

@@ -1,4 +1,4 @@
-import { buildNarrationSegments } from '../lib/narration'
+import { buildNarrationSegments, buildGuidedSteps } from '../lib/narration'
 import type { ScriptedGame } from '../app/play/[pattern]/GamePage'
 
 const base: ScriptedGame = {
@@ -53,5 +53,43 @@ describe('buildNarrationSegments', () => {
       ],
     }
     expect(buildNarrationSegments(game)).toEqual(['Real line.'])
+  })
+})
+
+describe('buildGuidedSteps', () => {
+  it('story first, then one move step per commentary line, ply-ordered', () => {
+    const game: ScriptedGame = {
+      ...base,
+      story: 'Intro.',
+      commentary: [
+        { ply: 2, text: 'Second move.' },
+        { ply: 1, text: 'First move.' },
+      ],
+    }
+    expect(buildGuidedSteps(game)).toEqual([
+      { kind: 'story', text: 'Intro.' },
+      { kind: 'move', ply: 1, text: 'First move.' },
+      { kind: 'move', ply: 2, text: 'Second move.' },
+    ])
+  })
+
+  it('keeps a blank-commentary ply as a move step with empty text (board still advances)', () => {
+    const game: ScriptedGame = {
+      ...base,
+      commentary: [
+        { ply: 1, text: 'Spoken.' },
+        { ply: 2, text: '  ' },
+        { ply: 3, text: 'Also spoken.' },
+      ],
+    }
+    expect(buildGuidedSteps(game)).toEqual([
+      { kind: 'move', ply: 1, text: 'Spoken.' },
+      { kind: 'move', ply: 2, text: '' },
+      { kind: 'move', ply: 3, text: 'Also spoken.' },
+    ])
+  })
+
+  it('is empty when there is no story and no commentary', () => {
+    expect(buildGuidedSteps(base)).toEqual([])
   })
 })

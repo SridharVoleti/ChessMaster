@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Chess }            from 'chess.js'
 import { GameBoard }        from '@/components/GameBoard'
 import { FeedbackPanel }    from '@/components/FeedbackPanel'
@@ -10,6 +10,7 @@ import { PATTERN_SEQUENCE } from '@/lib/constants'
 import type { LessonFeedback, ValidationResult } from '@/lib/PatternValidator'
 import { MainGame, type MainGameData } from './MainGame'
 import { LessonPanel } from '@/components/LessonPanel'
+import { buildGuidedSteps } from '@/lib/narration'
 
 // ── Types ─────────────────────────────────────────────────────────
 export interface ScriptedGame {
@@ -138,13 +139,58 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
   const gameRef     = useRef<Chess>(null!)
   const opponentRef = useRef<DidacticOpponent>(null!)
   const attemptRef  = useRef(1)
+  // guided replay: how many half-moves of the lesson pgn are on the board
+  const appliedPlyRef = useRef(0)
 
   const [fen,      setFen]      = useState(() => getGame(games, pattern, 1).setup_fen)
   const [status,   setStatus]   = useState<Status>('scripted')
   const [feedback, setFeedback] = useState<string | null>(null)
   const [hint,     setHint]     = useState<string | null>(null)
+  const [guidedStep, setGuidedStep] = useState<number | null>(null)
 
   const isMainMode = gameNumber === MAIN_GAME_NUMBER && Boolean(mainGame)
+  const currentGame = getGame(games, pattern, gameNumber)
+
+  // ── Guided replay (module lessons with per-ply commentary) ────
+  const guidedSteps = useMemo(() => buildGuidedSteps(currentGame), [currentGame])
+  const isGuided = guidedSteps.some(s => s.kind === 'move')
+
+  const guidedMoves = useMemo<string[]>(() => {
+    if (!isGuided) return []
+    const replay = new Chess()
+    try { replay.loadPgn(currentGame.pgn.replace(/\s*\*\s*$/, '')) } catch { return [] }
+    return replay.history()
+  }, [currentGame, isGuided])
+
+  // Advance the board to exactly `ply` half-moves of the lesson pgn.
+  // Idempotent: replaying an already-applied step is a no-op, so the
+  // narrator can safely re-run the current step on Resume.
+  const applyThroughPly = useCallback((ply: number) => {
+    const game = gameRef.current
+    if (!game) return
+    while (appliedPlyRef.current < ply && appliedPlyRef.current < guidedMoves.length) {
+      try { game.move(guidedMoves[appliedPlyRef.current]) } catch { break }
+      appliedPlyRef.current += 1
+    }
+    setFen(game.fen())
+  }, [guidedMoves])
+
+  const resetGuided = useCallback(() => {
+    const g = getGame(games, pattern, gameNumberRef.current)
+    const game = new Chess(g.setup_fen)
+    gameRef.current = game
+    attemptRef.current = 1
+    appliedPlyRef.current = 0
+    setFen(game.fen())
+    setStatus('scripted')
+    setFeedback(null)
+    setHint(null)
+  }, [games, pattern])
+
+  const finishGuided = useCallback(() => {
+    applyThroughPly(guidedMoves.length) // ensure the board sits at pattern_fen
+    setStatus('pattern_moment')
+  }, [applyThroughPly, guidedMoves.length])
 
   // ── Combined init + scripted-move advance ────────────────────
   useEffect(() => {
@@ -165,11 +211,17 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
     gameRef.current     = game
     opponentRef.current = opponent
     attemptRef.current  = 1
+    appliedPlyRef.current = 0
 
     setFen(game.fen())
     setStatus('scripted')
     setFeedback(null)
     setHint(null)
+
+    // Guided (module) lessons drive the board move-by-move from the
+    // GuidedNarrator, in lock-step with the spoken commentary — no
+    // fixed-delay auto-advance here.
+    if ((g.commentary?.length ?? 0) > 0) return
 
     let cancelled = false
 
@@ -277,7 +329,6 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
   const interactive = status === 'pattern_moment' || status === 'wrong'
   const hasNextGame = gameNumber < gamesPerPattern
   const isLastGame  = gameNumber === gamesPerPattern
-  const currentGame = getGame(games, pattern, gameNumber)
 
   return (
     <main className="min-h-screen bg-gray-900 text-white flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 p-6">
@@ -285,6 +336,19 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
         title={currentGame.title}
         story={currentGame.story}
         commentary={currentGame.commentary}
+        guided={
+          isGuided
+            ? {
+                steps:              guidedSteps,
+                activeStep:         guidedStep,
+                onApplyThroughPly:  applyThroughPly,
+                onReset:            resetGuided,
+                onFinished:         finishGuided,
+                onActiveStepChange: setGuidedStep,
+                resetKey:           instanceKey,
+              }
+            : undefined
+        }
       />
 
       <section className="flex flex-1 flex-col items-center justify-center gap-6">
@@ -295,7 +359,7 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
       <p className="text-gray-400 text-sm">{currentGame.title}</p>
 
       <p className="text-gray-300 text-sm h-5">
-        {status === 'scripted'       && 'Watch the position unfold…'}
+        {status === 'scripted'       && (isGuided ? 'Press Play in the lesson panel to walk through the game.' : 'Watch the position unfold…')}
         {status === 'pattern_moment' && 'Your turn — find the best move!'}
         {status === 'wrong'          && (hint ?? 'Not quite — try again!')}
       </p>
