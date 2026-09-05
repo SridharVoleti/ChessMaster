@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-DISCOVERED_ATTACK",
+  "pattern": "discovered_attack",
+  "title": "The Discovered Attack",
+  "content_status": "published",
+  "concept": "A discovered attack happens when you move one piece and the piece behind it suddenly attacks something. The moving piece can make its own threat too.",
+  "tip": "Look for one of your pieces standing in front of a rook, bishop or queen. Move it — and see what the piece behind it now attacks.",
+  "animation_pgn": null,
+  "confirmation_fen": "r3k2r/ppp1bppp/2n1pn2/q7/3P2b1/2N2N2/PPPBBPPP/R2Q1RK1 w kq - 4 9",
+  "confirmation_best_move": "c3b5",
+  "feedback": {
+    "correct": "Excellent! Moving that piece revealed a hidden attack — a discovered attack!",
+    "hint": "Move a piece out of the way to uncover a powerful attack by the piece behind it.",
+    "reveal": "Move one piece to unleash the attack of another piece that was standing behind it."
+  }
+}

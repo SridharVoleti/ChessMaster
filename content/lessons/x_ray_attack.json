@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-X_RAY_ATTACK",
+  "pattern": "x_ray_attack",
+  "title": "The X-Ray Attack",
+  "content_status": "draft",
+  "concept": "An x-ray attack is when a rook, bishop or queen acts through an enemy piece on the same line — either defending its own piece or attacking one beyond it.",
+  "tip": "Follow the line of your long-range piece straight through an enemy piece. What is on the far side?",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Sharp! Your piece saw straight through the enemy piece on that line — an x-ray.",
+    "hint": "Line up your rook, bishop or queen so its power reaches through an enemy piece.",
+    "reveal": "The long-range piece works through the enemy piece on the line, defending or winning what lies beyond it."
+  }
+}

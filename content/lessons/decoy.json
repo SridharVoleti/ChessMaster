@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-DECOY",
+  "pattern": "decoy",
+  "title": "The Decoy",
+  "content_status": "draft",
+  "concept": "A decoy lures an enemy piece — often the king — onto a square where a tactic is waiting for it. You usually give something up to set the trap.",
+  "tip": "Ask which square would be terrible for an enemy piece, then find a check or capture that drags it there.",
+  "animation_pgn": null,
+  "confirmation_fen": null,
+  "confirmation_best_move": null,
+  "feedback": {
+    "correct": "Great trap! You lured the piece onto a bad square and the tactic did the rest — that is a decoy.",
+    "hint": "Is there a square where the enemy king or a piece would walk into a fork or a check?",
+    "reveal": "Sacrifice to pull the piece onto the fatal square, then strike with the follow-up move."
+  }
+}

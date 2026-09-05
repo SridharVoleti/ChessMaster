@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "modules": [
+    {
+      "id": "FK-B-01",
+      "pattern": "fork",
+      "order": 1,
+      "title": "Fork Basics — Module 1",
+      "lessons_ref": "content/modules/fork/FK-B-01.json"
+    }
+  ]
+}

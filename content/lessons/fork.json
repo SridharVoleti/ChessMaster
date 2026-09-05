@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-FORK",
+  "pattern": "fork",
+  "title": "The Fork",
+  "content_status": "published",
+  "concept": "A fork is one piece attacking two enemy pieces at the same time. Your opponent can only move one of them to safety, so you win the other.",
+  "tip": "Look for a square where one piece — especially a knight or a pawn — hits two enemy pieces at once.",
+  "animation_pgn": null,
+  "confirmation_fen": "r2qr1k1/ppp1bpp1/2npbn1p/8/3PP3/1B3N2/PP3PPP/RNBQR1K1 w - - 1 11",
+  "confirmation_best_move": "d4d5",
+  "feedback": {
+    "correct": "Perfect! Your piece attacks two enemy pieces at the same time — that is a fork!",
+    "hint": "Look for a square where your piece attacks two enemy pieces at once.",
+    "reveal": "The move attacks two pieces simultaneously. The opponent can only save one of them!"
+  }
+}

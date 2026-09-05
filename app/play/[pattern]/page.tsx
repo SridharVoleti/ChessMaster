@@ -2,41 +2,22 @@ import { notFound, redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { authzEnforced, getAuthzService, studentFromCookies } from '@/lib/authz/nextAdapter'
 import { GamePage }  from './GamePage'
-import type { ScriptedGame } from './GamePage'
+import { PLAY_ROUTES, type LessonFeedback } from '@/lib/curriculum'
+import { loadLessonContent, toLessonFeedback } from '@/lib/curriculum-server'
+import { resolveRouteGames } from '@/lib/modules-server'
 
-// Route key → { file loader, chess pattern key passed to GamePage }
-// The route key (URL segment) and the chess pattern key can differ —
-// e.g. forks_extended is a test route whose games have pattern:"fork".
-interface RouteConfig {
-  load:    () => Promise<{ default: ScriptedGame[] }>
-  pattern: string
-}
-
-// JSON module imports infer widened field types (e.g. side: string, not the
-// 'white' | 'black' union ScriptedGame declares), so each loader's result is
-// cast through unknown to the declared shape.
-type JsonGames = Promise<{ default: unknown[] }>
-const asGames = (p: JsonGames) => p as Promise<{ default: ScriptedGame[] }>
-
-const ROUTES: Record<string, RouteConfig> = {
-  fork:              { load: () => asGames(import('@/scripts/games/fork.json')),              pattern: 'fork'              },
-  forks_extended:    { load: () => asGames(import('@/scripts/games/forks_extended.json')),    pattern: 'fork'              },
-  pin:               { load: () => asGames(import('@/scripts/games/pin.json')),               pattern: 'pin'               },
-  back_rank_mate:    { load: () => asGames(import('@/scripts/games/back_rank_mate.json')),    pattern: 'back_rank_mate'    },
-  skewer:            { load: () => asGames(import('@/scripts/games/skewer.json')),            pattern: 'skewer'            },
-  discovered_attack: { load: () => asGames(import('@/scripts/games/discovered_attack.json')), pattern: 'discovered_attack' },
-  double_check:      { load: () => asGames(import('@/scripts/games/double_check.json')),      pattern: 'double_check'      },
-  deflection:        { load: () => asGames(import('@/scripts/games/deflection.json')),        pattern: 'deflection'        },
-  decoy:             { load: () => asGames(import('@/scripts/games/decoy.json')),             pattern: 'decoy'             },
-  smothered_mate:    { load: () => asGames(import('@/scripts/games/smothered_mate.json')),    pattern: 'smothered_mate'    },
-  overloading:       { load: () => asGames(import('@/scripts/games/overloading.json')),       pattern: 'overloading'       },
-  x_ray_attack:      { load: () => asGames(import('@/scripts/games/x_ray_attack.json')),      pattern: 'x_ray_attack'      },
-  zwischenzug:       { load: () => asGames(import('@/scripts/games/zwischenzug.json')),       pattern: 'zwischenzug'       },
-}
+// The route table is generated from content/curriculum/index.json — the
+// single source of truth. The URL segment (route_key) and the chess
+// pattern key can differ: forks_extended is an aux route whose games
+// carry pattern:"fork".
+//
+// ?module=<id> (set by the roadmap's module nodes — see
+// components/RoadmapTrail.tsx) swaps in that module's derived games
+// instead of the route's default games file; see resolveRouteGames.
 
 interface Props {
   params:        { pattern: string }
-  searchParams?: { game?: string; delay?: string }
+  searchParams?: { game?: string; delay?: string; module?: string }
 }
 
 export default async function PlayPage({ params, searchParams }: Props) {
@@ -48,10 +29,19 @@ export default async function PlayPage({ params, searchParams }: Props) {
     if (!(await getAuthzService().getActiveSession(student.id))) redirect('/account')
   }
 
-  const route = ROUTES[params.pattern]
+  const route = PLAY_ROUTES[params.pattern]
   if (!route) notFound()
 
-  const { default: games } = await route.load()
+  // Read from disk at request time (lib/content-fs) rather than a webpack
+  // import() — keeps the server bundle flat no matter how many thousand
+  // game files the curriculum grows to. Cached in-process after first read.
+  // resolveRouteGames swaps in a module's games when ?module=<id> names one
+  // that belongs to this pattern; otherwise it's the route's default file.
+  const games = await resolveRouteGames(route, searchParams?.module)
+
+  // Lesson feedback strings come from content/lessons/<pattern>.json.
+  const lesson = await loadLessonContent(route.pattern)
+  const lessonFeedback: LessonFeedback | null = lesson ? toLessonFeedback(lesson) : null
 
   const game  = Number(searchParams?.game)
   const delay = Number(searchParams?.delay)
@@ -60,6 +50,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
     <GamePage
       pattern={route.pattern}
       games={games}
+      lessonFeedback={lessonFeedback}
       initialGameNumber={Number.isFinite(game) && game > 0 ? game : 1}
       moveDelayMs={Number.isFinite(delay) && delay > 0 ? delay : 600}
     />
@@ -67,5 +58,5 @@ export default async function PlayPage({ params, searchParams }: Props) {
 }
 
 export function generateStaticParams() {
-  return Object.keys(ROUTES).map(pattern => ({ pattern }))
+  return Object.keys(PLAY_ROUTES).map(pattern => ({ pattern }))
 }

@@ -145,6 +145,29 @@
   60%, 100% { transform: scale(1.12); opacity: 0; }
 }
 
+/* ── Roadmap trail (components/RoadmapTrail.tsx) — the candy-trail map ── */
+/* Pulsing ring on the active (playable) node — circular variant of .cta-pulse */
+.trail-node-pulse { position: relative; }
+.trail-node-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 3px solid rgba(37, 99, 235, 0.45);
+  pointer-events: none;
+  animation: trail-ring 2.2s ease-out infinite;
+}
+@keyframes trail-ring {
+  0%        { transform: scale(0.94); opacity: 0.9; }
+  60%, 100% { transform: scale(1.22); opacity: 0; }
+}
+/* Gentle bob on a locked world's teaser lock icon */
+.trail-lock-bob { animation: trail-lock-bob 2.6s ease-in-out infinite; }
+@keyframes trail-lock-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .clay-press,
   .clay-press:hover,
@@ -178,5 +201,10 @@
   .group:hover .icon-bubble {
     transition: none;
     transform: none;
+  }
+  .trail-node-pulse::after,
+  .trail-lock-bob {
+    animation: none;
+    opacity: 0;
   }
 }

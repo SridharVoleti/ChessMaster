@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-SKEWER",
+  "pattern": "skewer",
+  "title": "The Skewer",
+  "content_status": "published",
+  "concept": "A skewer is like a pin turned around. You attack a valuable piece on a line, and when it moves out of the way, you capture the piece that was behind it.",
+  "tip": "Aim your rook, bishop or queen at the enemy's most valuable piece when a weaker one is lined up right behind it.",
+  "animation_pgn": null,
+  "confirmation_fen": "rn1r2k1/1b1q1pp1/p3pn1p/1pb5/4P3/PBN2N1P/1P2QPP1/R1B2RK1 w - - 0 14",
+  "confirmation_best_move": "f1d1",
+  "feedback": {
+    "correct": "Nice skewer! The valuable piece must move, and you win what is behind it!",
+    "hint": "Attack the most valuable piece. When it escapes, the piece behind it is yours!",
+    "reveal": "Attack the big piece first — when it runs, capture what was hiding behind it."
+  }
+}

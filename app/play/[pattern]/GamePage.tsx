@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { Chess }            from 'chess.js'
 import { GameBoard }        from '@/components/GameBoard'
 import { FeedbackPanel }    from '@/components/FeedbackPanel'
@@ -9,6 +9,8 @@ import { DidacticOpponent } from '@/lib/DidacticOpponent'
 import { PATTERN_SEQUENCE } from '@/lib/constants'
 import type { LessonFeedback, ValidationResult } from '@/lib/PatternValidator'
 import { MainGame, type MainGameData } from './MainGame'
+import { LessonPanel } from '@/components/LessonPanel'
+import { buildGuidedSteps } from '@/lib/narration'
 
 // ── Types ─────────────────────────────────────────────────────────
 export interface ScriptedGame {
@@ -34,6 +36,8 @@ export interface ScriptedGame {
   lesson_id?:          string
   sub_pattern?:        string
   story?:              string
+  commentary?:         { ply: number; text: string }[]
+  hints?:              string[]
   secondary_lesson?:   string
   difficulty?:         string
   source_type?:        string
@@ -68,7 +72,8 @@ function getMainGame(games: ScriptedGame[]): ScriptedGame | undefined {
   return games.find(g => g.game_type === 'main')
 }
 
-// Placeholder feedback — Step 4 replaces with full lesson content
+// Fallback feedback — used only when the server did not supply a
+// lessonFeedback prop (content/lessons/<pattern>.json missing or unresolved).
 const LESSON_FEEDBACK: Record<string, LessonFeedback> = {
   fork: {
     feedback_correct: 'Perfect! Your knight attacks two enemy pieces at the same time — that is a fork!',
@@ -102,19 +107,20 @@ const LESSON_FEEDBACK: Record<string, LessonFeedback> = {
   },
 }
 
-function getLessonFeedback(pattern: string): LessonFeedback {
-  return LESSON_FEEDBACK[pattern] ?? LESSON_FEEDBACK.fork
+function getLessonFeedback(pattern: string, supplied?: LessonFeedback | null): LessonFeedback {
+  return supplied ?? LESSON_FEEDBACK[pattern] ?? LESSON_FEEDBACK.fork
 }
 
 // ── Component ─────────────────────────────────────────────────────
 interface Props {
   pattern:            string
   games:              ScriptedGame[]
+  lessonFeedback?:    LessonFeedback | null
   initialGameNumber?: number
   moveDelayMs?:       number
 }
 
-export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 600 }: Props) {
+export function GamePage({ pattern, games, lessonFeedback = null, initialGameNumber = 1, moveDelayMs = 600 }: Props) {
   const patDef       = PATTERN_SEQUENCE.find(p => p.key === pattern)
   const mainGame     = getMainGame(games)
   const gamesPerPattern = getPracticeGames(games).length || 5
@@ -133,13 +139,58 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
   const gameRef     = useRef<Chess>(null!)
   const opponentRef = useRef<DidacticOpponent>(null!)
   const attemptRef  = useRef(1)
+  // guided replay: how many half-moves of the lesson pgn are on the board
+  const appliedPlyRef = useRef(0)
 
   const [fen,      setFen]      = useState(() => getGame(games, pattern, 1).setup_fen)
   const [status,   setStatus]   = useState<Status>('scripted')
   const [feedback, setFeedback] = useState<string | null>(null)
   const [hint,     setHint]     = useState<string | null>(null)
+  const [guidedStep, setGuidedStep] = useState<number | null>(null)
 
   const isMainMode = gameNumber === MAIN_GAME_NUMBER && Boolean(mainGame)
+  const currentGame = getGame(games, pattern, gameNumber)
+
+  // ── Guided replay (module lessons with per-ply commentary) ────
+  const guidedSteps = useMemo(() => buildGuidedSteps(currentGame), [currentGame])
+  const isGuided = guidedSteps.some(s => s.kind === 'move')
+
+  const guidedMoves = useMemo<string[]>(() => {
+    if (!isGuided) return []
+    const replay = new Chess()
+    try { replay.loadPgn(currentGame.pgn.replace(/\s*\*\s*$/, '')) } catch { return [] }
+    return replay.history()
+  }, [currentGame, isGuided])
+
+  // Advance the board to exactly `ply` half-moves of the lesson pgn.
+  // Idempotent: replaying an already-applied step is a no-op, so the
+  // narrator can safely re-run the current step on Resume.
+  const applyThroughPly = useCallback((ply: number) => {
+    const game = gameRef.current
+    if (!game) return
+    while (appliedPlyRef.current < ply && appliedPlyRef.current < guidedMoves.length) {
+      try { game.move(guidedMoves[appliedPlyRef.current]) } catch { break }
+      appliedPlyRef.current += 1
+    }
+    setFen(game.fen())
+  }, [guidedMoves])
+
+  const resetGuided = useCallback(() => {
+    const g = getGame(games, pattern, gameNumberRef.current)
+    const game = new Chess(g.setup_fen)
+    gameRef.current = game
+    attemptRef.current = 1
+    appliedPlyRef.current = 0
+    setFen(game.fen())
+    setStatus('scripted')
+    setFeedback(null)
+    setHint(null)
+  }, [games, pattern])
+
+  const finishGuided = useCallback(() => {
+    applyThroughPly(guidedMoves.length) // ensure the board sits at pattern_fen
+    setStatus('pattern_moment')
+  }, [applyThroughPly, guidedMoves.length])
 
   // ── Combined init + scripted-move advance ────────────────────
   useEffect(() => {
@@ -160,11 +211,17 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
     gameRef.current     = game
     opponentRef.current = opponent
     attemptRef.current  = 1
+    appliedPlyRef.current = 0
 
     setFen(game.fen())
     setStatus('scripted')
     setFeedback(null)
     setHint(null)
+
+    // Guided (module) lessons drive the board move-by-move from the
+    // GuidedNarrator, in lock-step with the spoken commentary — no
+    // fixed-delay auto-advance here.
+    if ((g.commentary?.length ?? 0) > 0) return
 
     let cancelled = false
 
@@ -213,7 +270,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
     }
     const patternFen = g.pattern_fen
     const bestMove    = g.best_move
-    const lesson = getLessonFeedback(pattern)
+    const lesson = getLessonFeedback(pattern, lessonFeedback)
     const uci    = `${from}${to}${promotion ?? ''}`
 
     fetch('/api/validate-move', {
@@ -255,7 +312,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
       .catch(() => setStatus('pattern_moment'))
 
     return false
-  }, [status, pattern])
+  }, [status, pattern, lessonFeedback])
 
   // ── Main-game mode delegates to its own component ─────────────
   if (isMainMode && mainGame) {
@@ -272,10 +329,29 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
   const interactive = status === 'pattern_moment' || status === 'wrong'
   const hasNextGame = gameNumber < gamesPerPattern
   const isLastGame  = gameNumber === gamesPerPattern
-  const currentGame = getGame(games, pattern, gameNumber)
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center gap-6 p-6">
+    <main className="min-h-screen bg-gray-900 text-white flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 p-6">
+      <LessonPanel
+        title={currentGame.title}
+        story={currentGame.story}
+        commentary={currentGame.commentary}
+        guided={
+          isGuided
+            ? {
+                steps:              guidedSteps,
+                activeStep:         guidedStep,
+                onApplyThroughPly:  applyThroughPly,
+                onReset:            resetGuided,
+                onFinished:         finishGuided,
+                onActiveStepChange: setGuidedStep,
+                resetKey:           instanceKey,
+              }
+            : undefined
+        }
+      />
+
+      <section className="flex flex-1 flex-col items-center justify-center gap-6">
       <h1 className="text-3xl font-bold">
         {patDef?.displayName ?? pattern} — Game {gameNumber} of {gamesPerPattern}
       </h1>
@@ -283,7 +359,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
       <p className="text-gray-400 text-sm">{currentGame.title}</p>
 
       <p className="text-gray-300 text-sm h-5">
-        {status === 'scripted'       && 'Watch the position unfold…'}
+        {status === 'scripted'       && (isGuided ? 'Press Play in the lesson panel to walk through the game.' : 'Watch the position unfold…')}
         {status === 'pattern_moment' && 'Your turn — find the best move!'}
         {status === 'wrong'          && (hint ?? 'Not quite — try again!')}
       </p>
@@ -332,6 +408,7 @@ export function GamePage({ pattern, games, initialGameNumber = 1, moveDelayMs = 
           </button>
         </div>
       )}
+      </section>
     </main>
   )
 }

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "LSN-BACK_RANK_MATE",
+  "pattern": "back_rank_mate",
+  "title": "Back Rank Mate",
+  "content_status": "published",
+  "concept": "A back rank mate happens when a king is trapped on its own back row by its own pawns. A rook or queen slides onto that row and it is checkmate.",
+  "tip": "Check whether the enemy king has any escape square. If its own pawns block it in, land a rook or queen on the back rank.",
+  "animation_pgn": null,
+  "confirmation_fen": "r1b3k1/p4ppp/2p2b2/3p4/8/3B1Q2/qPPN1PPP/4R1K1 w - - 0 16",
+  "confirmation_best_move": "e1e8",
+  "feedback": {
+    "correct": "Checkmate! The king was trapped behind its own pawns on the back rank!",
+    "hint": "The king has no escape — its own pawns trap it. Land your heavy piece on the back rank!",
+    "reveal": "The king trapped behind its own pawns cannot escape a rook or queen arriving on the back rank."
+  }
+}
