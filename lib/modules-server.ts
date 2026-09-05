@@ -38,6 +38,7 @@ interface ModuleLesson {
   title:      string
   story?:     string
   pgn:        string
+  commentary?: { ply: number; text: string }[]
   hints?:     string[]
   mistakes?:  string[]
   takeaway?:  string
@@ -85,6 +86,8 @@ export async function loadModuleGames(moduleId: string): Promise<ScriptedGame[] 
       game_type:    'practice',
       title:        lesson.title,
       story:        lesson.story,
+      commentary:   lesson.commentary ?? [],
+      hints:        lesson.hints ?? [],
       setup_fen:    STANDARD_START_FEN,
       pgn:          `${lesson.pgn} *`,
       pattern_fen:  patternFen,

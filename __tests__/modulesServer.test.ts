@@ -58,13 +58,25 @@ describe('loadModuleGames', () => {
     expect(DETECTORS.fork(fenAfterCastling, 'g5f7')).toBe(false)
   })
 
-  it('preserves lesson narrative content (story / takeaway) for the UI', async () => {
+  it('preserves lesson narrative content (story / takeaway / commentary / hints) for the UI', async () => {
     const games = await loadModuleGames('FK-B-01')
     for (const g of games!) {
       expect(typeof g.story).toBe('string')
       expect(g.story!.length).toBeGreaterThan(0)
       expect(typeof g.takeaway).toBe('string')
       expect(g.takeaway!.length).toBeGreaterThan(0)
+
+      // per-ply move commentary — the left-side lesson panel renders this
+      expect(Array.isArray(g.commentary)).toBe(true)
+      expect(g.commentary!.length).toBeGreaterThan(0)
+      for (const c of g.commentary!) {
+        expect(typeof c.ply).toBe('number')
+        expect(typeof c.text).toBe('string')
+        expect(c.text.length).toBeGreaterThan(0)
+      }
+
+      expect(Array.isArray(g.hints)).toBe(true)
+      expect(g.hints!.length).toBeGreaterThan(0)
     }
   })
 })

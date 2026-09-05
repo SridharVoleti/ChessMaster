@@ -9,6 +9,7 @@ import { DidacticOpponent } from '@/lib/DidacticOpponent'
 import { PATTERN_SEQUENCE } from '@/lib/constants'
 import type { LessonFeedback, ValidationResult } from '@/lib/PatternValidator'
 import { MainGame, type MainGameData } from './MainGame'
+import { LessonPanel } from '@/components/LessonPanel'
 
 // ── Types ─────────────────────────────────────────────────────────
 export interface ScriptedGame {
@@ -34,6 +35,8 @@ export interface ScriptedGame {
   lesson_id?:          string
   sub_pattern?:        string
   story?:              string
+  commentary?:         { ply: number; text: string }[]
+  hints?:              string[]
   secondary_lesson?:   string
   difficulty?:         string
   source_type?:        string
@@ -277,7 +280,14 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
   const currentGame = getGame(games, pattern, gameNumber)
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center gap-6 p-6">
+    <main className="min-h-screen bg-gray-900 text-white flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 p-6">
+      <LessonPanel
+        title={currentGame.title}
+        story={currentGame.story}
+        commentary={currentGame.commentary}
+      />
+
+      <section className="flex flex-1 flex-col items-center justify-center gap-6">
       <h1 className="text-3xl font-bold">
         {patDef?.displayName ?? pattern} — Game {gameNumber} of {gamesPerPattern}
       </h1>
@@ -334,6 +344,7 @@ export function GamePage({ pattern, games, lessonFeedback = null, initialGameNum
           </button>
         </div>
       )}
+      </section>
     </main>
   )
 }
