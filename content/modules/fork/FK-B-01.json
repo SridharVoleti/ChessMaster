@@ -1,0 +1,610 @@
+{
+  "schema_version": "2.0",
+  "module_id": "FK-B-01",
+  "lessons": [
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-001",
+      "game_id": "ORIG-000001",
+      "pattern_id": "P1",
+      "title": "The Pawn Wedge",
+      "story": "A quiet Italian game develops naturally, but White's centre is slowly becoming more powerful. Watch how the pieces are placed as the position builds toward a tactical opportunity.",
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Be7 4. d3 Nf6 5. O-O O-O 6. Re1 d6 7. c3 Be6 8. Bb3 h6 9. d4 exd4 10. cxd4 Re8",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White begins with e4, taking space in the centre and opening lines for the queen and king-side bishop."
+        },
+        {
+          "ply": 2,
+          "text": "Black answers with e5, meeting White in the centre and keeping the position balanced."
+        },
+        {
+          "ply": 3,
+          "text": "The knight develops to f3, attacks the e5 pawn and prepares White to castle quickly."
+        },
+        {
+          "ply": 4,
+          "text": "Black develops the knight to c6, protects e5 and strengthens control of the central squares."
+        },
+        {
+          "ply": 5,
+          "text": "White's bishop comes to c4, becoming active and adding pressure toward Black's king side."
+        },
+        {
+          "ply": 6,
+          "text": "Black develops the bishop to e7, preparing to castle and keeping the position solid."
+        },
+        {
+          "ply": 7,
+          "text": "White supports the centre with d3 and opens a path for the dark-squared bishop."
+        },
+        {
+          "ply": 8,
+          "text": "Black brings the knight to f6, develops another piece and increases pressure on White's central pawn."
+        },
+        {
+          "ply": 9,
+          "text": "White castles, placing the king safely while bringing the rook closer to the centre."
+        },
+        {
+          "ply": 10,
+          "text": "Black also castles, completing king safety before the central tension begins to grow."
+        },
+        {
+          "ply": 11,
+          "text": "White places the rook on e1, supporting the e-pawn and preparing for more active central play."
+        },
+        {
+          "ply": 12,
+          "text": "Black plays d6, reinforces the e5 pawn and builds a compact central structure."
+        },
+        {
+          "ply": 13,
+          "text": "White plays c3, giving the centre extra support and preparing to expand with the d-pawn."
+        },
+        {
+          "ply": 14,
+          "text": "Black develops the bishop to e6, improving piece activity and challenging White's active bishop."
+        },
+        {
+          "ply": 15,
+          "text": "White retreats the bishop to b3, keeping it active while preserving the pressure along the diagonal."
+        },
+        {
+          "ply": 16,
+          "text": "Black plays h6, giving the king side some breathing room and asking White's pieces to stay alert."
+        },
+        {
+          "ply": 17,
+          "text": "White finally pushes d4, taking more space in the centre and increasing the tension."
+        },
+        {
+          "ply": 18,
+          "text": "Black exchanges in the centre with exd4, trying to reduce White's space and activity."
+        },
+        {
+          "ply": 19,
+          "text": "White recaptures with the c-pawn, rebuilding a strong central pawn presence."
+        },
+        {
+          "ply": 20,
+          "text": "Black places the rook on e8. The pieces are now arranged in a way that gives White a tactical opportunity on the very next move."
+        }
+      ],
+      "hints": [
+        "Look for one piece that can attack two targets at the same time.",
+        "Focus on White's central pawn.",
+        "Can the pawn advance while attacking two pieces?",
+        "Look carefully at the d5 square."
+      ],
+      "takeaway": "A central pawn can become a powerful tactical weapon when advancing it attacks two pieces at once."
+    },
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-002",
+      "game_id": "ORIG-000002",
+      "pattern_id": "P1",
+      "title": "Knight Storm on e3",
+      "story": "Black's knight is challenged but finds a much stronger idea than retreating. The game builds toward a square from which the knight can attack two of White's heavy pieces at once.",
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. Bb5 Bb4 5. O-O O-O 6. d3 d6 7. Bg5 Bxc3 8. bxc3 Qe7 9. Bh4 Bd7 10. Ng5 Ng4 11. f3",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White advances the pawn to e4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 2,
+          "text": "Black advances the pawn to e5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 3,
+          "text": "White jumps the knight to f3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 4,
+          "text": "Black jumps the knight to c6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 5,
+          "text": "White jumps the knight to c3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 6,
+          "text": "Black jumps the knight to f6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 7,
+          "text": "White repositions the bishop to b5, keeping an important diagonal active."
+        },
+        {
+          "ply": 8,
+          "text": "Black repositions the bishop to b4, keeping an important diagonal active."
+        },
+        {
+          "ply": 9,
+          "text": "White castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 10,
+          "text": "Black castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 11,
+          "text": "White advances the pawn to d3, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 12,
+          "text": "Black advances the pawn to d6, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 13,
+          "text": "White repositions the bishop to g5, keeping an important diagonal active."
+        },
+        {
+          "ply": 14,
+          "text": "Black's bishop captures on c3, using its diagonal to remove an opposing piece."
+        },
+        {
+          "ply": 15,
+          "text": "White's pawn captures on c3, reshaping the pawn structure and creating fresh lines for the pieces."
+        },
+        {
+          "ply": 16,
+          "text": "Black moves the queen to e7, improving coordination with the rest of the pieces."
+        },
+        {
+          "ply": 17,
+          "text": "White repositions the bishop to h4, keeping an important diagonal active."
+        },
+        {
+          "ply": 18,
+          "text": "Black repositions the bishop to d7, keeping an important diagonal active."
+        },
+        {
+          "ply": 19,
+          "text": "White jumps the knight to g5, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 20,
+          "text": "Black jumps the knight to g4, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 21,
+          "text": "White plays the pawn to f3, influencing the centre while giving the pieces more room to work. White's last move leaves the pieces arranged so that Black now has a fork available."
+        }
+      ],
+      "hints": [
+        "Look for one piece that can attack two targets at the same time.",
+        "Focus on Black's knight.",
+        "Find a knight jump that attacks both of White's heavy pieces.",
+        "Look carefully at the e3 square."
+      ],
+      "takeaway": "A knight can create a powerful fork by jumping to a square that attacks two valuable pieces at once."
+    },
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-003",
+      "game_id": "ORIG-000003",
+      "pattern_id": "P1",
+      "title": "Queen's Double Strike",
+      "story": "The position becomes crowded around Black's king side. White's queen is ready to enter the action and attack two targets with one move.",
+      "pgn": "1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Bf5 5. Ng3 Bg6 6. h4 h6 7. Nf3 Nd7 8. h5 Bh7 9. Bd3 Bxd3 10. Qxd3 e6 11. Bd2 Ngf6 12. O-O Ng4 13. Bf4 f6",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White advances the pawn to e4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 2,
+          "text": "Black plays the pawn to c6, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 3,
+          "text": "White advances the pawn to d4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 4,
+          "text": "Black advances the pawn to d5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 5,
+          "text": "White jumps the knight to c3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 6,
+          "text": "Black's pawn captures on e4, changing the central structure and opening new lines."
+        },
+        {
+          "ply": 7,
+          "text": "White's knight captures on e4, removing a piece and landing on an active square."
+        },
+        {
+          "ply": 8,
+          "text": "Black repositions the bishop to f5, keeping an important diagonal active."
+        },
+        {
+          "ply": 9,
+          "text": "White jumps the knight to g3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 10,
+          "text": "Black repositions the bishop to g6, keeping an important diagonal active."
+        },
+        {
+          "ply": 11,
+          "text": "White advances the pawn to h4, gaining useful space on the flank."
+        },
+        {
+          "ply": 12,
+          "text": "Black advances the pawn to h6, gaining useful space on the flank."
+        },
+        {
+          "ply": 13,
+          "text": "White jumps the knight to f3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 14,
+          "text": "Black jumps the knight to d7, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 15,
+          "text": "White advances the pawn to h5, gaining useful space on the flank."
+        },
+        {
+          "ply": 16,
+          "text": "Black repositions the bishop to h7, keeping an important diagonal active."
+        },
+        {
+          "ply": 17,
+          "text": "White repositions the bishop to d3, keeping an important diagonal active."
+        },
+        {
+          "ply": 18,
+          "text": "Black's bishop captures on d3, using its diagonal to remove an opposing piece."
+        },
+        {
+          "ply": 19,
+          "text": "White's queen captures on d3, taking material while moving to an active square."
+        },
+        {
+          "ply": 20,
+          "text": "Black advances the pawn to e6, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 21,
+          "text": "White repositions the bishop to d2, keeping an important diagonal active."
+        },
+        {
+          "ply": 22,
+          "text": "Black jumps the knight to f6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 23,
+          "text": "White castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 24,
+          "text": "Black jumps the knight to g4, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 25,
+          "text": "White repositions the bishop to f4, keeping an important diagonal active."
+        },
+        {
+          "ply": 26,
+          "text": "Black plays the pawn to f6, influencing the centre while giving the pieces more room to work. The pieces are now lined up for White's queen to create a fork on the next move."
+        }
+      ],
+      "hints": [
+        "Look for one move that attacks two targets at once.",
+        "Focus on White's queen.",
+        "Can the queen give check while attacking another piece?",
+        "Look carefully at the g6 square."
+      ],
+      "takeaway": "A queen fork is especially dangerous when one of the two attacks is against the king."
+    },
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-004",
+      "game_id": "ORIG-000004",
+      "pattern_id": "P1",
+      "title": "The Knight Grabs Two",
+      "story": "White's pieces become exposed in the centre. Black's knight is poised to capture in the middle and attack two developed pieces at the same time.",
+      "pgn": "1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3 O-O 6. Be2 e5 7. O-O Nc6 8. d5 Ne7 9. b4 Nh5 10. Re1 f5 11. Nh4 Nf6 12. Bg5",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White advances the pawn to d4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 2,
+          "text": "Black jumps the knight to f6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 3,
+          "text": "White plays the pawn to c4, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 4,
+          "text": "Black advances the pawn to g6, gaining useful space on the flank."
+        },
+        {
+          "ply": 5,
+          "text": "White jumps the knight to c3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 6,
+          "text": "Black repositions the bishop to g7, keeping an important diagonal active."
+        },
+        {
+          "ply": 7,
+          "text": "White advances the pawn to e4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 8,
+          "text": "Black advances the pawn to d6, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 9,
+          "text": "White jumps the knight to f3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 10,
+          "text": "Black castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 11,
+          "text": "White repositions the bishop to e2, keeping an important diagonal active."
+        },
+        {
+          "ply": 12,
+          "text": "Black advances the pawn to e5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 13,
+          "text": "White castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 14,
+          "text": "Black jumps the knight to c6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 15,
+          "text": "White advances the pawn to d5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 16,
+          "text": "Black jumps the knight to e7, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 17,
+          "text": "White advances the pawn to b4, gaining useful space on the flank."
+        },
+        {
+          "ply": 18,
+          "text": "Black jumps the knight to h5, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 19,
+          "text": "White brings the rook to e1, increasing activity along the file or rank."
+        },
+        {
+          "ply": 20,
+          "text": "Black plays the pawn to f5, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 21,
+          "text": "White jumps the knight to h4, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 22,
+          "text": "Black jumps the knight to f6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 23,
+          "text": "White repositions the bishop to g5, keeping an important diagonal active. White's latest move leaves the centre vulnerable, and Black now has a knight fork."
+        }
+      ],
+      "hints": [
+        "Look for a move that attacks two pieces at the same time.",
+        "Focus on Black's knight on f6.",
+        "Can the knight capture in the centre and attack two developed pieces?",
+        "Look carefully at the e4 square."
+      ],
+      "takeaway": "A central knight can fork pieces from several directions, especially after arriving with tempo."
+    },
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-005",
+      "game_id": "ORIG-000005",
+      "pattern_id": "P1",
+      "title": "The Royal Fork",
+      "story": "The queens have disappeared, but the tactical danger remains. White's knight reaches an advanced square from which one move can attack the king and a rook together.",
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4 7. Nxd4 c5 8. Nb3 Qxd1 9. Rxd1 Bg4 10. f3 Be6 11. Nc3 Bd6 12. Nd5 Be7",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White advances the pawn to e4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 2,
+          "text": "Black advances the pawn to e5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 3,
+          "text": "White jumps the knight to f3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 4,
+          "text": "Black jumps the knight to c6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 5,
+          "text": "White repositions the bishop to b5, keeping an important diagonal active."
+        },
+        {
+          "ply": 6,
+          "text": "Black advances the pawn to a6, gaining useful space on the flank."
+        },
+        {
+          "ply": 7,
+          "text": "White's bishop captures on c6, using its diagonal to remove an opposing piece."
+        },
+        {
+          "ply": 8,
+          "text": "Black's pawn captures on c6, reshaping the pawn structure and creating fresh lines for the pieces."
+        },
+        {
+          "ply": 9,
+          "text": "White castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 10,
+          "text": "Black plays the pawn to f6, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 11,
+          "text": "White advances the pawn to d4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 12,
+          "text": "Black's pawn captures on d4, changing the central structure and opening new lines."
+        },
+        {
+          "ply": 13,
+          "text": "White's knight captures on d4, removing a piece and landing on an active square."
+        },
+        {
+          "ply": 14,
+          "text": "Black plays the pawn to c5, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 15,
+          "text": "White jumps the knight to b3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 16,
+          "text": "Black's queen captures on d1, taking material while moving to an active square."
+        },
+        {
+          "ply": 17,
+          "text": "White's rook captures on d1, becoming active on an open line."
+        },
+        {
+          "ply": 18,
+          "text": "Black repositions the bishop to g4, keeping an important diagonal active."
+        },
+        {
+          "ply": 19,
+          "text": "White plays the pawn to f3, influencing the centre while giving the pieces more room to work."
+        },
+        {
+          "ply": 20,
+          "text": "Black repositions the bishop to e6, keeping an important diagonal active."
+        },
+        {
+          "ply": 21,
+          "text": "White jumps the knight to c3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 22,
+          "text": "Black repositions the bishop to d6, keeping an important diagonal active."
+        },
+        {
+          "ply": 23,
+          "text": "White jumps the knight to d5, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 24,
+          "text": "Black repositions the bishop to e7, keeping an important diagonal active. Black's bishop move leaves the king and corner rook vulnerable to the same knight jump."
+        }
+      ],
+      "hints": [
+        "Look for a knight move that attacks two valuable targets.",
+        "One of the targets is the king.",
+        "Can the knight capture with check and attack a rook at the same time?",
+        "Look carefully at the c7 square."
+      ],
+      "takeaway": "A fork that attacks the king forces an immediate response and can leave another valuable piece helpless."
+    },
+    {
+      "schema_version": "2.0",
+      "id": "FK-B-01-006",
+      "game_id": "ORIG-000006",
+      "pattern_id": "P1",
+      "title": "The Weakest Square",
+      "story": "White develops quickly and brings a knight close to Black's king side. After Black castles, the knight can jump onto f7 and attack two major pieces at once.",
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. O-O Be7 5. Ng5 O-O",
+      "commentary": [
+        {
+          "ply": 1,
+          "text": "White advances the pawn to e4, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 2,
+          "text": "Black advances the pawn to e5, claiming or reinforcing important central space."
+        },
+        {
+          "ply": 3,
+          "text": "White jumps the knight to f3, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 4,
+          "text": "Black jumps the knight to c6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 5,
+          "text": "White repositions the bishop to c4, keeping an important diagonal active."
+        },
+        {
+          "ply": 6,
+          "text": "Black jumps the knight to f6, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 7,
+          "text": "White castles on the king side, securing the king and bringing a rook closer to the centre."
+        },
+        {
+          "ply": 8,
+          "text": "Black repositions the bishop to e7, keeping an important diagonal active."
+        },
+        {
+          "ply": 9,
+          "text": "White jumps the knight to g5, improving its reach over the surrounding squares."
+        },
+        {
+          "ply": 10,
+          "text": "Black castles on the king side, securing the king and bringing a rook closer to the centre. Black has just castled, and White's knight now has a fork against two major pieces."
+        }
+      ],
+      "hints": [
+        "Look for a knight move that attacks two valuable pieces.",
+        "Focus on the knight on g5.",
+        "Which capture lets the knight attack both Black's queen and rook?",
+        "Look carefully at the f7 square."
+      ],
+      "takeaway": "A knight on an advanced square can fork major pieces even when the king itself is not one of the targets."
+    }
+  ]
+}

@@ -2,19 +2,22 @@ import { notFound, redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { authzEnforced, getAuthzService, studentFromCookies } from '@/lib/authz/nextAdapter'
 import { GamePage }  from './GamePage'
-import type { ScriptedGame } from './GamePage'
-import { loadJson } from '@/lib/content-fs'
 import { PLAY_ROUTES, type LessonFeedback } from '@/lib/curriculum'
 import { loadLessonContent, toLessonFeedback } from '@/lib/curriculum-server'
+import { resolveRouteGames } from '@/lib/modules-server'
 
 // The route table is generated from content/curriculum/index.json — the
 // single source of truth. The URL segment (route_key) and the chess
 // pattern key can differ: forks_extended is an aux route whose games
 // carry pattern:"fork".
+//
+// ?module=<id> (set by the roadmap's module nodes — see
+// components/RoadmapTrail.tsx) swaps in that module's derived games
+// instead of the route's default games file; see resolveRouteGames.
 
 interface Props {
   params:        { pattern: string }
-  searchParams?: { game?: string; delay?: string }
+  searchParams?: { game?: string; delay?: string; module?: string }
 }
 
 export default async function PlayPage({ params, searchParams }: Props) {
@@ -32,7 +35,9 @@ export default async function PlayPage({ params, searchParams }: Props) {
   // Read from disk at request time (lib/content-fs) rather than a webpack
   // import() — keeps the server bundle flat no matter how many thousand
   // game files the curriculum grows to. Cached in-process after first read.
-  const games = await loadJson<ScriptedGame[]>(route.gamesRef)
+  // resolveRouteGames swaps in a module's games when ?module=<id> names one
+  // that belongs to this pattern; otherwise it's the route's default file.
+  const games = await resolveRouteGames(route, searchParams?.module)
 
   // Lesson feedback strings come from content/lessons/<pattern>.json.
   const lesson = await loadLessonContent(route.pattern)

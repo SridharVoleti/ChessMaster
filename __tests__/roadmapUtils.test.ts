@@ -1,4 +1,4 @@
-import { deriveNodeStates, groupByTier } from '../lib/roadmapUtils'
+import { deriveNodeStates, groupByTier, buildTrailEntries } from '../lib/roadmapUtils'
 import { computeNewXP, xpBarPercent } from '../lib/xpUtils'
 import { PATTERN_SEQUENCE } from '../lib/constants'
 
@@ -76,6 +76,54 @@ describe('groupByTier', () => {
     expect(groups['Intermediate']).toHaveLength(3)
     expect(groups['Advanced']).toHaveLength(3)
     expect(groups['Expert']).toHaveLength(3)
+  })
+})
+
+// ── buildTrailEntries ──────────────────────────────────────────────
+// The candy-trail roadmap's data source: expands a pattern into its
+// modules (content/curriculum/modules.json) when any exist, so a module
+// like fork's FK-B-01 gets its own clickable node instead of being
+// hidden behind a single "Fork" node.
+describe('buildTrailEntries', () => {
+  it('expands fork into its module node, since FK-B-01 exists for it', () => {
+    const entries = buildTrailEntries(BASE_PROGRESS) // current_pattern: fork
+    const forkEntries = entries.filter(e => e.pattern === 'fork')
+    expect(forkEntries).toHaveLength(1)
+    expect(forkEntries[0].kind).toBe('module')
+    expect(forkEntries[0].key).toBe('fork:FK-B-01')
+    expect(forkEntries[0].status).toBe('active') // fork is current_pattern → its first module is active
+    expect(forkEntries[0].href).toBe('/play/fork?module=FK-B-01')
+  })
+
+  it('renders a pattern with no modules yet as a single pattern-kind node', () => {
+    const entries = buildTrailEntries(BASE_PROGRESS)
+    const pinEntries = entries.filter(e => e.pattern === 'pin')
+    expect(pinEntries).toHaveLength(1)
+    expect(pinEntries[0].kind).toBe('pattern')
+    expect(pinEntries[0].status).toBe('locked')
+    expect(pinEntries[0].href).toBeNull()
+    expect(pinEntries[0].displayName).toBe('Pin')
+  })
+
+  it('a locked pattern locks its module nodes too; a mastered one marks them done', () => {
+    const progress = { ...BASE_PROGRESS, patterns_mastered: ['fork'], current_pattern: 'pin' }
+    const entries = buildTrailEntries(progress)
+    const fork = entries.find(e => e.pattern === 'fork')!
+    expect(fork.status).toBe('done')
+    expect(fork.href).toBe('/play/fork?module=FK-B-01') // done modules stay playable (replay)
+  })
+
+  it('locked module nodes are not clickable', () => {
+    // fork not current and not mastered → its module should be locked
+    const progress = { ...BASE_PROGRESS, current_pattern: 'pin' }
+    const entries = buildTrailEntries(progress)
+    const fork = entries.find(e => e.pattern === 'fork')!
+    expect(fork.status).toBe('locked')
+    expect(fork.href).toBeNull()
+  })
+
+  it('keeps one entry per pattern today (fork contributes exactly one module)', () => {
+    expect(buildTrailEntries(BASE_PROGRESS)).toHaveLength(12)
   })
 })
 
