@@ -17,11 +17,14 @@ import type { GuidedStep } from '@/lib/narration'
 // pauses long enough to read the line. So "commentary loading" never
 // depends on the audio engine.
 
-const MOVE_BEAT_MS = 420 // let a move land visually before its line shows
+const MOVE_BEAT_MS = 340 // let a move land visually before its line shows
 
-// how long to dwell on a line when there is no voice (reading time)
+// How long to hold on a commentary line. Paced to *reading* speed, not
+// speaking speed — the line is on screen, highlighted; the audio is a
+// bonus layer that may run a little past this. Keeps a 20-move
+// walkthrough to ~90s instead of ~3min.
 function dwellMs(text: string): number {
-  return Math.min(5200, Math.max(1400, text.length * 42))
+  return Math.min(4800, Math.max(1500, text.length * 38))
 }
 
 type Phase = 'idle' | 'playing' | 'paused' | 'done'
@@ -89,14 +92,11 @@ export function GuidedNarrator({
     const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined
     const wait = (ms: number) => new Promise<void>(r => window.setTimeout(r, ms))
 
-    // Read a line aloud if we can, but never wait longer than it should
-    // take to say it: Edge's Online (Natural) voices frequently never
-    // fire `onend`, which would otherwise stall each step for seconds.
-    // We resolve on `onend` OR after a spoken-length estimate, whichever
-    // comes first, and flush any lingering utterance before the next one.
-    const speechBudget = (text: string) =>
-      Math.min(8000, Math.max(1600, Math.round((text.length / 13) * 1000)))
-
+    // Read a line aloud if we can, but the timeline is driven by reading
+    // speed (dwellMs), NOT by waiting for the utterance. Edge's Online
+    // (Natural) voices frequently never fire `onend`, which used to stall
+    // every step for seconds — now `onend` only advances *early*, and the
+    // dwell timer guarantees a steady pace whatever the engine does.
     const narrate = (text: string) =>
       new Promise<void>(resolve => {
         let settled = false
@@ -113,10 +113,8 @@ export function GuidedNarrator({
             u.onerror = done
             synth.speak(u)
           } catch { /* fall through to the timer */ }
-          window.setTimeout(done, speechBudget(text))
-        } else {
-          window.setTimeout(done, dwellMs(text))
         }
+        window.setTimeout(done, dwellMs(text))
       })
 
     void (async () => {

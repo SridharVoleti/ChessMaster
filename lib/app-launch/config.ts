@@ -8,7 +8,7 @@ import { AppLaunchError } from './errors'
 const DEFAULT_EXCHANGE_URL = 'https://www.babystepsindia.com/v1/internal/app-launch/exchange'
 const DEFAULT_BOOTSTRAP_ISSUER = 'https://babysteps.in'
 const DEFAULT_RETURN_URL = 'https://www.babystepsindia.com'
-const DEFAULT_LANDING_PATH = '/play/fork'
+const DEFAULT_LANDING_PATH = '/'
 
 export interface AppLaunchConfig {
   /** our client_id, registered with BabySteps */

@@ -114,7 +114,7 @@ describe('appLaunchConfig', () => {
     delete env.APP_LAUNCH_LANDING_PATH
     const cfg = appLaunchConfig(env)
     expect(cfg.exchangeUrl).toBe('https://www.babystepsindia.com/v1/internal/app-launch/exchange')
-    expect(cfg.landingPath).toBe('/play/fork')
+    expect(cfg.landingPath).toBe('/')
   })
 
   test.each([
